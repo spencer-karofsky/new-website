@@ -15,6 +15,15 @@
     box-sizing: border-box;
 }
 
+p {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -63,10 +72,79 @@ h3 {
     flex-wrap: wrap;
 }
 
-.index-project-pre {
-    background-color: var(--accent-mint);
-    padding: 2rem;
+.img-card {
     flex: 1;
     min-width: 250px;
+    text-align: center;
+}
+
+.img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.img-container {
+    width: 100%;
+    aspect-ratio: 1522 / 986;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-container:hover .overlay {
+    opacity: 1;
+}
+  
+.page-title {
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-writeup {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-writeup h3 {
+    color: var(--accent-mint);
+    text-align: center;
+    font-size: 2em;
+}
+
+.project-writeup .img-container {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: auto;
+}
+
+.project-writeup .img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.project-writeup .img-container .overlay {
+    max-width: none;
+    max-height: none;
     text-align: center;
 }

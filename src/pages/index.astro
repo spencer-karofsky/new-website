@@ -11,10 +11,12 @@ import '../styles/global.css';
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 		<title>Spencer Karofsky</title>
 	</head>
 	<body>
-		<h2>Please Check Back Soon While I Build My New and Improved Website</h2>
 		<div id="index-title">
 			<h1>Spencer Karofsky</h1>
 			<h2>Generative AI • Computer Science • Endurance Sports</h2>
@@ -29,12 +31,18 @@ import '../styles/global.css';
 			</h3>
 		</div>
 		<div id="index-projects-preview">
-			<div class="index-project-pre">
-				From-scatch DALL·E 2 Implementation, Trained on AWS.
-			</div>
-			<div class="index-project-pre">
-				ESP32-Powered Weather Station
-			</div>
+			<a class="img-card" href="/dalle2">
+				<div class="img-container">
+					<img src="/dalle2.png" alt="DALL·E-2-Generated Images">
+					<div class="overlay">From-Scatch DALL·E 2 Implementation, Trained on AWS</div>
+				</div>
+			</a>
+			<a class="img-card" href="/weather-station">
+				<div class="img-container">
+					<img src="/weather-station.png" alt="Analog Clock-Styled Weather Station, Laser Cut and Powered by ESP32">
+					<div class="overlay">Laser Cut ESP32 Weather Station</div>
+				</div>
+			</a>
 		</div>
 	</body>
 </html>
