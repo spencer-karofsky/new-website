@@ -148,3 +148,12 @@ h3 {
     max-height: none;
     text-align: center;
 }
+
+.github-link,
+.github-link::after {
+    color: var(--accent-purple);
+}
+
+.github-link:hover {
+    color: var(--accent-blue);
+}
