@@ -209,13 +209,14 @@ h3 {
     #index-summary {
         width: 95%;
         font-size: 1.5em;
-        text-align: justify;
     }
 
     .img-card {
         flex: 0 1 95%;
         margin-left: auto;
         margin-right: auto;
+        text-decoration: none;
+        color: inherit;
     }
 
     .img-card .overlay {
