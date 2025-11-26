@@ -296,4 +296,13 @@ h3 {
     .page-title {
         width: 95%;
     }
+
+    .back-chip {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    #index-summary h3 {
+        font-size: 0.9rem;
+    }
 }
