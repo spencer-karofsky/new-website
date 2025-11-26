@@ -87,7 +87,6 @@ h3 {
 }
 
 .overlay {
-    max-width: 80%;
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
@@ -96,9 +95,18 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-
     opacity: 0;
     transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 1rem;
+}
+
+.mobile-caption {
+    display: none;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 0.5rem;
 }
 
 .img-container {
@@ -173,7 +181,6 @@ h3 {
     color: var(--accent-blue);
 }
 
-
 @media (max-width: 600px) {
     p {
         font-size: 1.25em;
@@ -202,11 +209,28 @@ h3 {
     #index-summary {
         width: 95%;
         font-size: 1.5em;
+        text-align: justify;
     }
 
     .img-card {
         flex: 0 1 95%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .img-card .overlay {
+        display: none !important;
+    }
+
+    .img-container:hover .overlay {
+        opacity: 0 !important;
+    }
+
+    #index-projects-preview {
+        width: 95%;
+    }
+
+    .mobile-caption {
+        display: block;
     }
 }
