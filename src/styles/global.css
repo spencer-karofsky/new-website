@@ -181,6 +181,25 @@ h3 {
     color: var(--accent-blue);
 }
 
+.back-chip {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: "Merriweather", serif;
+    font-size: 0.95rem;
+    color: var(--accent-purple);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.back-chip:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+
 @media (max-width: 600px) {
     body {
         padding: 1rem;
@@ -272,5 +291,9 @@ h3 {
         text-align: center;
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .page-title {
+        width: 95%;
     }
 }
