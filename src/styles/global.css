@@ -224,6 +224,7 @@ h3 {
     .mobile-caption {
         display: block;
         margin-top: 0;
+        margin-bottom: 1em;
     }
 
     .img-card .overlay {
