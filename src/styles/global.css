@@ -305,4 +305,8 @@ h3 {
     #index-summary h3 {
         font-size: 1rem;
     }
+
+    .github-link {
+        font-size: 0.9rem;
+    }
 }
