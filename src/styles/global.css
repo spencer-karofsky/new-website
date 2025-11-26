@@ -234,4 +234,12 @@ h3 {
     .mobile-caption {
         display: block;
     }
+
+    .img-container {
+        margin-bottom: 0em;
+    }
+
+    .project-writeup .writeup-img {
+        margin-bottom: 0em;
+    }
 }
