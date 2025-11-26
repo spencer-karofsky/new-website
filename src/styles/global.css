@@ -74,7 +74,6 @@ h3 {
 
 .img-card {
     flex: 1;
-    min-width: 250px;
     text-align: center;
 }
 
@@ -175,6 +174,26 @@ h3 {
 
 
 @media (max-width: 600px) {
+    p {
+        font-size: 1em;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .project-writeup .writeup-img {
+        max-width: 100%;
+    }
+    
+    .project-writeup .img-container {
+        width: 100%;
+    }
+    
+    .project-writeup .img-container img {
+        width: 100%;
+    }
+    
     .project-writeup {
         width: 95%;
         margin-left: auto;
