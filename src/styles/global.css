@@ -264,4 +264,8 @@ h3 {
     .project-writeup .writeup-img {
         margin-bottom: 0em;
     }
+
+    #index-title {
+        width: 80%;
+    }
 }
