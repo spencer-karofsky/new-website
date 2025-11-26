@@ -189,22 +189,22 @@ h3 {
 
 .back-chip {
     display: inline-block;
-    padding: 0.3rem 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
     font-family: "Merriweather", serif;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: var(--accent-purple);
     text-decoration: none;
-    margin-bottom: 1.5rem;
-    transition: border-color 0.25s ease, color 0.25s ease;
+    margin-bottom: 1.8rem;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
 }
 
 .back-chip:hover {
     border-color: var(--accent-blue);
     color: var(--accent-blue);
+    background-color: rgba(96, 165, 250, 0.06);
 }
-
 
 @media (max-width: 600px) {
     body {
