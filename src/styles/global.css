@@ -185,7 +185,12 @@ h3 {
     body {
         padding: 1rem;
     }
-    
+
+    h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
     p {
         font-size: 1.25em;
     }
@@ -227,7 +232,7 @@ h3 {
 
     .mobile-caption {
         display: block;
-        margin-top: 0.5em;
+        margin-top: 0.25em;
         margin-bottom: 1em;
     }
 
