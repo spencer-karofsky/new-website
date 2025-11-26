@@ -265,10 +265,12 @@ h3 {
         margin-bottom: 0em;
     }
 
-    #index-title {
+    #index-title h1,
+    #index-title h2 {
+        display: block;
         width: 100%;
-        margin-left: auto;
-        margin-right: auto;
         text-align: center;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
