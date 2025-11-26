@@ -73,9 +73,10 @@ h3 {
 }
 
 .img-card {
-    flex: 1;
+    flex: 0 1 calc(50% - 2rem);
     text-align: center;
 }
+
 
 .img-card img {
     width: 100%;
@@ -200,5 +201,11 @@ h3 {
 
     #index-summary {
         width: 95%;
+    }
+
+    .img-card {
+        flex: 0 1 95%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
