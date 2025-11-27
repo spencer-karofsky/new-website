@@ -80,7 +80,7 @@ import '../styles/global.css';
                 The decoder's objective is to predict <span set:html="\\(x_0 \\sim P(x_0 | z_{img})\\)"></span>, where <span set:html="\\(x_{0}\\)"></span> represents the final denoised image.
             </p>
             <p>
-                The sinusoidally embedded and MLP-projected timestep, the CLIP image embeddings (the prior's output), and a Gaussian noise tensor of shape (B, 3, H, W) are fed into a U-Net. At each timestep, the U-Net removes a portion of the noise – guided by the CLIP image embedding – following the denoising process learned during diffusion training.
+                The decoder is a diffusion-powered U-Net. The sinusoidally embedded and MLP-projected timestep, the CLIP image embeddings (the prior's output), and a Gaussian noise tensor of shape (B, 3, H, W) are fed into the U-Net. At each timestep, the U-Net removes a portion of the noise – guided by the CLIP image embedding – following the denoising process learned during diffusion training.
             </p>
 
             <h3>
