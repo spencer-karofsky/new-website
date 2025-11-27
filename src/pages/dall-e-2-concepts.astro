@@ -32,6 +32,7 @@ import '../styles/global.css';
                 <li>CLIP Encoder: maps text and images into the same embedding space, enabling direct comparison between them.</li>
                 <li>Prior: transforms text embeddings into image embeddings, acting as a bridge between CLIP's text encoder and the diffusion decoder.</li>
                 <li>Decoder: generates final images conditioned on the image embeddings.</li>
+                <li>Upsampler (Optional): increases the image resolutions.</li>
             </ul>
             <p>
                 Simply stated, the goal of DALL·E 2 is to generate images that look like an input text description. The CLIP encoder encodes the text description into a high-dimensional vector, the text embedding. The prior tells the model how that text embedding should look in the form of an image embedding, filling the gap between language and vision. And the decoder uses the output of the prior – containing information about how the image should look – to generate the final image.
