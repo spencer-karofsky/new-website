@@ -37,7 +37,18 @@ import '../styles/global.css';
                 Introduction
             </h3>
             <p>
-                In the summer of 2025, I set out to complete the most difficult challenge in AI I could think of. I have always been fascinated by the visual side of AI, so I have always aspired to create my own image generation model. Building DALL·E 2 took four months, spanning nearly 10,000 lines of code across 90 files.
+                In the summer of 2025, I set out to complete the most difficult challenge in AI I could think of. I have always been fascinated by the visual side of AI, so I have always aspired to create my own image generation model.
+            </p>
+            <p>
+                DALL·E 2 is a text-to-image generation pipeline developed by OpenAI. Rather than a single model, it consists of several interconnected components that work together to transform a text prompt into a novel image.
+            </p>
+            <p>
+                <a href="/dall-e-2-concepts/">
+                    Learn more about how DALL·E 2 works here.
+                </a>
+            </p>
+            <p>
+                Building DALL·E 2 took four months, spanning nearly 10,000 lines of code across 90 files.
             </p>
 
             <h3>
@@ -67,10 +78,10 @@ import '../styles/global.css';
             </p>
 
             <div class="img-container">
-                <img src="/failed-dalle2.png" alt="DALL·E 2 Inference Silently Failing and Outputting Pure Noise">
-                <div class="overlay writeup-overlay">DALL·E 2 Inference Silently Failing and Outputting Pure Noise</div>
+                <img src="/failed-dalle2.png" alt="Inference Silently Failing and Outputting Pure Noise">
+                <div class="overlay writeup-overlay">Inference Silently Failing and Outputting Pure Noise</div>
             </div>
-            <div class="mobile-caption">DALL·E 2 Inference Silently Failing and Outputting Pure Noise</div>
+            <div class="mobile-caption">Inference Silently Failing and Outputting Pure Noise</div>
             
             <p>
                 I scrapped everything and started over from scratch.
@@ -91,9 +102,9 @@ import '../styles/global.css';
         
             <div class="img-container">
                 <img src="/working-dalle2-single-img.png" alt="Successful DALL·E 2 Decoder Output">
-                <div class="overlay writeup-overlay">DALL·E 2 Decoder Output After Overfitting the Pipeline on a Single Image to Validate my Implementation</div>
+                <div class="overlay writeup-overlay">Decoder Output After Overfitting the Pipeline on a Single Image to Validate my Implementation</div>
             </div>
-            <div class="mobile-caption">DALL·E 2 Decoder Output After Overfitting the Pipeline on a Single Image to Validate my Implementation</div>
+            <div class="mobile-caption">Decoder Output After Overfitting the Pipeline on a Single Image to Validate my Implementation</div>
 
             <p>
                 Once both the prior and decoder worked, I felt like I understood DALL·E 2 on a very deep level. While reading and taking notes on the paper gave me a strong conceptual understanding, working through the bugs and dealing with the ambiguity inherent in research papers pushed my understanding to a much more profound level.
@@ -103,10 +114,10 @@ import '../styles/global.css';
                 Pre-Training DALL·E 2 on AWS: First Attempt
             </h3>
             <div class="img-container">
-                <img src="/dalle2-aws-diagram.png" alt="DALL·E 2 Pre-Training Infrastructure Diagram on AWS">
-                <div class="overlay writeup-overlay">DALL·E 2 Pre-Training Infrastructure Diagram on AWS</div>
+                <img src="/dalle2-aws-diagram.png" alt="Pre-Training Infrastructure Diagram on AWS">
+                <div class="overlay writeup-overlay">Pre-Training Infrastructure Diagram on AWS</div>
             </div>
-            <div class="mobile-caption">DALL·E 2 Pre-Training Infrastructure Diagram on AWS</div>
+            <div class="mobile-caption">Pre-Training Infrastructure Diagram on AWS</div>
 
             <p>
                 Despite perfectly reconstructing a single training image, my pipeline struggled to learn the distribution of my 40,000-image dataset. I ultimately discovered that I needed to add exponential moving average (EMA) weights, a cosine learning rate schedule, and classifier-free guidance. Because the diffusion-powered decoder is far more difficult and expensive to train than the prior, I trained the decoder on a single CUDA-enabled GPU instance on SageMaker while concurrently training the attention-based prior on my MacBook Pro (accelerated by Metal).

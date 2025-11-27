@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<!-- KaTeX CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+		<title>DALL·E 2 Concepts</title>
+	</head>
+	<body>
+		<a class="back-chip" href="/dall-e-2/">DALL·E 2 Project</a>
+
+		<h1 class="page-title">How DALL·E 2 Works</h1>
+		
+		<div class="project-writeup">
+            <h3>
+                Architecture Overview
+            </h3>
+            <p>
+                DALL·E 2 consists of three required components:
+            </p>
+            <ul>
+                <li>CLIP Encoder: maps text and images into the same embedding space, enabling direct comparison between them.</li>
+                <li>Prior: transforms text embeddings into image embeddings, acting as a bridge between CLIP's text encoder and the diffusion decoder.</li>
+                <li>Decoder: generates final images conditioned on the image embeddings.</li>
+            </ul>
+            <p>
+                Simply stated, the goal of DALL·E 2 is to generate images that look like an input text description. The CLIP encoder encodes the text description into a high-dimensional vector, the text embedding. The prior tells the model how that text embedding should look in the form of an image embedding, filling the gap between language and vision. And the decoder uses the output of the prior – containing information about how the image should look – to generate the final image.
+            </p>
+
+            <h3>
+                CLIP Encoder
+            </h3>
+            <p>
+                The CLIP encoder converts text and images into vectors in the same embedding space, enabling direct comparison between them. For DALL·E 2, the text caption is fed into CLIP's text encoder to produce a high-dimensional text embedding that captures the meaning of the caption. This embedding forms the foundation on which the prior and decoder build the final image.
+            </p>
+
+            <h3>
+                Prior
+            </h3>
+            <div class="img-container">
+                <img src="/prior-diagram.png" alt="DALL·E 2 Prior Conceptual Diagram">
+                <div class="overlay writeup-overlay">DALL·E 2 Prior Conceptual Diagram</div>
+            </div>
+            <div class="mobile-caption">DALL·E 2 Prior Conceptual Diagram</div>
+
+            <p>
+                The prior's objective is to predict the conditional probability distribution between the CLIP text and image embeddings, <span set:html="\\(z_{img} \\sim P(z_{img} | z_{txt})\\)"></span>.
+            </p>
+            <p>
+                The prior is a transformer model that takes the CLIP text embedding as the input and predicts the corresponding CLIP image embedding. It learns from many text-image pairs what an image embedding should look like for a given caption and predicts that embedding for the decoder to use.
+            </p>
+            <p>
+                First, a timestep is uniform randomly sampled as an integer. An MLP projects this 128-dimensional embedding into the transformer's model dimension. The other two inputs to the transformer are the CLIP text embedding (B, 512) and a Gaussian noise tensor (B, 512).
+            </p>
+            <p>
+                A decoder-only transformer with causal attention (a transformer that prevents tokens from seeing future tokens) predicts the CLIP image embeddings, which tell the decoder what the images in the batch should look like.
+            </p>
+
+            <h3>
+                Decoder
+            </h3>
+
+            <div class="img-container">
+                <img src="/decoder-diagram.png" alt="DALL·E 2 Decoder Conceptual Diagram">
+                <div class="overlay writeup-overlay">DALL·E 2 Decoder Conceptual Diagram</div>
+            </div>
+            <div class="mobile-caption">DALL·E 2 Decoder Conceptual Diagram</div>
+
+            <p>
+                The decoder's objective is to predict <span set:html="\\(x_0 \\sim P(x_0 | z_{img})\\)"></span>, where <span set:html="\\(x_{0}\\)"></span> represents the final denoised image.
+            </p>
+            <p>
+                The sinusoidally embedded and MLP-projected timestep, the CLIP image embeddings (the prior's output), and a Gaussian noise tensor of shape (B, 3, H, W) are fed into a U-Net. At each timestep, the U-Net removes a portion of the noise – guided by the CLIP image embedding – following the denoising process learned during diffusion training.
+            </p>
+
+            <h3>
+                Upsampler
+            </h3>
+            <p>
+                The upsampler is a super-resolution diffusion model that increases the decoder's low-resolution image to a higher resolution. It receives a noised version of the decoder's output along with the CLIP image embedding, and denoises the image step-by-step to add detail, texture, and sharpness. This produces a final, high-resolution image conditioned by the original text caption.
+            </p>
+		</div>
+
+		<!-- KaTeX JS + Auto-render -->
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+		<script is:inline>
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					delimiters: [
+						{left: "$$", right: "$$", display: true},
+						{left: "\\(", right: "\\)", display: false}
+					]
+				});
+			});
+		</script>
+	</body>
+</html>
