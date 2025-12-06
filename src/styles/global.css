@@ -15,7 +15,7 @@
     box-sizing: border-box;
 }
 
-p, ul {
+p, ul, ol {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -24,7 +24,7 @@ p, ul {
     margin-bottom: 1em;
 }
 
-ul {
+ul, ol {
     padding-left: 2em;
 }
 
@@ -40,7 +40,7 @@ body {
     padding: 2rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
     font-family: 'Merriweather', serif;
     line-height: 1.2;
 }
@@ -162,6 +162,10 @@ p a:hover {
     margin-bottom: 1em;
 }
 
+.project-writeup .sub-header {
+    color: var(--accent-blue);
+}
+
 .project-writeup .writeup-img {
     max-width: 60%;
     margin-left: auto;
@@ -193,7 +197,7 @@ p a:hover {
 .github-link,
 .github-link::after {
     color: var(--accent-purple);
-    font-size: 1.1rem;
+    font-size: 1em;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     padding-bottom: 2px;
@@ -244,7 +248,7 @@ p a:hover {
         line-height: 1.4;
     }
 
-    p, ul {
+    p, ul, ol {
         font-size: 1.25em;
     }
 
