@@ -209,18 +209,39 @@ import '../styles/global.css';
             <h3>
                 UI & Interaction Design
             </h3>
-
-            <h3>
-                Challenges & Lessons Learned
-            </h3>
+            <p>
+                The entire UI is built from scratch in Python using Pygame—no web views, no system UI components. This gave me full control over the interaction model but meant building everything myself: navigation, scrolling, keyboards, and touch handling.
+            </p>
+            
+            <p class="sub-header">Key Implementation Details</p>
+            <ul>
+                <li><strong>Custom Touch Keyboard:</strong> The system keyboard doesn't integrate with fullscreen Pygame, so I built an on-screen keyboard from scratch with touch input handling.</li>
+                <li><strong>Touch Scrolling:</strong> Implemented drag-to-scroll with a threshold to distinguish between taps and swipes, preventing accidental scrolls when tapping buttons.</li>
+                <li><strong>Bottom Navigation:</strong> A persistent nav bar provides quick access to Home, Search, Create, My Kitchen, and Settings from anywhere in the app.</li>
+            </ul>
+            
+            <p class="sub-header">Visual Style</p>
+            <p>
+                The interface uses a warm off-white background to feel less harsh than pure white, with a clean sans-serif font at multiple sizes for hierarchy. The goal was a minimal, readable layout that stays out of the way while cooking.
+            </p>
 
             <h3>
                 Future Improvements
             </h3>
+            <ul>
+                <li><strong>Voice Control:</strong> Add offline or hybrid voice recognition for hands-free cooking.</li>
+                <li><strong>Computer Vision Assistance:</strong> Use a Pi-compatible camera to detect doneness, ingredient amounts, and cooking progress.</li>
+                <li><strong>User Accounts and Profiles:</strong> Store preferences, restrictions, and cooking history across devices.</li>
+                <li><strong>Smart Pantry Tracking:</strong> Track what ingredients you have and offer recipe suggestions based on what's available.</li>
+                <li><strong>Better Meal Planning:</strong> Weekly plan generator with macros, calories, and shopping list optimization.</li>
+            </ul>
 
             <h3>
                 Reflection and Concluding Thoughts
             </h3>
+            <p>
+                AI Sous Chef is the project I am most proud of because it blends everything I love – AI, software engineering, UX design, and hardware – into one seamless product. What started as a simple annoyance in the kitchen turned into a unified system that meaningfully improves the cooking experience, and building it end-to-end has been one of the most rewarding things I have done.
+            </p>            
 
             <h3>
                 Appendix: More Images
