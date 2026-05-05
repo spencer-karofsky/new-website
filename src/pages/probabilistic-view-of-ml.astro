@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+---
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>The Probabilistic View of ML | Spencer Karofsky</title>
+</head>
+<body>
+    <div class="project-writeup">
+        <a href="/" class="back-chip">← Back</a>
+
+        <div class="page-title">
+            <h1>The Probabilistic View of Machine Learning</h1>
+        </div>
+
+        <p>
+            When I started working on AI projects in early 2023, I thought AI was simply understanding PyTorch syntax
+            and experimenting with different hyperparameters until I got a high enough accuracy score. Looking back,
+            this view was (embarrassingly) naïve, but it did get me very excited about the potential of and
+            applications for AI systems.
+        </p>
+
+        <p>
+            Since then, I have been on a personal journey to learn as much as I possibly can and be able to reason
+            about AI from deep math- and physics-informed principles. A week ago, I got a book from the MIT Press
+            book shop covering all the math behind virtually every ML model; reading a few select passages has already
+            paid off in a significant way as I feel like I understand the mathematical framework behind machine
+            learning on a much deeper and clearer level.
+        </p>
+
+        <h3>Distributions as Beliefs</h3>
+
+        <p>
+            At their core, ML problems decompose to optimizing conditional probability distributions, which in
+            Bayesian statistics, encodes beliefs about hypotheses. Suppose you want to know the weather tomorrow;
+            for simplicity, the weather can either be sunny, rainy, or cloudy (independent events).
+        </p>
+
+        <p>
+            A naïve approach would be to train a model to predict a point estimate of the weather: "Tomorrow,
+            because of my observation, my model predicts that it will rain tomorrow." This claim is flawed because
+            the model might be wrong, and it doesn't output uncertainty. A much better approach would be estimating
+            a conditional probability distribution because this method considers uncertainty: "Because of my
+            observation, I am 65% certain that it will rain tomorrow, 30% certain it will be cloudy, and 5% sure
+            it will be sunny."
+        </p>
+
+        <p>
+            The objective transitions from, "Based on the data, which weather event will most likely occur?" to,
+            "How does receiving more information update my belief system about the weather?"
+        </p>
+
+        <h3>How Models Learn</h3>
+
+        <p>
+            As we train the model on our dataset, our goal is to optimize parameters that model the underlying
+            distribution of our data. According to Bayes' Theorem, our new belief is proportional to how well
+            this belief explains the data weighted by the strength of our prior belief. Bayes' gives a theoretical
+            framework that explains why probabilistic models learn, while the KL Divergence can be leveraged to
+            compute how they learn.
+        </p>
+
+        <p>
+            In each training step, we use the KL Divergence, which quantifies the cost of holding the wrong belief,
+            to compute the scalar error. Furthermore, we minimize the KL Divergence by computing its gradient with
+            respect to the model's parameters and updating them via gradient descent.
+        </p>
+
+        <h3>Calibration Over Confidence</h3>
+
+        <p>
+            Because of seeing more data, the entropy, which quantifies uncertainty in a distribution, tends to
+            decrease as informative evidence accumulates. While a reduction in uncertainty is a natural consequence
+            of considering more information, the calibration is more important. If the model is confidently wrong,
+            then the model is not useful. Instead, if the model after further training converges to be 95% confident
+            of rain, 4% confident of clouds, and 1% confident of sunny weather, then it should follow that 95% of
+            all real outcomes conditioned on this observation should be rain.
+        </p>
+    </div>
+</body>
+</html>
