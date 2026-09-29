@@ -715,8 +715,24 @@
     transition-timing-function: var(--ease-in-out);
   }
 
+  .\[app-\:�6\] {
+    app-: �6;
+  }
+
+  .\[app-\:��\1 \] {
+    app-: ��;
+  }
+
   .\[app-\:��\e \] {
     app-: ��;
+  }
+
+  .\[app-\:\2 �\f \] {
+    app-: �;
+  }
+
+  .\[app\:\e �\f \] {
+    app: �;
   }
 
   .\[key\:b\$4ng\] {
@@ -1261,13 +1277,25 @@ button {
 }
 
 .project-placeholder {
-  background: #ffffff6b;
-  border: 1px solid #d6d6c9f2;
+  border: 1px solid var(--line);
+  background: #2623308c;
   border-radius: 14px;
   align-items: center;
   gap: 22px;
   min-height: 112px;
   padding: 20px 22px;
+  transition: border-color .16s, background-color .16s;
+}
+
+.project-placeholder:hover {
+  background: #2e2a3cb3;
+  border-color: #929fe073;
+}
+
+.project-empty {
+  color: var(--muted);
+  margin: 0;
+  font-size: 14px;
 }
 
 .project-index {

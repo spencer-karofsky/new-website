@@ -382,12 +382,6 @@ export default function SWEVisualization() {
           </g>
         </g>
       </svg>
-
-      <figcaption className="swe-caption">
-        <span>SOFTWARE</span>
-        <span>·</span>
-        <span>SHIPPING</span>
-      </figcaption>
     </figure>
   );
 }

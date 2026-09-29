@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useState } from "react";
+import Link from "next/link";
 import MLVisualization from "@/components/MLVisualization";
 import RoboticsVisualization from "@/components/RoboticsVisualization";
 import SWEVisualization from "@/components/SWEVisualization";
@@ -278,19 +279,23 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="project-placeholder">
-          <span className="project-index">01</span>
+        {focus === "ML" || focus === "SWE" ? (
+          <Link href="/dall-e-2" className="project-placeholder">
+            <span className="project-index">01</span>
 
-          <div>
-            <h2>Your featured project</h2>
-            <p>
-              Add a concise description of the problem, your contribution, and
-              what changed.
-            </p>
-          </div>
+            <div>
+              <h2>DALL·E 2 from scratch</h2>
+              <p>
+                A DALL·E 2-style text-to-image pipeline built independently in
+                about 9,800 lines of code and pre-trained on AWS SageMaker.
+              </p>
+            </div>
 
-          <span className="project-category">{focus}</span>
-        </div>
+            <span className="project-category">{focus}</span>
+          </Link>
+        ) : (
+          <p className="project-empty">Robotics projects are on the way.</p>
+        )}
       </section>
 
       <footer className="site-footer" id="contact">

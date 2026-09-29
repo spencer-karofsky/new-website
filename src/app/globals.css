@@ -528,9 +528,21 @@ a:focus-visible {
   gap: 22px;
   min-height: 112px;
   padding: 20px 22px;
-  border: 1px solid rgba(214, 214, 201, 0.95);
+  border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(38, 35, 48, 0.55);
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.project-placeholder:hover {
+  border-color: rgba(146, 159, 224, 0.45);
+  background: rgba(46, 42, 60, 0.7);
+}
+
+.project-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .project-index {

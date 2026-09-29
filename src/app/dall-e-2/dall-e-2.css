@@ -1,0 +1,256 @@
+.writeup-shell {
+  position: relative;
+  width: min(100% - 48px, 720px);
+  margin: 0 auto;
+  padding: 28px 0 96px;
+}
+
+/* Faint violet glow behind the title, matching the home page */
+.writeup-shell::before {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  z-index: -1;
+  width: 900px;
+  height: 520px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 40% 40%, rgba(146, 159, 224, 0.14), transparent 65%);
+  pointer-events: none;
+}
+
+.writeup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.writeup-back {
+  color: var(--muted);
+  font-size: 13px;
+  transition: color 160ms ease;
+}
+
+.writeup-back:hover {
+  color: var(--teal);
+}
+
+/* Headings */
+.writeup h1 {
+  max-width: 640px;
+  margin: 0 0 20px;
+  color: #a9b6f0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 4.4vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.writeup h3 {
+  margin: 56px 0 14px;
+  color: #8fd6b4;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Body text */
+.writeup p,
+.writeup li {
+  color: #cfc9d6;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.writeup p {
+  margin: 0 0 18px;
+}
+
+.writeup .writeup-lede {
+  max-width: 560px;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.writeup .writeup-subheader {
+  margin: 28px 0 10px;
+  color: #c9ead8;
+  font-weight: 600;
+}
+
+/* Links */
+.writeup a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-color: rgba(146, 159, 224, 0.4);
+  text-underline-offset: 3px;
+}
+
+.writeup a:hover {
+  text-decoration-color: var(--teal);
+}
+
+.writeup .writeup-links {
+  margin-bottom: 32px;
+}
+
+.writeup .writeup-links a {
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* Lists (Tailwind resets list styles, so restore them here) */
+.writeup ol,
+.writeup ul {
+  margin: 0 0 22px;
+  padding-left: 24px;
+}
+
+.writeup ol {
+  list-style: decimal;
+}
+
+.writeup ul {
+  list-style: disc;
+}
+
+.writeup li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.writeup li::marker {
+  color: var(--teal);
+}
+
+/* Numbered steps for the AWS pipeline */
+.writeup .writeup-steps {
+  counter-reset: step;
+  padding-left: 0;
+  list-style: none;
+}
+
+.writeup .writeup-steps li {
+  position: relative;
+  counter-increment: step;
+  margin-bottom: 0;
+  padding: 12px 0 12px 44px;
+  border-bottom: 1px solid var(--line);
+}
+
+.writeup .writeup-steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 13px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(146, 159, 224, 0.5);
+  border-radius: 50%;
+  background: rgba(146, 159, 224, 0.1);
+  color: var(--teal);
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Facts row, each fact with its own accent */
+.writeup-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 0 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.writeup-facts div {
+  padding: 16px 14px 16px 0;
+  border-top: 2px solid var(--accent);
+}
+
+.writeup-facts div + div {
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+
+.writeup-facts div:nth-child(1) { --accent: #90a6ed; }
+.writeup-facts div:nth-child(2) { --accent: #c2b4d6; }
+.writeup-facts div:nth-child(3) { --accent: #ff8877; }
+.writeup-facts div:nth-child(4) { --accent: #c3e088; }
+
+.writeup-facts dt {
+  margin-bottom: 4px;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.writeup-facts dd {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+/* Figures */
+.writeup-figure {
+  margin: 32px 0;
+}
+
+.writeup-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f3eee8;
+}
+
+.writeup-figure figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Wide figures break out of the text column */
+.writeup-figure--wide {
+  width: min(100vw - 48px, 960px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .writeup-shell {
+    width: min(100% - 32px, 720px);
+  }
+
+  .writeup-header {
+    margin-bottom: 44px;
+  }
+
+  .writeup p,
+  .writeup li {
+    font-size: 16px;
+  }
+
+  .writeup-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .writeup-facts div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .writeup-figure--wide {
+    width: calc(100vw - 32px);
+  }
+}

@@ -1,0 +1,65 @@
+/* [project]/src/components/SWEVisualization.css [app-client] (css) */
+.swe-visualization {
+  background: none;
+  width: 100%;
+  margin: 0;
+}
+
+.swe-scene {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+
+.swe-token {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.2px;
+  stroke-linecap: round;
+}
+
+.swe-code-text {
+  fill: currentColor;
+  stroke: none;
+  white-space: pre;
+  opacity: .8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+  font-size: 7px;
+}
+
+.swe-color--blue {
+  color: #90a6ed;
+}
+
+.swe-color--lilac {
+  color: #c2b4d6;
+}
+
+.swe-color--cream {
+  color: #eee6e5;
+}
+
+.swe-color--coral {
+  color: #f87;
+}
+
+.swe-color--lime {
+  color: #c3e088;
+}
+
+.swe-color--gold {
+  color: #f0c674;
+}
+
+.swe-caption {
+  color: var(--muted, #aaa5b2);
+  letter-spacing: .13em;
+  justify-content: flex-end;
+  gap: 7px;
+  margin: 5px 12px 0;
+  font-size: 9px;
+  display: flex;
+}
+
+/*# sourceMappingURL=src_components_SWEVisualization_css_1igg3k2._.single.css.map*/
