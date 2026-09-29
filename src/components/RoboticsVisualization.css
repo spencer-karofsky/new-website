@@ -1,181 +1,71 @@
 .robotics-visualization {
-    width: 100%;
-    margin: 0;
-    overflow: visible;
-    color: var(--ink, #f3eee8);
-  }
-  
-  .robotics-scene {
-    display: block;
-    width: 100%;
-    height: auto;
-    overflow: visible;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-  }
-  
-  .robotics-grid-line {
-    fill: none;
-    stroke: rgba(226, 220, 235, 0.055);
-    stroke-width: 0.7;
-  }
-  
-  .contour path {
-    fill: none;
-    stroke: rgba(193, 183, 211, 0.16);
-    stroke-width: 0.8;
-  }
-  
-  .contour-a {
-    opacity: 0.62;
-  }
-  
-  .contour-b {
-    opacity: 0.48;
-  }
-  
-  .contour-c {
-    opacity: 0.52;
-  }
-  
-  .obstacle path {
-    fill: rgba(191, 187, 203, 0.28);
-    stroke: rgba(226, 220, 235, 0.3);
-    stroke-width: 0.9;
-    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.24));
-  }
-  
-  .obstacle path:nth-child(2) {
-    fill: rgba(134, 130, 151, 0.31);
-    stroke: rgba(226, 220, 235, 0.2);
-  }
-  
-  .obstacle path:nth-child(3) {
-    fill: rgba(72, 68, 87, 0.46);
-    stroke: rgba(226, 220, 235, 0.15);
-  }
-  
-  .route-underlay {
-    fill: none;
-    stroke: rgba(146, 159, 224, 0.12);
-    stroke-width: 5;
-    stroke-linecap: round;
-  }
-  
-  .route-line {
-    fill: none;
-    stroke: #929fe0;
-    stroke-width: 2;
-    stroke-dasharray: 1 8;
-    stroke-linecap: round;
-    opacity: 0.95;
-  }
-  
-  .goal-glow {
-    animation: goal-breathe 3.4s ease-in-out infinite;
-  }
-  
-  .goal-ring {
-    fill: rgba(23, 21, 31, 0.78);
-    stroke: #929fe0;
-    stroke-width: 3;
-    filter: drop-shadow(0 0 7px rgba(146, 159, 224, 0.55));
-  }
-  
-  .goal-core {
-    fill: #929fe0;
-  }
-  
-  .rover-shadow {
-    fill: rgba(8, 7, 14, 0.55);
-    filter: blur(3px);
-    transform: translate(2px, 3px);
-  }
-  
-  .rover-shell {
-    fill: #d9d3df;
-    stroke: #f3eee8;
-    stroke-width: 0.8;
-  }
-  
-  .rover-top {
-    fill: #615970;
-  }
-  
-  .rover-sensor {
-    fill: #ff8877;
-    stroke: rgba(255, 136, 119, 0.38);
-    stroke-width: 3;
-  }
-  
-  .rover-nose {
-    fill: #929fe0;
-  }
-  
-  .rover-wheel {
-    fill: #302b3b;
-    stroke: #aaa5b2;
-    stroke-width: 0.45;
-  }
-  
-  .matrix-card-bg {
-    fill: rgba(28, 25, 37, 0.92);
-    stroke: rgba(193, 183, 211, 0.2);
-    stroke-width: 1;
-    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
-  }
-  
-  .matrix-bracket {
-    fill: none;
-    stroke: #d2c9db;
-    stroke-width: 1;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  
+  position: relative;
+  width: 100%;
+  margin: 0;
+  color: var(--ink, #f3eee8);
+}
+
+.robotics-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 560 / 360;
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    #000 55%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    #000 55%,
+    transparent 100%
+  );
+}
+
+.robotics-hud {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.robotics-geometry {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.matrix-bracket {
+  fill: none;
+  stroke: #d2c9db;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.matrix-number {
+  fill: #f3eee8;
+  font: italic 12px Georgia, "Times New Roman", serif;
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix-number-2,
+.matrix-number-5 {
+  fill: #ff8877;
+}
+
+.matrix-number-6,
+.matrix-number-7,
+.matrix-number-8 {
+  fill: #aaa5b2;
+}
+
+@media (max-width: 520px) {
   .matrix-number {
-    fill: #f3eee8;
-    font: italic 12px Georgia, "Times New Roman", serif;
-    text-anchor: middle;
-    font-variant-numeric: tabular-nums;
+    font-size: 13px;
   }
-  
-  .matrix-number-2,
-  .matrix-number-5 {
-    fill: #ff8877;
-  }
-  
-  .matrix-number-6,
-  .matrix-number-7,
-  .matrix-number-8 {
-    fill: #aaa5b2;
-  }
-  
-  @keyframes goal-breathe {
-    0%,
-    100% {
-      opacity: 0.55;
-    }
-  
-    50% {
-      opacity: 1;
-    }
-  }
-  
-  @media (max-width: 520px) {
-    .robotics-scene {
-      border-radius: 10px;
-    }
-  
-    .matrix-number {
-      font-size: 13px;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .goal-glow {
-      animation: none;
-      opacity: 0.75;
-    }
-  }
+}
