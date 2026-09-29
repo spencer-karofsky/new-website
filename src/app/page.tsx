@@ -300,7 +300,17 @@ export default function Home() {
 
       <footer className="site-footer" id="contact">
         <span>Spencer Karofsky</span>
-        <a href="mailto:hello@example.com">Get in touch ↗</a>
+
+        <div className="footer-links">
+  <a href="mailto:spencerkarofsky@gmail.com">Email ↗</a>
+  <a
+    href="https://www.linkedin.com/in/spencer-karofsky"
+    target="_blank"
+    rel="noreferrer"
+  >
+    LinkedIn ↗
+  </a>
+</div>
       </footer>
     </main>
   );
