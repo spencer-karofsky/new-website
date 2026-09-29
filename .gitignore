@@ -2,3 +2,7 @@ node_modules
 old_site/
 dist/
 out/
+/dist
+/.next
+/out
+/old_site
