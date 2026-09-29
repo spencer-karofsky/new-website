@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import MLVisualization from "@/components/MLVisualization";
 import RoboticsVisualization from "@/components/RoboticsVisualization";
+import SWEVisualization from "@/components/SWEVisualization";
 
 type Focus = "ML" | "SWE" | "Robotics";
 
@@ -13,14 +14,14 @@ const focusContent: Record<Focus, { title: string; description: string }> = {
       "I connect mathematical insight to models that solve practical problems."
   },
   SWE: {
-    title: "Building thoughtful systems.",
+    title: "Shipping solutions that deliver.",
     description:
-      "A selection of software work, from useful interfaces to dependable systems."
+      "I build dependable software, from RAG pipelines to internal tools, that teams rely on every day."
   },
   Robotics: {
     title: "Physical AI, built from the ground up.",
     description:
-      "Combining perception, planning, and control to help robots move safely and effectively through the world."
+      "I connect perception, planning, and control to robots that act reliably in the real world."
   }
 };
 
@@ -246,18 +247,7 @@ export default function Home() {
             <h1>{content.title}</h1>
             <p className="hero-description">{content.description}</p>
 
-            {focus === "Robotics" && (
-              <div className="focus-note">
-                <span className="note-rule" />
-                <div>
-                  <p className="eyebrow">NAVIGATION &amp; PLANNING</p>
-                  <p>
-                    From local motion to global behavior in complex
-                    environments.
-                  </p>
-                </div>
-              </div>
-            )}
+            
 
             <a className="work-link" href="#work">
               View my work <span aria-hidden="true">→</span>
@@ -265,15 +255,17 @@ export default function Home() {
           </div>
 
           <div className="hero-visual">
-            {focus === "ML" ? (
-              <MLVisualization />
-            ) : focus === "Robotics" ? (
-              <RoboticsVisualization />
-            ) : (
-              <div className="placeholder-visual" aria-hidden="true">
-                <span className="visual-caption">FEATURED WORK</span>
-              </div>
-            )}
+          {focus === "ML" ? (
+            <MLVisualization />
+          ) : focus === "SWE" ? (
+            <SWEVisualization />
+          ) : focus === "Robotics" ? (
+            <RoboticsVisualization />
+          ) : (
+            <div className="placeholder-visual" aria-hidden="true">
+              <span className="visual-caption">FEATURED WORK</span>
+            </div>
+          )}
           </div>
         </section>
       </div>

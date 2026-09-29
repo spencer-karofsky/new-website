@@ -461,10 +461,6 @@ export default function MLVisualization() {
           <StaticPoints points={classB} />
         </g>
       </svg>
-
-      <figcaption className="ml-caption">
-        <span>FEATURED WORK</span>
-      </figcaption>
     </figure>
   );
 }

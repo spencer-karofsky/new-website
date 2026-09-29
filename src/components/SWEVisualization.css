@@ -1,0 +1,46 @@
+.swe-visualization {
+  width: 100%;
+  margin: 0;
+  background: transparent;
+}
+
+.swe-scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.swe-token {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+
+.swe-code-text {
+  fill: currentColor;
+  stroke: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+  font-size: 7px;
+  white-space: pre;
+  opacity: 0.8;
+}
+
+.swe-color--blue { color: #90a6ed; }
+.swe-color--lilac { color: #c2b4d6; }
+.swe-color--cream { color: #eee6e5; }
+.swe-color--coral { color: #ff8877; }
+.swe-color--lime { color: #c3e088; }
+.swe-color--gold { color: #f0c674; }
+
+.swe-caption {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+  margin: 5px 12px 0;
+  color: var(--muted, #aaa5b2);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}

@@ -10,9 +10,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MLVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/MLVisualization.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$RoboticsVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/RoboticsVisualization.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SWEVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/SWEVisualization.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -550,11 +552,15 @@ function Home() {
                                 children: focus === "ML" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$MLVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 259,
-                                    columnNumber: 15
-                                }, this) : focus === "Robotics" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$RoboticsVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                    columnNumber: 13
+                                }, this) : focus === "SWE" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SWEVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 261,
-                                    columnNumber: 15
+                                    columnNumber: 13
+                                }, this) : focus === "Robotics" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$RoboticsVisualization$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 263,
+                                    columnNumber: 13
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "placeholder-visual",
                                     "aria-hidden": "true",
@@ -563,13 +569,13 @@ function Home() {
                                         children: "FEATURED WORK"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 264,
-                                        columnNumber: 17
+                                        lineNumber: 266,
+                                        columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 263,
-                                    columnNumber: 15
+                                    lineNumber: 265,
+                                    columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
@@ -600,7 +606,7 @@ function Home() {
                                 children: "SELECTED WORK"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 273,
+                                lineNumber: 275,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -612,19 +618,19 @@ function Home() {
                                         children: "→"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 275,
+                                        lineNumber: 277,
                                         columnNumber: 26
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 274,
+                                lineNumber: 276,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 272,
+                        lineNumber: 274,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -635,7 +641,7 @@ function Home() {
                                 children: "01"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 280,
+                                lineNumber: 282,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -644,20 +650,20 @@ function Home() {
                                         children: "Your featured project"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 283,
+                                        lineNumber: 285,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "Add a concise description of the problem, your contribution, and what changed."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.tsx",
-                                        lineNumber: 284,
+                                        lineNumber: 286,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 282,
+                                lineNumber: 284,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -665,19 +671,19 @@ function Home() {
                                 children: focus
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 290,
+                                lineNumber: 292,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 279,
+                        lineNumber: 281,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 271,
+                lineNumber: 273,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -688,7 +694,7 @@ function Home() {
                         children: "Spencer Karofsky"
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 295,
+                        lineNumber: 297,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -696,13 +702,13 @@ function Home() {
                         children: "Get in touch ↗"
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 296,
+                        lineNumber: 298,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 294,
+                lineNumber: 296,
                 columnNumber: 7
             }, this)
         ]
@@ -1085,447 +1091,431 @@ function MLVisualization() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
         className: "ml-visualization",
         "aria-label": "Illustration of a 3D point cloud projecting into two classes",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                className: "ml-plot",
-                viewBox: "0 0 640 360",
-                role: "img",
-                "aria-labelledby": "ml-plot-title ml-plot-description",
-                preserveAspectRatio: "xMidYMid meet",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("title", {
-                        id: "ml-plot-title",
-                        children: "A point cloud projection"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 320,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("desc", {
-                        id: "ml-plot-description",
-                        children: "A volumetric point cloud appears with a 3D basis, projects into two differently colored groups, then fades away. This is an illustration, not actual model output."
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 321,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
-                                id: "ml-edge-fade",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "0%",
-                                        stopColor: "white",
-                                        stopOpacity: "1"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 329,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "70%",
-                                        stopColor: "white",
-                                        stopOpacity: ".85"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 330,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "100%",
-                                        stopColor: "white",
-                                        stopOpacity: "0"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 331,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 328,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mask", {
-                                id: "ml-grid-mask",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
-                                    width: "640",
-                                    height: "360",
-                                    fill: "url(#ml-edge-fade)"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/MLVisualization.tsx",
-                                    lineNumber: 335,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 334,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
-                                id: "ml-cloud-glow-3d",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "0%",
-                                        stopColor: "#929fe0",
-                                        stopOpacity: ".2"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 339,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "100%",
-                                        stopColor: "#929fe0",
-                                        stopOpacity: "0"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 340,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 338,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
-                                id: "ml-cloud-glow-a",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "0%",
-                                        stopColor: "#8099ed",
-                                        stopOpacity: ".2"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 344,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "100%",
-                                        stopColor: "#8099ed",
-                                        stopOpacity: "0"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 345,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 343,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
-                                id: "ml-cloud-glow-b",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "0%",
-                                        stopColor: "#f27b69",
-                                        stopOpacity: ".2"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 349,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                        offset: "100%",
-                                        stopColor: "#f27b69",
-                                        stopOpacity: "0"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/MLVisualization.tsx",
-                                        lineNumber: 350,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 348,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("marker", {
-                                id: "ml-arrow-i",
-                                markerWidth: "7",
-                                markerHeight: "7",
-                                refX: "5.5",
-                                refY: "3.5",
-                                orient: "auto",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M0,0 L7,3.5 L0,7 Z",
-                                    fill: "#90a6ed"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/MLVisualization.tsx",
-                                    lineNumber: 361,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 353,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("marker", {
-                                id: "ml-arrow-j",
-                                markerWidth: "7",
-                                markerHeight: "7",
-                                refX: "5.5",
-                                refY: "3.5",
-                                orient: "auto",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M0,0 L7,3.5 L0,7 Z",
-                                    fill: "#ff8877"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/MLVisualization.tsx",
-                                    lineNumber: 371,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 363,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("marker", {
-                                id: "ml-arrow-k",
-                                markerWidth: "7",
-                                markerHeight: "7",
-                                refX: "5.5",
-                                refY: "3.5",
-                                orient: "auto",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M0,0 L7,3.5 L0,7 Z",
-                                    fill: "#c2b4d6"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/MLVisualization.tsx",
-                                    lineNumber: 381,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 373,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 327,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        className: "ml-3d-scene",
-                        opacity: "0",
-                        mask: "url(#ml-grid-mask)",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SpatialGrid, {}, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 386,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(BasisVectors, {}, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 387,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
-                                attributeName: "opacity",
-                                values: "0;1;1;0;0;0",
-                                keyTimes: "0;0.07;0.23;0.40;0.92;1",
-                                calcMode: "linear",
-                                dur: duration,
-                                repeatCount: "indefinite"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 388,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 385,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        className: "ml-2d-grid",
-                        opacity: "0",
-                        mask: "url(#ml-grid-mask)",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                d: "M 0 60 H 640 M 0 120 H 640 M 0 180 H 640 M 0 240 H 640 M 0 300 H 640"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 399,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                d: "M 64 0 V 360 M 128 0 V 360 M 192 0 V 360 M 256 0 V 360 M 320 0 V 360 M 384 0 V 360 M 448 0 V 360 M 512 0 V 360 M 576 0 V 360"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 400,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
-                                attributeName: "opacity",
-                                values: "0;0;0;0;0.62;0.62;0;0",
-                                keyTimes: "0;0.07;0.23;0.52;0.66;0.78;0.92;1",
-                                calcMode: "linear",
-                                dur: duration,
-                                repeatCount: "indefinite"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 401,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 398,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        className: "ml-glow ml-glow--3d",
-                        opacity: "0",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ellipse", {
-                                cx: "320",
-                                cy: "180",
-                                rx: "230",
-                                ry: "170",
-                                fill: "url(#ml-cloud-glow-3d)"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 412,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
-                                attributeName: "opacity",
-                                values: "0;1;1;0;0;0",
-                                keyTimes: "0;0.07;0.23;0.40;0.92;1",
-                                calcMode: "linear",
-                                dur: duration,
-                                repeatCount: "indefinite"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 419,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 411,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        className: "ml-glow ml-glow--2d",
-                        opacity: "0",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ellipse", {
-                                cx: "184",
-                                cy: "210",
-                                rx: "170",
-                                ry: "145",
-                                fill: "url(#ml-cloud-glow-a)"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 430,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ellipse", {
-                                cx: "456",
-                                cy: "136",
-                                rx: "170",
-                                ry: "145",
-                                fill: "url(#ml-cloud-glow-b)"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 437,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
-                                attributeName: "opacity",
-                                values: "0;0;0;0;1;1;0;0",
-                                keyTimes: "0;0.07;0.23;0.52;0.66;0.78;0.92;1",
-                                calcMode: "linear",
-                                dur: duration,
-                                repeatCount: "indefinite"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 444,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 429,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        className: "ml-points--animated",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AnimatedPoints, {
-                                points: classA
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 455,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AnimatedPoints, {
-                                points: classB
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 456,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 454,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        className: "ml-points--static",
-                        "aria-hidden": "true",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StaticPoints, {
-                                points: classA
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 460,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StaticPoints, {
-                                points: classB
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/MLVisualization.tsx",
-                                lineNumber: 461,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/MLVisualization.tsx",
-                        lineNumber: 459,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/MLVisualization.tsx",
-                lineNumber: 313,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figcaption", {
-                className: "ml-caption",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    children: "FEATURED WORK"
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+            className: "ml-plot",
+            viewBox: "0 0 640 360",
+            role: "img",
+            "aria-labelledby": "ml-plot-title ml-plot-description",
+            preserveAspectRatio: "xMidYMid meet",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("title", {
+                    id: "ml-plot-title",
+                    children: "A point cloud projection"
                 }, void 0, false, {
                     fileName: "[project]/src/components/MLVisualization.tsx",
-                    lineNumber: 466,
+                    lineNumber: 320,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("desc", {
+                    id: "ml-plot-description",
+                    children: "A volumetric point cloud appears with a 3D basis, projects into two differently colored groups, then fades away. This is an illustration, not actual model output."
+                }, void 0, false, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 321,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
+                            id: "ml-edge-fade",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "0%",
+                                    stopColor: "white",
+                                    stopOpacity: "1"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 329,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "70%",
+                                    stopColor: "white",
+                                    stopOpacity: ".85"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 330,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "100%",
+                                    stopColor: "white",
+                                    stopOpacity: "0"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 331,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 328,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mask", {
+                            id: "ml-grid-mask",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                                width: "640",
+                                height: "360",
+                                fill: "url(#ml-edge-fade)"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/MLVisualization.tsx",
+                                lineNumber: 335,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 334,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
+                            id: "ml-cloud-glow-3d",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "0%",
+                                    stopColor: "#929fe0",
+                                    stopOpacity: ".2"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 339,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "100%",
+                                    stopColor: "#929fe0",
+                                    stopOpacity: "0"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 340,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 338,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
+                            id: "ml-cloud-glow-a",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "0%",
+                                    stopColor: "#8099ed",
+                                    stopOpacity: ".2"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 344,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "100%",
+                                    stopColor: "#8099ed",
+                                    stopOpacity: "0"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 345,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 343,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("radialGradient", {
+                            id: "ml-cloud-glow-b",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "0%",
+                                    stopColor: "#f27b69",
+                                    stopOpacity: ".2"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 349,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                    offset: "100%",
+                                    stopColor: "#f27b69",
+                                    stopOpacity: "0"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/MLVisualization.tsx",
+                                    lineNumber: 350,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 348,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("marker", {
+                            id: "ml-arrow-i",
+                            markerWidth: "7",
+                            markerHeight: "7",
+                            refX: "5.5",
+                            refY: "3.5",
+                            orient: "auto",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                d: "M0,0 L7,3.5 L0,7 Z",
+                                fill: "#90a6ed"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/MLVisualization.tsx",
+                                lineNumber: 361,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 353,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("marker", {
+                            id: "ml-arrow-j",
+                            markerWidth: "7",
+                            markerHeight: "7",
+                            refX: "5.5",
+                            refY: "3.5",
+                            orient: "auto",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                d: "M0,0 L7,3.5 L0,7 Z",
+                                fill: "#ff8877"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/MLVisualization.tsx",
+                                lineNumber: 371,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 363,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("marker", {
+                            id: "ml-arrow-k",
+                            markerWidth: "7",
+                            markerHeight: "7",
+                            refX: "5.5",
+                            refY: "3.5",
+                            orient: "auto",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                d: "M0,0 L7,3.5 L0,7 Z",
+                                fill: "#c2b4d6"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/MLVisualization.tsx",
+                                lineNumber: 381,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 373,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 327,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                    className: "ml-3d-scene",
+                    opacity: "0",
+                    mask: "url(#ml-grid-mask)",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(SpatialGrid, {}, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 386,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(BasisVectors, {}, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 387,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                            attributeName: "opacity",
+                            values: "0;1;1;0;0;0",
+                            keyTimes: "0;0.07;0.23;0.40;0.92;1",
+                            calcMode: "linear",
+                            dur: duration,
+                            repeatCount: "indefinite"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 388,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 385,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                    className: "ml-2d-grid",
+                    opacity: "0",
+                    mask: "url(#ml-grid-mask)",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                            d: "M 0 60 H 640 M 0 120 H 640 M 0 180 H 640 M 0 240 H 640 M 0 300 H 640"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 399,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                            d: "M 64 0 V 360 M 128 0 V 360 M 192 0 V 360 M 256 0 V 360 M 320 0 V 360 M 384 0 V 360 M 448 0 V 360 M 512 0 V 360 M 576 0 V 360"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 400,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                            attributeName: "opacity",
+                            values: "0;0;0;0;0.62;0.62;0;0",
+                            keyTimes: "0;0.07;0.23;0.52;0.66;0.78;0.92;1",
+                            calcMode: "linear",
+                            dur: duration,
+                            repeatCount: "indefinite"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 401,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 398,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                    className: "ml-glow ml-glow--3d",
+                    opacity: "0",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ellipse", {
+                            cx: "320",
+                            cy: "180",
+                            rx: "230",
+                            ry: "170",
+                            fill: "url(#ml-cloud-glow-3d)"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 412,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                            attributeName: "opacity",
+                            values: "0;1;1;0;0;0",
+                            keyTimes: "0;0.07;0.23;0.40;0.92;1",
+                            calcMode: "linear",
+                            dur: duration,
+                            repeatCount: "indefinite"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 419,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 411,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                    className: "ml-glow ml-glow--2d",
+                    opacity: "0",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ellipse", {
+                            cx: "184",
+                            cy: "210",
+                            rx: "170",
+                            ry: "145",
+                            fill: "url(#ml-cloud-glow-a)"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 430,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ellipse", {
+                            cx: "456",
+                            cy: "136",
+                            rx: "170",
+                            ry: "145",
+                            fill: "url(#ml-cloud-glow-b)"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 437,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                            attributeName: "opacity",
+                            values: "0;0;0;0;1;1;0;0",
+                            keyTimes: "0;0.07;0.23;0.52;0.66;0.78;0.92;1",
+                            calcMode: "linear",
+                            dur: duration,
+                            repeatCount: "indefinite"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 444,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 429,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                    className: "ml-points--animated",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AnimatedPoints, {
+                            points: classA
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 455,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AnimatedPoints, {
+                            points: classB
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 456,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 454,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                    className: "ml-points--static",
+                    "aria-hidden": "true",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StaticPoints, {
+                            points: classA
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 460,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StaticPoints, {
+                            points: classB
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/MLVisualization.tsx",
+                            lineNumber: 461,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/MLVisualization.tsx",
+                    lineNumber: 459,
                     columnNumber: 9
                 }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/MLVisualization.tsx",
-                lineNumber: 465,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/MLVisualization.tsx",
+            lineNumber: 313,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/src/components/MLVisualization.tsx",
         lineNumber: 309,
         columnNumber: 5
@@ -2262,6 +2252,555 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/src/components/SWEVisualization.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>SWEVisualization
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+const WIDTH = 560;
+const HEIGHT = 360;
+// Timeline in seconds. The stream flows continuously until FORM_END.
+const STREAM_END = 5.5; // the lead row reaches the bottom here
+const FORM_END = 9.5;
+const HOLD_END = 11;
+const LAUNCH_END = 15.5;
+const CYCLE = 16;
+// Send-arrow geometry, traced from the reference icon.
+const ARROW_ROWS = 33;
+const CENTER_ROW = (ARROW_ROWS - 1) / 2;
+const ARROW_LEFT = 140;
+const ARROW_WIDTH = 268;
+const ARROW_CENTER_Y = 180;
+const ARROW_HALF_HEIGHT = 130;
+const ARROW_PITCH = 8;
+const ARROW_TOP = ARROW_CENTER_Y - ARROW_PITCH * CENTER_ROW;
+const SLOT_LEFT = ARROW_LEFT + ARROW_WIDTH * 0.16;
+const SLOT_RIGHT = ARROW_LEFT + ARROW_WIDTH * 0.67;
+const SLOT_HALF_HEIGHT = 10;
+// Stream.
+const STREAM_PITCH = 12;
+const LEAD_END_Y = HEIGHT + 6;
+const STREAM_SPEED = (LEAD_END_Y + STREAM_PITCH) / STREAM_END;
+// Arrow rows come from the part of the stream crossing the center late in
+// the morph, so the top is pulled down from above and the bottom up from below.
+const MATCH_TIME = FORM_END - 0.5;
+const CENTER_STREAM_INDEX = Math.round((STREAM_SPEED * MATCH_TIME - ARROW_CENTER_Y) / STREAM_PITCH - 1);
+const STREAM_ROWS = CENTER_STREAM_INDEX + CENTER_ROW + 5;
+const LAUNCH_DISTANCE = 200;
+const CHAR_WIDTH = 4.2; // 7px monospace
+const EDGE_FADE = 0.05;
+const palette = [
+    "blue",
+    "lilac",
+    "cream",
+    "coral",
+    "lime",
+    "gold"
+];
+const snippets = [
+    // Python
+    "def forward(self, x):",
+    "for i, batch in enumerate(loader):",
+    "return torch.softmax(logits, -1)",
+    "import numpy as np",
+    "loss.backward()",
+    'if __name__ == "__main__":',
+    "x = np.linalg.solve(A, b)",
+    "yield from walk(node.left)",
+    // C++
+    "std::vector<Node> frontier;",
+    "auto it = cache.find(key);",
+    "template <typename T>",
+    "std::unique_ptr<Model> model;",
+    "for (auto& n : graph[u]) {",
+    "constexpr int N = 1024;",
+    // C
+    "int *buf = malloc(n * sizeof(int));",
+    "while (fgets(line, 256, fp)) {",
+    "#include <stdio.h>",
+    "return EXIT_SUCCESS;",
+    "ptr->next = head;",
+    // JavaScript
+    "const res = await fetch(url);",
+    "export default function App() {",
+    "items.map((x) => x.id)",
+    "useEffect(() => {",
+    "const [state, setState] = useState();",
+    // SQL
+    "SELECT id, name FROM users",
+    "WHERE created_at > NOW()",
+    "JOIN orders o ON o.user_id = u.id",
+    "GROUP BY region;",
+    "ORDER BY score DESC LIMIT 10;"
+];
+function createRandom(seed) {
+    let state = seed >>> 0;
+    return ()=>{
+        state += 0x6d2b79f5;
+        let value = state;
+        value = Math.imul(value ^ value >>> 15, value | 1);
+        value ^= value + Math.imul(value ^ value >>> 7, value | 61);
+        return ((value ^ value >>> 14) >>> 0) / 4294967296;
+    };
+}
+const random = createRandom(24);
+function pick(items) {
+    return items[Math.floor(random() * items.length)];
+}
+function clamp01(value) {
+    return Math.max(0, Math.min(1, value));
+}
+function easeInOut(value) {
+    const t = clamp01(value);
+    return t * t * (3 - 2 * t);
+}
+function lerp(start, end, amount) {
+    return start + (end - start) * amount;
+}
+// Left and right edges of the arrow at a given row height.
+function arrowEdges(y) {
+    const a = Math.min(1, Math.abs(y - ARROW_CENTER_Y) / ARROW_HALF_HEIGHT);
+    let left = ARROW_LEFT + ARROW_WIDTH * 0.07 * (1 - a); // concave back
+    let right = ARROW_LEFT + ARROW_WIDTH * (1 - 0.83 * a);
+    if (a > 0.88) left += 14 * ((a - 0.88) / 0.12) ** 2; // rounded back corners
+    if (a < 0.15) right -= 10 * (1 - a / 0.15) ** 2; // rounded tip
+    return {
+        left,
+        right
+    };
+}
+// Code-like tokens spanning 0 to 1, split around the slot if needed.
+function makeTokens(split) {
+    const tokens = [];
+    let f = 0;
+    while(true){
+        const end = Math.min(1, f + 0.1 + random() * 0.28);
+        tokens.push({
+            f0: f,
+            f1: end,
+            side: "full",
+            color: pick(palette),
+            opacity: 0.5 + random() * 0.35
+        });
+        const next = end + 0.035 + random() * 0.045;
+        if (end >= 1 || next > 0.86) {
+            tokens[tokens.length - 1].f1 = 1;
+            break;
+        }
+        f = next;
+    }
+    if (split < 0) return tokens;
+    return tokens.flatMap((token)=>{
+        if (token.f1 <= split) return [
+            {
+                ...token,
+                side: "left"
+            }
+        ];
+        if (token.f0 >= split) return [
+            {
+                ...token,
+                side: "right"
+            }
+        ];
+        return [
+            {
+                ...token,
+                f1: split,
+                side: "left"
+            },
+            {
+                ...token,
+                f0: split,
+                side: "right"
+            }
+        ];
+    });
+}
+function streamSpan(textWidth) {
+    const indent = Math.floor(random() * 5);
+    const x = 32 + indent * 18;
+    const end = Math.min(WIDTH - 32, x + Math.max(150 + random() * 280, textWidth + 40));
+    return {
+        x,
+        tokenStart: x + textWidth,
+        end
+    };
+}
+function makeArrowRow(j) {
+    const y = ARROW_TOP + j * ARROW_PITCH;
+    const { left, right } = arrowEdges(y);
+    const inSlot = Math.abs(y - ARROW_CENTER_Y) <= SLOT_HALF_HEIGHT;
+    const slotSplit = inSlot ? (SLOT_LEFT - left) / (SLOT_LEFT - left + right - SLOT_RIGHT) : -1;
+    // Snippets are only chosen if they fit whole inside the arrow row.
+    const maxTextChars = Math.floor((right - left) * 0.72 / CHAR_WIDTH);
+    const fitting = snippets.filter((s)=>s.length <= maxTextChars);
+    const text = j % 2 === 1 && !inSlot && fitting.length > 0 ? pick(fitting) : undefined;
+    const textWidth = text ? text.length * CHAR_WIDTH + 8 : 0;
+    const span = streamSpan(textWidth);
+    const tokenStart = left + textWidth;
+    return {
+        streamIndex: CENTER_STREAM_INDEX + (CENTER_ROW - j),
+        streamX: span.x,
+        streamTokenStart: span.tokenStart,
+        streamEnd: span.end,
+        arrow: {
+            y,
+            left,
+            tokenStart,
+            right,
+            slotSplit
+        },
+        tokens: right - tokenStart > 14 ? makeTokens(slotSplit) : [],
+        text,
+        textColor: pick(palette),
+        launchDelay: random() * 0.3
+    };
+}
+// Stream-only rows keep the flow continuous and fade out as the arrow forms.
+function makeFillerRow(k) {
+    const text = k % 2 === 1 ? pick(snippets) : undefined;
+    const textWidth = text ? text.length * CHAR_WIDTH + 8 : 0;
+    const span = streamSpan(textWidth);
+    return {
+        streamIndex: k,
+        streamX: span.x,
+        streamTokenStart: span.tokenStart,
+        streamEnd: span.end,
+        tokens: makeTokens(-1),
+        text,
+        textColor: pick(palette),
+        launchDelay: 0
+    };
+}
+const arrowRows = Array.from({
+    length: ARROW_ROWS
+}, (_, j)=>makeArrowRow(j));
+const usedIndices = new Set(arrowRows.map((row)=>row.streamIndex));
+const fillerRows = Array.from({
+    length: STREAM_ROWS
+}, (_, k)=>k).filter((k)=>!usedIndices.has(k)).map(makeFillerRow);
+const rows = [
+    ...fillerRows,
+    ...arrowRows
+];
+function streamX(row, f) {
+    return lerp(row.streamTokenStart, row.streamEnd, f);
+}
+function arrowX(target, f, side) {
+    if (side === "left") {
+        return lerp(target.tokenStart, SLOT_LEFT, f / target.slotSplit);
+    }
+    if (side === "right") {
+        return lerp(SLOT_RIGHT, target.right, (f - target.slotSplit) / (1 - target.slotSplit));
+    }
+    return lerp(target.tokenStart, target.right, f);
+}
+function SWEVisualization() {
+    _s();
+    const [time, setTime] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useId"])().replace(/[^a-zA-Z0-9_-]/g, "");
+    const fadeYId = `swe-fade-y-${id}`;
+    const fadeXId = `swe-fade-x-${id}`;
+    const maskYId = `swe-mask-y-${id}`;
+    const maskXId = `swe-mask-x-${id}`;
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "SWEVisualization.useEffect": ()=>{
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                setTime(FORM_END + 1);
+                return;
+            }
+            let frame = 0;
+            const start = performance.now();
+            const animate = {
+                "SWEVisualization.useEffect.animate": (now)=>{
+                    setTime((now - start) / 1000 % CYCLE);
+                    frame = requestAnimationFrame(animate);
+                }
+            }["SWEVisualization.useEffect.animate"];
+            frame = requestAnimationFrame(animate);
+            return ({
+                "SWEVisualization.useEffect": ()=>cancelAnimationFrame(frame)
+            })["SWEVisualization.useEffect"];
+        }
+    }["SWEVisualization.useEffect"], []);
+    const formQ = clamp01((time - STREAM_END) / (FORM_END - STREAM_END));
+    // Slow pull at first, then accelerating into the arrow.
+    const form = formQ * formQ * formQ * (formQ * (formQ * 6 - 15) + 10);
+    const flowTime = Math.min(time, FORM_END);
+    const fillerFade = 1 - easeInOut(formQ / 0.8);
+    const launchQ = clamp01((time - HOLD_END) / (LAUNCH_END - HOLD_END));
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
+        className: "swe-visualization",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                className: "swe-scene",
+                viewBox: `0 0 ${WIDTH} ${HEIGHT}`,
+                role: "img",
+                "aria-label": "Code streams downward like film credits, gathers into a send arrow, then launches right and dissolves.",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                id: fadeYId,
+                                x1: "0",
+                                y1: "0",
+                                x2: "0",
+                                y2: "1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0",
+                                        stopColor: "#fff",
+                                        stopOpacity: "0"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 313,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: EDGE_FADE,
+                                        stopColor: "#fff",
+                                        stopOpacity: "1"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 314,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: 1 - EDGE_FADE,
+                                        stopColor: "#fff",
+                                        stopOpacity: "1"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 315,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "1",
+                                        stopColor: "#fff",
+                                        stopOpacity: "0"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 316,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/SWEVisualization.tsx",
+                                lineNumber: 312,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                id: fadeXId,
+                                x1: "0",
+                                y1: "0",
+                                x2: "1",
+                                y2: "0",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0",
+                                        stopColor: "#fff",
+                                        stopOpacity: "1"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 319,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0.86",
+                                        stopColor: "#fff",
+                                        stopOpacity: "1"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 320,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "1",
+                                        stopColor: "#fff",
+                                        stopOpacity: "0"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                                        lineNumber: 321,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/SWEVisualization.tsx",
+                                lineNumber: 318,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mask", {
+                                id: maskYId,
+                                maskUnits: "userSpaceOnUse",
+                                x: "0",
+                                y: "0",
+                                width: WIDTH,
+                                height: HEIGHT,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                                    width: WIDTH,
+                                    height: HEIGHT,
+                                    fill: `url(#${fadeYId})`
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/SWEVisualization.tsx",
+                                    lineNumber: 324,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/SWEVisualization.tsx",
+                                lineNumber: 323,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mask", {
+                                id: maskXId,
+                                maskUnits: "userSpaceOnUse",
+                                x: "0",
+                                y: "0",
+                                width: WIDTH,
+                                height: HEIGHT,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                                    width: WIDTH,
+                                    height: HEIGHT,
+                                    fill: `url(#${fadeXId})`
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/SWEVisualization.tsx",
+                                    lineNumber: 327,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/SWEVisualization.tsx",
+                                lineNumber: 326,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                        lineNumber: 311,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                        mask: `url(#${maskXId})`,
+                        "aria-hidden": "true",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                            mask: `url(#${maskYId})`,
+                            children: rows.map((row, index)=>{
+                                const sourceY = STREAM_SPEED * flowTime - STREAM_PITCH * (row.streamIndex + 1);
+                                const target = row.arrow;
+                                let y = sourceY;
+                                let dx = 0;
+                                let opacity = fillerFade;
+                                if (target) {
+                                    y = lerp(sourceY, target.y, form);
+                                    const p = clamp01((launchQ - row.launchDelay) / 0.7);
+                                    dx = LAUNCH_DISTANCE * p * p;
+                                    opacity = 1 - easeInOut((p - 0.25) / 0.75);
+                                }
+                                if (opacity <= 0 || y < -12 || y > HEIGHT + 12) return null;
+                                const tokenX = (f, side)=>(target ? lerp(streamX(row, f), arrowX(target, f, side), form) : streamX(row, f)) + dx;
+                                const textX = (target ? lerp(row.streamX, target.left + 1, form) : row.streamX) + dx;
+                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                                    opacity: opacity,
+                                    children: [
+                                        row.text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
+                                            className: `swe-code-text swe-color--${row.textColor}`,
+                                            x: textX.toFixed(1),
+                                            y: (y + 2.5).toFixed(1),
+                                            children: row.text
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/SWEVisualization.tsx",
+                                            lineNumber: 362,
+                                            columnNumber: 21
+                                        }, this),
+                                        row.tokens.map((token, tokenIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                className: `swe-token swe-color--${token.color}`,
+                                                d: `M ${tokenX(token.f0, token.side).toFixed(1)} ${y.toFixed(1)} H ${tokenX(token.f1, token.side).toFixed(1)}`,
+                                                opacity: token.opacity
+                                            }, tokenIndex, false, {
+                                                fileName: "[project]/src/components/SWEVisualization.tsx",
+                                                lineNumber: 372,
+                                                columnNumber: 21
+                                            }, this))
+                                    ]
+                                }, index, true, {
+                                    fileName: "[project]/src/components/SWEVisualization.tsx",
+                                    lineNumber: 360,
+                                    columnNumber: 17
+                                }, this);
+                            })
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/SWEVisualization.tsx",
+                            lineNumber: 332,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                        lineNumber: 331,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/SWEVisualization.tsx",
+                lineNumber: 305,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figcaption", {
+                className: "swe-caption",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        children: "SOFTWARE"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                        lineNumber: 387,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        children: "·"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                        lineNumber: 388,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        children: "SHIPPING"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/SWEVisualization.tsx",
+                        lineNumber: 389,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/SWEVisualization.tsx",
+                lineNumber: 386,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/SWEVisualization.tsx",
+        lineNumber: 304,
+        columnNumber: 5
+    }, this);
+}
+_s(SWEVisualization, "nHb1iwU8qg7uDDl6a1wGi7Twqvc=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useId"]
+    ];
+});
+_c = SWEVisualization;
+var _c;
+__turbopack_context__.k.register(_c, "SWEVisualization");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 ]);
 
-//# sourceMappingURL=src_09zs_bg._.js.map
+//# sourceMappingURL=src_0f51hqi._.js.map

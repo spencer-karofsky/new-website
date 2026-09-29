@@ -1,0 +1,376 @@
+/* [project]/src/components/MLVisualization.css [app-client] (css) */
+.ml-visualization {
+  background: none;
+  width: 100%;
+  margin: 0;
+  overflow: visible;
+}
+
+.ml-plot {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.ml-spatial-grid ellipse {
+  fill: none;
+  stroke: #d3cae13d;
+  stroke-width: .9px;
+  opacity: 1;
+}
+
+.ml-basis-vectors {
+  opacity: .65;
+}
+
+.ml-basis-vectors line {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.ml-basis-vectors .basis-negative {
+  stroke: #c1becf57;
+  stroke-width: 1.3px;
+  stroke-dasharray: 4 5;
+  opacity: .58;
+}
+
+.ml-basis-vectors .basis-positive {
+  stroke-width: 1.8px;
+}
+
+.ml-basis-vectors .basis-i {
+  stroke: #90a6ed;
+  marker-end: url("#ml-arrow-i");
+}
+
+.ml-basis-vectors .basis-j {
+  stroke: #f87;
+  marker-end: url("#ml-arrow-j");
+}
+
+.ml-basis-vectors .basis-k {
+  stroke: #c2b4d6;
+  marker-end: url("#ml-arrow-k");
+}
+
+.basis-origin {
+  fill: #eee6e5;
+}
+
+.ml-axis-label text {
+  fill: #eee6e5;
+  text-anchor: middle;
+  font: italic 16px Georgia, Times New Roman, serif;
+}
+
+.ml-axis-label path {
+  fill: none;
+  stroke: #eee6e5;
+  stroke-width: 1.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ml-axis-label:nth-of-type(2) text, .ml-axis-label:nth-of-type(2) path {
+  fill: #90a6ed;
+  stroke: #90a6ed;
+}
+
+.ml-axis-label:nth-of-type(3) text, .ml-axis-label:nth-of-type(3) path {
+  fill: #f87;
+  stroke: #f87;
+}
+
+.ml-2d-grid {
+  pointer-events: none;
+}
+
+.ml-2d-grid path {
+  fill: none;
+  stroke: #d3cae129;
+  stroke-width: .75px;
+  opacity: .34;
+}
+
+.ml-points--animated {
+  display: inline;
+}
+
+.ml-points--static {
+  display: none;
+}
+
+.ml-caption {
+  color: #aaa5b2;
+  letter-spacing: .13em;
+  justify-content: flex-end;
+  margin: 2px 14px 0;
+  font-size: 9px;
+  display: flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-points--animated, .ml-3d-scene, .ml-2d-grid, .ml-glow--3d, .ml-glow--2d {
+    display: none;
+  }
+
+  .ml-points--static {
+    display: inline;
+  }
+
+  .ml-2d-grid {
+    opacity: .35;
+  }
+
+  .ml-glow--2d {
+    opacity: 1;
+    display: inline;
+  }
+}
+
+/* [project]/src/components/RoboticsVisualization.css [app-client] (css) */
+.robotics-visualization {
+  width: 100%;
+  color: var(--ink, #f3eee8);
+  margin: 0;
+  overflow: visible;
+}
+
+.robotics-scene {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.robotics-grid-line {
+  fill: none;
+  stroke: #e2dceb0e;
+  stroke-width: .7px;
+}
+
+.contour path {
+  fill: none;
+  stroke: #c1b7d329;
+  stroke-width: .8px;
+}
+
+.contour-a {
+  opacity: .62;
+}
+
+.contour-b {
+  opacity: .48;
+}
+
+.contour-c {
+  opacity: .52;
+}
+
+.obstacle path {
+  fill: #bfbbcb47;
+  stroke: #e2dceb4d;
+  stroke-width: .9px;
+  filter: drop-shadow(0 5px 8px #0000003d);
+}
+
+.obstacle path:nth-child(2) {
+  fill: #8682974f;
+  stroke: #e2dceb33;
+}
+
+.obstacle path:nth-child(3) {
+  fill: #48445775;
+  stroke: #e2dceb26;
+}
+
+.route-underlay {
+  fill: none;
+  stroke: #929fe01f;
+  stroke-width: 5px;
+  stroke-linecap: round;
+}
+
+.route-line {
+  fill: none;
+  stroke: #929fe0;
+  stroke-width: 2px;
+  stroke-dasharray: 1 8;
+  stroke-linecap: round;
+  opacity: .95;
+}
+
+.goal-glow {
+  animation: 3.4s ease-in-out infinite goal-breathe;
+}
+
+.goal-ring {
+  fill: #17151fc7;
+  stroke: #929fe0;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 7px #929fe08c);
+}
+
+.goal-core {
+  fill: #929fe0;
+}
+
+.rover-shadow {
+  fill: #08070e8c;
+  filter: blur(3px);
+  transform: translate(2px, 3px);
+}
+
+.rover-shell {
+  fill: #d9d3df;
+  stroke: #f3eee8;
+  stroke-width: .8px;
+}
+
+.rover-top {
+  fill: #615970;
+}
+
+.rover-sensor {
+  fill: #f87;
+  stroke: #ff887761;
+  stroke-width: 3px;
+}
+
+.rover-nose {
+  fill: #929fe0;
+}
+
+.rover-wheel {
+  fill: #302b3b;
+  stroke: #aaa5b2;
+  stroke-width: .45px;
+}
+
+.matrix-card-bg {
+  fill: #1c1925eb;
+  stroke: #c1b7d333;
+  stroke-width: 1px;
+  filter: drop-shadow(0 8px 18px #00000038);
+}
+
+.matrix-bracket {
+  fill: none;
+  stroke: #d2c9db;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.matrix-number {
+  fill: #f3eee8;
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+  font: italic 12px Georgia, Times New Roman, serif;
+}
+
+.matrix-number-2, .matrix-number-5 {
+  fill: #f87;
+}
+
+.matrix-number-6, .matrix-number-7, .matrix-number-8 {
+  fill: #aaa5b2;
+}
+
+@keyframes goal-breathe {
+  0%, 100% {
+    opacity: .55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .robotics-scene {
+    border-radius: 10px;
+  }
+
+  .matrix-number {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goal-glow {
+    opacity: .75;
+    animation: none;
+  }
+}
+
+/* [project]/src/components/SWEVisualization.css [app-client] (css) */
+.swe-visualization {
+  background: none;
+  width: 100%;
+  margin: 0;
+}
+
+.swe-scene {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+
+.swe-token {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.2px;
+  stroke-linecap: round;
+}
+
+.swe-code-text {
+  fill: currentColor;
+  stroke: none;
+  white-space: pre;
+  opacity: .8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+  font-size: 7px;
+}
+
+.swe-color--blue {
+  color: #90a6ed;
+}
+
+.swe-color--lilac {
+  color: #c2b4d6;
+}
+
+.swe-color--cream {
+  color: #eee6e5;
+}
+
+.swe-color--coral {
+  color: #f87;
+}
+
+.swe-color--lime {
+  color: #c3e088;
+}
+
+.swe-color--gold {
+  color: #f0c674;
+}
+
+.swe-caption {
+  color: var(--muted, #aaa5b2);
+  letter-spacing: .13em;
+  justify-content: flex-end;
+  gap: 7px;
+  margin: 5px 12px 0;
+  font-size: 9px;
+  display: flex;
+}
+
+/*# sourceMappingURL=src_components_1nvho6y._.css.map*/

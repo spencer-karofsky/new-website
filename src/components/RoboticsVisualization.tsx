@@ -278,16 +278,7 @@ export default function RoboticsVisualization() {
           <Rover titleId={titleId} />
         </g>
 
-        <g className="matrix-card">
-          <rect
-            x="344"
-            y="205"
-            width="196"
-            height="137"
-            rx="10"
-            className="matrix-card-bg"
-          />
-          
+        <g className="matrix-card">        
           <path
             d="M373 233h-5v48h5M520 233h5v48h-5"
             className="matrix-bracket"
