@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<title>Spencer Karofsky</title>
+	</head>
+	<body>
+		<div id="index-title">
+			<h1>Spencer Karofsky</h1>
+			<h2>Generative AI • Robotics • Endurance Sports</h2>
+		</div>
+		<div id="index-summary">
+			<h3>
+				I am a builder at heart and I understand systems by constructing them. From re-implementing DALL·E 2 from scratch to building an AI cooking assistant, I am energized by ambitious, open-ended projects.
+			</h3>
+			<br>
+			<h3>
+				My philosophy is simple: tackle the hardest possible problem, because that's where exponential progress happens. I have built everything from RAG systems to depth estimation models. Each project teaches me not just what to build, but how systems truly work under the hood.
+			</h3>
+		</div>
+		<div id="index-projects-preview">
+			<div class="img-card">
+				<a href="/why-ml-models-learn/">
+					<div class="img-container" style="background-color: var(--bg-secondary); display: flex; justify-content: center; align-items: center;">
+						<span style="font-family: 'Merriweather', serif; color: var(--accent-mint); font-size: 1.2rem; padding: 2rem; text-align: center;">Why Machine Learning Models Learn</span>
+						<div class="overlay">Why Machine Learning Models Learn</div>
+					</div>
+				</a>
+				<div class="mobile-caption">Why Machine Learning Models Learn</div>
+			</div>
+			
+			<div class="img-card">
+				<a href="/ai-sous-chef/">
+					<div class="img-container">
+						<img src="/ai-sous-chef.png">
+						<div class="overlay">AI Sous Chef: AI-Powered Cooking Assistant that Runs on a Raspberry Pi</div>
+					</div>
+				</a>
+				<div class="mobile-caption">AI Sous Chef: AI-Powered Cooking Assistant that Runs on a Raspberry Pi</div>
+			</div>
+
+			<div class="img-card">
+				<a href="/dall-e-2/">
+					<div class="img-container">
+						<img src="/dalle2-inference-samples.png">
+						<div class="overlay">From-Scratch DALL·E 2 Implementation, Trained on AWS</div>
+					</div>
+				</a>
+				<div class="mobile-caption">From-Scratch DALL·E 2 Implementation, Trained on AWS</div>
+			</div>
+			
+			<!-- <div class="img-card">
+				<a href="/weather-station/">
+					<div class="img-container">
+						<img src="/weather-station.png">
+						<div class="overlay">Laser Cut ESP32 Weather Station</div>
+					</div>
+				</a>
+				<div class="mobile-caption">Laser Cut ESP32 Weather Station</div>
+			</div> -->
+		</div>
+	</body>
+</html>

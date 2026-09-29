@@ -1,0 +1,294 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<title>AI Sous Chef</title>
+	</head>
+	<body>
+        <a class="back-chip" href="/">Home</a>
+
+		<h1 class="page-title">
+            AI Sous Chef: An AI-Powered Cooking Assistant that Runs on a Raspberry Pi
+        </h1>
+        <div class="project-writeup">
+            <div class="img-container">
+                <img src="/ai-sous-chef-home.png" alt="Home View">
+                <div class="overlay writeup-overlay">Home View</div>
+            </div>
+            <div class="mobile-caption">Home View</div>
+            <h3>
+                <a href="https://github.com/spencer-karofsky/ai-sous-chef" target="_blank" class="github-link">View My Project on GitHub</a>
+            </h3>
+            <h3>
+                <a href="https://youtube.com/shorts/E70e16KVUIU?si=z7HLkk96REtwvygW" target="_blank" class="github-link">Video Demo</a>
+            </h3>
+            
+            <h3>
+                Introduction
+            </h3>
+            <p>
+                I love experimenting in the kitchen, and I am constantly looking up new recipes on my iPhone. But using a phone while cooking has always been a frustrating experience. It is not sanitary to touch with messy hands, the screen turns off every 30 seconds, and most online recipes are not tailored to what I actually have or the number of servings I need. On top of that, I always have to scroll through pages of ads and filler text just to find the ingredient list, only to repeat the process every time the browser reloads.
+            </p>
+            <p>
+                I have always wished I had a dedicated kitchen tablet: a low-cost device that stays on, stays clean, and lets me search, customize, and cook from recipes without the constant friction of using a phone.
+            </p>
+            <p>
+                These frustrations, combined with my desire for a better cooking experience, led me to develop AI Sous Chef: a fully custom, AI-powered cooking assistant built on a Raspberry Pi with a 7-inch touchscreen.
+            </p>
+
+            <h3>
+                Features
+            </h3>
+            <div class="img-container">
+                <img src="/ai-sous-chef-search.png" alt="Search View">
+                <div class="overlay writeup-overlay">Search View</div>
+            </div>
+            <p>
+                AI Sous Chef is built around three core capabilities:
+            </p>
+            <ol>
+                <li>Searching a curated recipe database</li>
+                <li>Generating entirely new recipes with AI</li>
+                <li>Modifying any recipe to fit your exact needs</li>
+            </ol>
+            <p>
+                Beyond these core functions, the device includes a full suite of tools designed specifically for real-world cooking workflows:
+            </p>
+            <p class="sub-header">
+                Recipe Discovery & Customization
+            </p>
+            <ul>
+                <li>Search a local curated recipe database instantly, backed by DynamoDB metadata for fast lookups.</li>
+                <li>Generate new recipes from scratch using Bedrock (Claude Haiku 3), with support for dietary restrictions and ingredient limitations.</li>
+                <li>Modify existing recipes on demand (e.g., “double the portions and remove butter”).</li>
+                <li>Auto-adjust servings, ingredients, and cooking steps to match user preferences.</li>
+                <li>Log dietary preferences, allergies, and skill level so all generated recipes match your profile.</li>
+            </ul>
+            <p class="sub-header">
+                Meal Planning & Shopping
+            </p>
+            <ul>
+                <li>Create multi-day meal plans from a text description (e.g., “high-protein, low-fat meal plan for the week”).</li>
+                <li>Generate a complete shopping list from any meal plan in one tap.</li>
+            </ul>
+            <p class="sub-header">
+                On-Device Cooking Experience
+            </p>
+            <ul>
+                <li>Full touchscreen keyboard made with Python & Pygame for text input</li>
+                <li>Always-on cooking display that never times out mid-recipe.</li>
+                <li>Integrated kitchen timer for hands-free tracking.</li>
+                <li>Clean, minimal interface that stays readable and sanitary in a busy kitchen.</li>
+            </ul>
+            <p class="sub-header">
+                System & Device Controls
+            </p>
+            <ul>
+                <li>Connect to new WiFi networks from within the app.</li>
+                <li>Adjust brightness, toggle units, and perform software updates.</li>
+                <li>Restart or shut down the Raspberry Pi.</li>
+                <li>Factory reset option for a clean slate.</li>
+            </ul>
+
+            <h3>
+                Tech Stack
+            </h3>
+            <p>
+                AI Sous Chef is built on a full end-to-end pipeline that spans data ingestion, cloud infrastructure, on-device rendering, and LLM-powered recipe generation. The system is designed to be low-cost, modular, and fully automated.
+            </p>
+            
+            <p class="sub-header">ETL & Cloud Infrastructure</p>
+            <ul>
+                <li><strong>EC2</strong> for running the ETL pipeline that cleans, formats, and prepares the recipes dataset.</li>
+                <li><strong>S3</strong> for storing both the raw dataset inputs and the cleaned recipe JSON files.</li>
+                <li><strong>DynamoDB</strong> to store recipe metadata, enabling fast and inexpensive lookups during search.</li>
+                <li><strong>VPC</strong> to isolate ETL operations inside a private subnet.</li>
+                <li><strong>IAM</strong> for secure, least-privilege access control across all AWS components.</li>
+                <li><strong>Boto3 Automation</strong> to provision and tear down all ETL resources programmatically without using the AWS console.</li>
+            </ul>
+            
+            <p class="sub-header">AI/ML</p>
+            <ul>
+                <li><strong>Amazon Bedrock</strong> for generating new recipes, modifying existing ones, and creating meal plans using Claude Haiku 3 (chosen for its extremely low cost fast inference).</li>
+            </ul>
+            
+            <p class="sub-header">On-Device Software</p>
+            <ul>
+                <li><strong>Python</strong> for application logic and integration with AWS services.</li>
+                <li><strong>Pygame</strong> for rendering the UI, including the custom on-screen keyboard and all interactive components.</li>
+            </ul>
+
+            <h3>
+                System Architecture
+            </h3>
+            <p class="sub-header">ETL</p>
+            <div class="img-container">
+                <img src="/ai-sous-chef-etl-diagram.png" alt="ETL Pipeline AWS Diagram">
+                <div class="overlay writeup-overlay">ETL Pipeline AWS Diagram</div>
+            </div>
+            <div class="mobile-caption">ETL Pipeline AWS Diagram</div>
+            <ol>
+                <li>The EC2 instance downloads the raw recipes dataset and converts each recipe into a standardized JSON format.</li>
+                <li>The raw recipes are uploaded to an S3 bucket.</li>
+                <li>The cleaned recipes are uploaded to a dedicated clean S3 bucket, stored as <code>recipes/id.json</code>.</li>
+                <li>Each recipe's metadata is written as an item in a DynamoDB table.</li>
+                <li>The raw S3 bucket is deleted, and the EC2 instance, subnet, and VPC are terminated.</li>
+            </ol>
+
+            <p class="sub-header">Searching for Recipes in the Dataset</p>
+            <div class="img-container">
+                <img src="/ai-sous-chef-search-diagram.png" alt="Search Recipes Dataset AWS Diagram">
+                <div class="overlay writeup-overlay">Search Recipes Dataset AWS Diagram</div>
+            </div>
+            <div class="mobile-caption">Search Recipes Dataset AWS Diagram</div>
+            <ol>
+                <li>The user types a recipe request using the touch keyboard in the <em>Search</em> View.</li>
+                <li><code>extract_search_params()</code> uses Bedrock (Claude Haiku 3) to convert the natural-language query into structured keywords and filters, since DynamoDB can only search predefined, indexed attributes rather than raw text.</li>
+                <li>These extracted keywords are used to query the 100k-recipe DynamoDB table, which returns metadata for all matching recipes.</li>
+                <li><code>rank_recipes()</code> uses Bedrock to score the candidate recipes and returns only the most relevant results.</li>
+                <li>The top recipe names and metadata are displayed in the <em>Search</em> View, and the user selects one of the results.</li>
+                <li>Since full recipes are stored in S3, selecting a recipe triggers an S3 Object GET request, which returns the complete recipe JSON (storing full recipes in S3 is significantly cheaper than in DynamoDB).</li>
+                <li><code>generate_recipe()</code> uses Bedrock to create a fully structured recipe from a natural-language request, returning standardized JSON—name, ingredients, instructions, times, nutrition, and tags—along with three modification suggestions.</li>
+                <li>The finalized recipe is displayed to the user in the <em>Recipe</em> View.</li>
+            </ol>
+
+            <h3>
+                Dataset
+            </h3>
+            <p>
+                I used the Kaggle dataset: Food.com - Recipes and Reviews, containing over 500,000 detailed recipes.
+            </p>
+
+            <h3>
+                AI Model Integration
+            </h3>
+            <p>
+                AI Sous Chef uses Amazon Bedrock throughout the application to power all AI-driven cooking features. 
+                Bedrock (via Claude Haiku 3) is integrated directly into the Raspberry Pi app, allowing the device to generate and modify recipes in real time.
+            </p>
+            
+            <ul>
+                <li>
+                    Generate New Recipes: When a user types a prompt (e.g., "make a high-protein pasta dish"),
+                    the app sends the request to Bedrock. The model returns a fully structured recipe, which is then displayed
+                    and automatically saved on the device.
+                </li>
+            
+                <li>
+                    Modify Existing Recipes: Users can describe changes they want (such as removing an ingredient
+                    or adjusting servings). The update request is sent to Bedrock, which outputs a modified version of the recipe.
+                </li>
+            
+                <li>
+                    Search Intent Extraction: Before scanning DynamoDB, the app uses Bedrock to interpret natural 
+                    language search queries and extract search parameters such as keywords, category, dietary rules, or calorie limits.
+                </li>
+            
+                <li>
+                    Recipe Ranking: After DynamoDB returns candidate recipes, Bedrock is used to semantically rank 
+                    which results are most relevant to the user's query.
+                </li>
+            
+                <li>
+                    Meal Plan Generation: When creating a weekly meal plan, the app sends the user's preferences 
+                    (dietary restrictions, exclusions, skill level, etc.) to Bedrock. The model generates 21 recipes with 
+                    structured metadata so the app can hydrate and display each meal.
+                </li>
+            
+                <li>
+                    Grocery List Creation: The grocery list manager sends the full set of planned meals to Bedrock, 
+                    which consolidates ingredients, removes duplicates, and formats a clean shopping list.
+                </li>
+            </ul>
+            
+            <p>
+                In all cases, Bedrock calls are made through lightweight boto3 requests from the Raspberry Pi, keeping the device 
+                inexpensive while enabling AI-powered cooking features that feel immediate and intuitive.
+            </p>
+
+            <h3>
+                UI & Interaction Design
+            </h3>
+            <p>
+                The entire UI is built from scratch in Python using Pygame—no web views, no system UI components. This gave me full control over the interaction model but meant building everything myself: navigation, scrolling, keyboards, and touch handling.
+            </p>
+            
+            <p class="sub-header">Key Implementation Details</p>
+            <ul>
+                <li><strong>Custom Touch Keyboard:</strong> The system keyboard doesn't integrate with fullscreen Pygame, so I built an on-screen keyboard from scratch with touch input handling.</li>
+                <li><strong>Touch Scrolling:</strong> Implemented drag-to-scroll with a threshold to distinguish between taps and swipes, preventing accidental scrolls when tapping buttons.</li>
+                <li><strong>Bottom Navigation:</strong> A persistent nav bar provides quick access to Home, Search, Create, My Kitchen, and Settings from anywhere in the app.</li>
+            </ul>
+            
+            <p class="sub-header">Visual Style</p>
+            <p>
+                The interface uses a warm off-white background to feel less harsh than pure white, with a clean sans-serif font at multiple sizes for hierarchy. The goal was a minimal, readable layout that stays out of the way while cooking.
+            </p>
+
+            <h3>
+                Future Improvements
+            </h3>
+            <ul>
+                <li><strong>Voice Control:</strong> Add offline or hybrid voice recognition for hands-free cooking.</li>
+                <li><strong>Computer Vision Assistance:</strong> Use a Pi-compatible camera to detect doneness, ingredient amounts, and cooking progress.</li>
+                <li><strong>User Accounts and Profiles:</strong> Store preferences, restrictions, and cooking history across devices.</li>
+                <li><strong>Smart Pantry Tracking:</strong> Track what ingredients you have and offer recipe suggestions based on what's available.</li>
+                <li><strong>Better Meal Planning:</strong> Weekly plan generator with macros, calories, and shopping list optimization.</li>
+            </ul>
+
+            <h3>
+                Reflection and Concluding Thoughts
+            </h3>
+            <p>
+                AI Sous Chef is the project I am most proud of because it blends everything I love – AI, software engineering, UX design, and hardware – into one seamless product. What started as a simple annoyance in the kitchen turned into a unified system that meaningfully improves the cooking experience, and building it end-to-end has been one of the most rewarding things I have done.
+            </p>            
+
+            <h3>
+                Appendix: More Images
+            </h3>
+            <div class="img-container">
+                <img src="/ai-sous-chef-create.png" alt="Create Recipe View">
+                <div class="overlay writeup-overlay">Create Recipe View</div>
+            </div>
+            <div class="mobile-caption">Create Recipe View</div>
+
+            <div class="img-container">
+                <img src="/ai-sous-chef-meal-prep.png" alt="Meal Prep View">
+                <div class="overlay writeup-overlay">Meal Prep View</div>
+            </div>
+            <div class="mobile-caption">Meal Prep View</div>
+
+            <div class="img-container">
+                <img src="/ai-sous-chef-recipe.png" alt="Recipe View">
+                <div class="overlay writeup-overlay">Recipe View</div>
+            </div>
+            <div class="mobile-caption">Recipe View</div>
+
+            <div class="img-container">
+                <img src="/ai-sous-chef-kitchen.png" alt="My Kitchen View">
+                <div class="overlay writeup-overlay">My Kitchen View</div>
+            </div>
+            <div class="mobile-caption">My Kitchen View</div>
+
+            <div class="img-container">
+                <img src="/ai-sous-chef-settings.png" alt="Settings View">
+                <div class="overlay writeup-overlay">Settings View</div>
+            </div>
+            <div class="mobile-caption">Settings View</div>
+
+
+        </div>
+	</body>
+</html>
