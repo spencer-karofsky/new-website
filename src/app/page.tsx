@@ -15,7 +15,7 @@ const focusContent: Record<Focus, { title: string; description: string }> = {
       "I connect mathematical insight to models that solve practical problems."
   },
   SWE: {
-    title: "Shipping solutions that deliver.",
+    title: "Shipping software solutions that deliver.",
     description:
       "I build dependable software, from RAG pipelines to internal tools, that teams rely on every day."
   },
