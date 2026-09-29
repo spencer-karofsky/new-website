@@ -1586,11 +1586,6 @@ const CENTER = [
 ];
 const FOCAL = 540;
 const REF_DEPTH = 520;
-const initialPose = {
-    x: 0.42,
-    y: 0.18,
-    theta: 0
-};
 const route = "M 145 285 C 205 254, 252 245, 286 199 S 310 107, 366 82";
 const GOAL = [
     366,
@@ -1632,6 +1627,14 @@ const WHEEL = [
     43,
     59
 ];
+const WHEEL_SIDE = [
+    68,
+    62,
+    80
+];
+const ROVER_SCALE = 1.2;
+const CORAL = "#ff8877";
+const PERIWINKLE = "#929fe0";
 const terrain = [
     ...[
         "M-20 55C20 26 38 43 66 27S113 7 134-18",
@@ -1697,8 +1700,8 @@ const rocks = [
         ]
     },
     {
-        // Moved down (and right) so it sits on the straight line from start to
-        // goal. The route now visibly bends under it instead of curving for no reason.
+        // Sits on the straight line from start to goal, so the route visibly
+        // bends under it instead of curving for no reason.
         step: 11,
         offset: [
             117,
@@ -1761,6 +1764,9 @@ function mix(a, b, t) {
 function rgba(c, a = 1) {
     return `rgba(${c.map((v)=>Math.round(Math.min(255, v))).join(",")},${a})`;
 }
+function clamp(x, lo, hi) {
+    return Math.min(hi, Math.max(lo, x));
+}
 function makeCamera(target, yaw, pitch, dist) {
     const cp = Math.cos(pitch);
     const pos = [
@@ -1806,16 +1812,15 @@ function samplePath(el, step, closed = false) {
     return points;
 }
 function centroidOf(pts) {
-    const sum = pts.reduce((acc, p)=>[
-            acc[0] + p[0],
-            acc[1] + p[1]
-        ], [
-        0,
-        0
-    ]);
+    let x = 0;
+    let y = 0;
+    for (const p of pts){
+        x += p[0];
+        y += p[1];
+    }
     return [
-        sum[0] / pts.length,
-        sum[1] / pts.length
+        x / pts.length,
+        y / pts.length
     ];
 }
 function circlePts(c, r, n = 40) {
@@ -1828,6 +1833,42 @@ function circlePts(c, r, n = 40) {
             c[1] + Math.sin(a) * r
         ];
     });
+}
+function chamferRect(s0, s1, f0, f1, c) {
+    return [
+        [
+            s0 + c,
+            f0
+        ],
+        [
+            s1 - c,
+            f0
+        ],
+        [
+            s1,
+            f0 + c
+        ],
+        [
+            s1,
+            f1 - c
+        ],
+        [
+            s1 - c,
+            f1
+        ],
+        [
+            s0 + c,
+            f1
+        ],
+        [
+            s0,
+            f1 - c
+        ],
+        [
+            s0,
+            f0 + c
+        ]
+    ];
 }
 function tracePoly(ctx, pts, close = true) {
     ctx.beginPath();
@@ -1929,159 +1970,183 @@ function drawRover(ctx, P, camPos, pos, t) {
         -t[1],
         t[0]
     ];
-    const local = (s, f)=>[
-            pos[0] + s * side[0] + f * t[0],
-            pos[1] + s * side[1] + f * t[1]
+    // Local rover coords: s = sideways, f = forward, h = height.
+    const S = ROVER_SCALE;
+    const at = (s, f, h)=>[
+            pos[0] + S * (s * side[0] + f * t[0]),
+            pos[1] + S * (s * side[1] + f * t[1]),
+            S * h
         ];
     const faces = [];
-    const box = (s0, s1, f0, f1, h0, h1, color)=>{
-        const c = (s, f, h)=>{
-            const [x, y] = local(s, f);
-            return [
-                x,
-                y,
-                h
-            ];
-        };
-        const sets = [
-            [
-                [
-                    c(s0, f0, h0),
-                    c(s0, f1, h0),
-                    c(s0, f1, h1),
-                    c(s0, f0, h1)
-                ],
-                [
-                    -side[0],
-                    0,
-                    -side[1]
-                ]
-            ],
-            [
-                [
-                    c(s1, f0, h0),
-                    c(s1, f0, h1),
-                    c(s1, f1, h1),
-                    c(s1, f1, h0)
-                ],
-                [
-                    side[0],
-                    0,
-                    side[1]
-                ]
-            ],
-            [
-                [
-                    c(s0, f0, h0),
-                    c(s0, f0, h1),
-                    c(s1, f0, h1),
-                    c(s1, f0, h0)
-                ],
-                [
-                    -t[0],
-                    0,
-                    -t[1]
-                ]
-            ],
-            [
-                [
-                    c(s0, f1, h0),
-                    c(s1, f1, h0),
-                    c(s1, f1, h1),
-                    c(s0, f1, h1)
-                ],
-                [
-                    t[0],
-                    0,
-                    t[1]
-                ]
-            ],
-            [
-                [
-                    c(s0, f0, h1),
-                    c(s0, f1, h1),
-                    c(s1, f1, h1),
-                    c(s1, f0, h1)
-                ],
-                [
-                    0,
-                    1,
-                    0
-                ]
-            ]
-        ];
-        for (const [corners, n] of sets){
-            const mx = corners.reduce((a, p)=>a + p[0], 0) / 4;
-            const my = corners.reduce((a, p)=>a + p[1], 0) / 4;
-            const mh = corners.reduce((a, p)=>a + p[2], 0) / 4;
-            const toCam = [
-                camPos[0] - (mx - CENTER[0]),
-                camPos[1] - mh,
-                camPos[2] - (my - CENTER[1])
-            ];
-            if (dot(n, toCam) <= 0) continue;
-            const lit = 0.55 + 0.45 * Math.max(0, dot(n, LIGHT));
-            faces.push({
-                pts: corners.map(([x, y, h])=>P(x, y, h)),
-                depth: P(mx, my, mh)[2],
-                fill: rgba(color.map((v)=>v * lit))
-            });
+    const face = (local, n, color)=>{
+        const pts3 = local.map(([s, f, h])=>at(s, f, h));
+        let cx = 0;
+        let cy = 0;
+        let ch = 0;
+        for (const p of pts3){
+            cx += p[0];
+            cy += p[1];
+            ch += p[2];
         }
+        cx /= pts3.length;
+        cy /= pts3.length;
+        ch /= pts3.length;
+        const nw = [
+            n[0] * side[0] + n[1] * t[0],
+            n[2],
+            n[0] * side[1] + n[1] * t[1]
+        ];
+        const toCam = [
+            camPos[0] - (cx - CENTER[0]),
+            camPos[1] - ch,
+            camPos[2] - (cy - CENTER[1])
+        ];
+        if (dot(nw, toCam) <= 0) return;
+        const lit = 0.55 + 0.45 * Math.max(0, dot(nw, LIGHT));
+        faces.push({
+            pts: pts3.map(([x, y, h])=>P(x, y, h)),
+            depth: P(cx, cy, ch)[2],
+            fill: rgba(color.map((v)=>v * lit))
+        });
     };
-    box(-12, -9, 3, 11, 0, 6, WHEEL);
-    box(9, 12, 3, 11, 0, 6, WHEEL);
-    box(-12, -9, -12, -4, 0, 6, WHEEL);
-    box(9, 12, -12, -4, 0, 6, WHEEL);
-    box(-8, 8, -14, 14, 3, 10, SHELL);
-    box(-5.5, 5.5, -9, 10, 10, 12, PLATE);
+    const prism = (poly, h0, h1, color)=>{
+        const [cs, cf] = centroidOf(poly);
+        poly.forEach((a, j)=>{
+            const b = poly[(j + 1) % poly.length];
+            let ns = b[1] - a[1];
+            let nf = a[0] - b[0];
+            if (((a[0] + b[0]) / 2 - cs) * ns + ((a[1] + b[1]) / 2 - cf) * nf < 0) {
+                ns = -ns;
+                nf = -nf;
+            }
+            const l = Math.hypot(ns, nf) || 1;
+            face([
+                [
+                    a[0],
+                    a[1],
+                    h0
+                ],
+                [
+                    b[0],
+                    b[1],
+                    h0
+                ],
+                [
+                    b[0],
+                    b[1],
+                    h1
+                ],
+                [
+                    a[0],
+                    a[1],
+                    h1
+                ]
+            ], [
+                ns / l,
+                nf / l,
+                0
+            ], color);
+        });
+        face(poly.map(([s, f])=>[
+                s,
+                f,
+                h1
+            ]), [
+            0,
+            0,
+            1
+        ], color);
+    };
+    const wheel = (sIn, sOut, fc, r)=>{
+        const n = 10;
+        const ring = Array.from({
+            length: n
+        }, (_, i)=>{
+            const a = i / n * Math.PI * 2;
+            return [
+                fc + Math.cos(a) * r,
+                r + Math.sin(a) * r
+            ];
+        });
+        ring.forEach((a, i)=>{
+            const b = ring[(i + 1) % n];
+            const am = (i + 0.5) / n * Math.PI * 2;
+            face([
+                [
+                    sIn,
+                    a[0],
+                    a[1]
+                ],
+                [
+                    sOut,
+                    a[0],
+                    a[1]
+                ],
+                [
+                    sOut,
+                    b[0],
+                    b[1]
+                ],
+                [
+                    sIn,
+                    b[0],
+                    b[1]
+                ]
+            ], [
+                0,
+                Math.cos(am),
+                Math.sin(am)
+            ], WHEEL);
+        });
+        face(ring.map(([f, h])=>[
+                sOut,
+                f,
+                h
+            ]), [
+            Math.sign(sOut),
+            0,
+            0
+        ], WHEEL_SIDE);
+    };
+    for (const fc of [
+        -8,
+        7
+    ]){
+        wheel(9, 12, fc, 3.5);
+        wheel(-9, -12, fc, 3.5);
+    }
+    prism(chamferRect(-8, 8, -14, 14, 3.5), 3, 10, SHELL);
+    prism(chamferRect(-5.5, 5.5, -9, 10, 2.2), 10, 12, PLATE);
     faces.sort((a, b)=>b.depth - a.depth);
     ctx.lineWidth = 0.4;
-    for (const face of faces){
-        ctx.fillStyle = face.fill;
-        ctx.strokeStyle = face.fill;
-        tracePoly(ctx, face.pts);
+    for (const f of faces){
+        ctx.fillStyle = f.fill;
+        ctx.strokeStyle = f.fill;
+        tracePoly(ctx, f.pts);
         ctx.fill();
         ctx.stroke();
     }
-    const nose = [
-        local(-3, 10),
-        local(0, 15),
-        local(3, 10)
-    ].map(([x, y])=>P(x, y, 10.05));
-    ctx.fillStyle = "#929fe0";
-    tracePoly(ctx, nose);
+    ctx.fillStyle = PERIWINKLE;
+    tracePoly(ctx, [
+        at(-3, 10, 10.05),
+        at(0, 15, 10.05),
+        at(3, 10, 10.05)
+    ].map((p)=>P(...p)));
     ctx.fill();
-    const [sx, sy, sz] = P(...local(0, 3), 12.1);
+    const [sx, sy, sz] = P(...at(0, 3, 12.1));
     const k = REF_DEPTH / sz;
     ctx.beginPath();
-    ctx.arc(sx, sy, 3.1 * k, 0, Math.PI * 2);
-    ctx.fillStyle = "#ff8877";
+    ctx.arc(sx, sy, 3.1 * k * S, 0, Math.PI * 2);
+    ctx.fillStyle = CORAL;
     ctx.strokeStyle = "rgba(255,136,119,0.38)";
-    ctx.lineWidth = 3 * k;
+    ctx.lineWidth = 3 * k * S;
     ctx.stroke();
     ctx.fill();
-}
-function matrixFor({ x, y, theta }) {
-    const c = Math.cos(theta);
-    const s = Math.sin(theta);
-    return [
-        c,
-        -s,
-        x,
-        s,
-        c,
-        y,
-        0,
-        0,
-        1
-    ].map((value, index)=>index > 5 ? String(value) : value.toFixed(2));
 }
 function RoboticsVisualization() {
     _s();
     const canvasRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const geometryRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const [pose, setPose] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(initialPose);
-    const entries = matrixFor(pose);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "RoboticsVisualization.useEffect": ()=>{
             const canvas = canvasRef.current;
@@ -2223,14 +2288,14 @@ function RoboticsVisualization() {
                     }["RoboticsVisualization.useEffect.render"]));
                     ctx.fillStyle = "rgba(23,21,31,0.78)";
                     ctx.fill();
-                    ctx.strokeStyle = "#929fe0";
+                    ctx.strokeStyle = PERIWINKLE;
                     ctx.lineWidth = 3 * gs;
                     ctx.stroke();
                     ctx.restore();
                     tracePoly(ctx, circlePts(GOAL, 7, 24).map({
                         "RoboticsVisualization.useEffect.render": ([x, y])=>P(x, y)
                     }["RoboticsVisualization.useEffect.render"]));
-                    ctx.fillStyle = "#929fe0";
+                    ctx.fillStyle = PERIWINKLE;
                     ctx.fill();
                     // Contact shadows
                     ctx.save();
@@ -2248,27 +2313,9 @@ function RoboticsVisualization() {
                         -tangent[1],
                         tangent[0]
                     ];
-                    const footprint = [
-                        [
-                            -10,
-                            -16
-                        ],
-                        [
-                            10,
-                            -16
-                        ],
-                        [
-                            10,
-                            16
-                        ],
-                        [
-                            -10,
-                            16
-                        ]
-                    ].map({
-                        "RoboticsVisualization.useEffect.render.footprint": ([s, f])=>P(rover[0] + s * side[0] + f * tangent[0] + 4 * SHADOW_DIR[0], rover[1] + s * side[1] + f * tangent[1] + 4 * SHADOW_DIR[1])
-                    }["RoboticsVisualization.useEffect.render.footprint"]);
-                    tracePoly(ctx, footprint);
+                    tracePoly(ctx, chamferRect(-11, 11, -16, 16, 4).map({
+                        "RoboticsVisualization.useEffect.render": ([s, f])=>P(rover[0] + ROVER_SCALE * (s * side[0] + f * tangent[0] + 4 * SHADOW_DIR[0]), rover[1] + ROVER_SCALE * (s * side[1] + f * tangent[1] + 4 * SHADOW_DIR[1]))
+                    }["RoboticsVisualization.useEffect.render"]));
                     ctx.fill();
                     ctx.restore();
                     // Everything with height, painted far to near
@@ -2282,7 +2329,7 @@ function RoboticsVisualization() {
                                 })
                         }["RoboticsVisualization.useEffect.render"]),
                         {
-                            depth: P(rover[0], rover[1], 6)[2],
+                            depth: P(rover[0], rover[1], 6 * ROVER_SCALE)[2],
                             draw: {
                                 "RoboticsVisualization.useEffect.render": ()=>drawRover(ctx, P, cam.pos, rover, tangent)
                             }["RoboticsVisualization.useEffect.render"]
@@ -2309,21 +2356,6 @@ function RoboticsVisualization() {
                         "RoboticsVisualization.useEffect.render": (a, b)=>b.depth - a.depth
                     }["RoboticsVisualization.useEffect.render"]).forEach({
                         "RoboticsVisualization.useEffect.render": (o)=>o.draw()
-                    }["RoboticsVisualization.useEffect.render"]);
-                    // SVG screen y increases downward; invert it for the world-frame matrix.
-                    const nextPose = {
-                        x: Number(((p.x - 96) / 320).toFixed(2)),
-                        y: Number(((330 - p.y) / 320).toFixed(2)),
-                        theta: -screenAngle
-                    };
-                    setPose({
-                        "RoboticsVisualization.useEffect.render": (previous)=>{
-                            const a = matrixFor(previous);
-                            const b = matrixFor(nextPose);
-                            return a.every({
-                                "RoboticsVisualization.useEffect.render": (entry, i)=>entry === b[i]
-                            }["RoboticsVisualization.useEffect.render"]) ? previous : nextPose;
-                        }
                     }["RoboticsVisualization.useEffect.render"]);
                 }
             }["RoboticsVisualization.useEffect.render"];
@@ -2393,46 +2425,10 @@ function RoboticsVisualization() {
                 ref: canvasRef,
                 className: "robotics-canvas",
                 role: "img",
-                "aria-label": "A drone-view camera circles above a rover as it drives around rock obstacles toward a glowing goal, while the rover's transform matrix updates."
+                "aria-label": "A drone-view camera circles above a rover as it drives around rock obstacles toward a glowing goal."
             }, void 0, false, {
                 fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                lineNumber: 671,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                className: "robotics-hud",
-                viewBox: `0 0 ${VIEW_W} ${VIEW_H}`,
-                "aria-hidden": "true",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                    className: "matrix-card",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                            d: "M373 233h-5v48h5M520 233h5v48h-5",
-                            className: "matrix-bracket"
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                            lineNumber: 684,
-                            columnNumber: 11
-                        }, this),
-                        entries.map((entry, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
-                                x: 397 + i % 3 * 38,
-                                y: 248 + Math.floor(i / 3) * 15,
-                                className: `matrix-number matrix-number-${i}`,
-                                children: entry
-                            }, i, false, {
-                                fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                                lineNumber: 689,
-                                columnNumber: 13
-                            }, this))
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                    lineNumber: 683,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                lineNumber: 678,
+                lineNumber: 651,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2446,7 +2442,7 @@ function RoboticsVisualization() {
                         d: route
                     }, void 0, false, {
                         fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                        lineNumber: 708,
+                        lineNumber: 660,
                         columnNumber: 9
                     }, this),
                     terrain.map((line, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2454,7 +2450,7 @@ function RoboticsVisualization() {
                             d: line.d
                         }, `t-${i}`, false, {
                             fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                            lineNumber: 710,
+                            lineNumber: 662,
                             columnNumber: 11
                         }, this)),
                     rocks.map((rock, r)=>rock.rings.map((d, k)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2462,23 +2458,23 @@ function RoboticsVisualization() {
                                 d: d
                             }, `r-${r}-${k}`, false, {
                                 fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                                lineNumber: 714,
-                                columnNumber: 13
+                                lineNumber: 665,
+                                columnNumber: 36
                             }, this)))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/RoboticsVisualization.tsx",
-                lineNumber: 702,
+                lineNumber: 659,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/RoboticsVisualization.tsx",
-        lineNumber: 670,
+        lineNumber: 650,
         columnNumber: 5
     }, this);
 }
-_s(RoboticsVisualization, "HBpE+NdlHYNUPasX1yq85jqVOFQ=");
+_s(RoboticsVisualization, "f0pKxBgrzxblXIBR0bsNp+E064g=");
 _c = RoboticsVisualization;
 var _c;
 __turbopack_context__.k.register(_c, "RoboticsVisualization");

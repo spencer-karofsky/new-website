@@ -8,19 +8,13 @@
 
 .robotics-canvas {
   aspect-ratio: 560 / 360;
+  -webkit-mask-composite: source-in;
   width: 100%;
   display: block;
-  -webkit-mask-image: radial-gradient(70% 70%, #000 55%, #0000 100%);
-  mask-image: radial-gradient(70% 70%, #000 55%, #0000 100%);
-}
-
-.robotics-hud {
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  overflow: visible;
+  -webkit-mask-image: linear-gradient(to right, #0000 0%, #000 22% 78%, #0000 100%), linear-gradient(#0000 0%, #000 20% 80%, #0000 100%);
+  mask-image: linear-gradient(to right, #0000 0%, #000 22% 78%, #0000 100%), linear-gradient(#0000 0%, #000 20% 80%, #0000 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .robotics-geometry {
@@ -29,35 +23,6 @@
   height: 0;
   position: absolute;
   overflow: hidden;
-}
-
-.matrix-bracket {
-  fill: none;
-  stroke: #d2c9db;
-  stroke-width: 1px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.matrix-number {
-  fill: #f3eee8;
-  text-anchor: middle;
-  font-variant-numeric: tabular-nums;
-  font: italic 12px Georgia, Times New Roman, serif;
-}
-
-.matrix-number-2, .matrix-number-5 {
-  fill: #f87;
-}
-
-.matrix-number-6, .matrix-number-7, .matrix-number-8 {
-  fill: #aaa5b2;
-}
-
-@media (max-width: 520px) {
-  .matrix-number {
-    font-size: 13px;
-  }
 }
 
 /*# sourceMappingURL=src_components_RoboticsVisualization_css_1igg3k2._.single.css.map*/
