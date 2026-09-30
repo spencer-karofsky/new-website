@@ -1,46 +1,33 @@
 .swe-visualization {
+  position: relative;
   width: 100%;
   margin: 0;
   background: transparent;
 }
 
-.swe-scene {
+/* Same soft four-edge fade as the Robotics and ML scenes. */
+.swe-canvas {
   display: block;
   width: 100%;
-  height: auto;
-  overflow: hidden;
+  aspect-ratio: 560 / 360;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect;
 }
 
-.swe-token {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 3.2;
-  stroke-linecap: round;
+.swe-canvas.is-ready {
+  opacity: 1;
 }
 
-.swe-code-text {
-  fill: currentColor;
-  stroke: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", monospace;
-  font-size: 7px;
-  white-space: pre;
-  opacity: 0.8;
-}
-
-.swe-color--blue { color: #90a6ed; }
-.swe-color--lilac { color: #c2b4d6; }
-.swe-color--cream { color: #eee6e5; }
-.swe-color--coral { color: #ff8877; }
-.swe-color--lime { color: #c3e088; }
-.swe-color--gold { color: #f0c674; }
-
-.swe-caption {
-  display: flex;
-  justify-content: flex-end;
-  gap: 7px;
-  margin: 5px 12px 0;
-  color: var(--muted, #aaa5b2);
-  font-size: 9px;
-  letter-spacing: 0.13em;
+@media (prefers-reduced-motion: reduce) {
+  .swe-canvas {
+    transition: none;
+  }
 }

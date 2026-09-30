@@ -49,63 +49,30 @@
   background: none;
   width: 100%;
   margin: 0;
+  position: relative;
 }
 
-.swe-scene {
+.swe-canvas {
+  aspect-ratio: 560 / 360;
+  opacity: 0;
+  -webkit-mask-composite: source-in;
   width: 100%;
-  height: auto;
+  transition: opacity 1.2s;
   display: block;
-  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, #0000 0%, #000 18% 82%, #0000 100%), linear-gradient(#0000 0%, #000 16% 84%, #0000 100%);
+  mask-image: linear-gradient(to right, #0000 0%, #000 18% 82%, #0000 100%), linear-gradient(#0000 0%, #000 16% 84%, #0000 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
-.swe-token {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 3.2px;
-  stroke-linecap: round;
+.swe-canvas.is-ready {
+  opacity: 1;
 }
 
-.swe-code-text {
-  fill: currentColor;
-  stroke: none;
-  white-space: pre;
-  opacity: .8;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
-  font-size: 7px;
-}
-
-.swe-color--blue {
-  color: #90a6ed;
-}
-
-.swe-color--lilac {
-  color: #c2b4d6;
-}
-
-.swe-color--cream {
-  color: #eee6e5;
-}
-
-.swe-color--coral {
-  color: #f87;
-}
-
-.swe-color--lime {
-  color: #c3e088;
-}
-
-.swe-color--gold {
-  color: #f0c674;
-}
-
-.swe-caption {
-  color: var(--muted, #aaa5b2);
-  letter-spacing: .13em;
-  justify-content: flex-end;
-  gap: 7px;
-  margin: 5px 12px 0;
-  font-size: 9px;
-  display: flex;
+@media (prefers-reduced-motion: reduce) {
+  .swe-canvas {
+    transition: none;
+  }
 }
 
 /*# sourceMappingURL=src_components_1nvho6y._.css.map*/

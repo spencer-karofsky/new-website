@@ -26,7 +26,7 @@ const focusContent = {
         description: "I connect mathematical insight to models that solve practical problems."
     },
     SWE: {
-        title: "Shipping software solutions that deliver.",
+        title: "Reliable software, end to end.",
         description: "I build dependable software, from RAG pipelines to internal tools, that teams rely on every day."
     },
     Robotics: {
@@ -361,7 +361,7 @@ function RoverScene({ progress }) {
 _c = RoverScene;
 function Home() {
     _s();
-    const [focus, setFocus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("ML");
+    const [focus, setFocus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("SWE");
     const content = focusContent[focus];
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLayoutEffect"])({
         "Home.useLayoutEffect": ()=>{
@@ -469,9 +469,9 @@ function Home() {
                                 role: "group",
                                 "aria-label": "Portfolio focus",
                                 children: [
-                                    "ML",
                                     "SWE",
-                                    "Robotics"
+                                    "Robotics",
+                                    "ML"
                                 ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "button",
                                         "aria-pressed": focus === item,
@@ -747,7 +747,7 @@ function Home() {
         columnNumber: 5
     }, this);
 }
-_s(Home, "BPGOalCKODq27xYvRhLocoisUZA=");
+_s(Home, "KAmQ+CYXWFP1/J2nH/+pBUhmuBg=");
 _c1 = Home;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "RoverScene");
@@ -2233,82 +2233,142 @@ var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
-const WIDTH = 560;
-const HEIGHT = 360;
-// Timeline in seconds. The stream flows continuously until FORM_END.
-const STREAM_END = 5.5; // the lead row reaches the bottom here
-const FORM_END = 9.5;
-const HOLD_END = 11;
-const LAUNCH_END = 15.5;
-const CYCLE = 16;
-// Send-arrow geometry, traced from the reference icon.
-const ARROW_ROWS = 33;
-const CENTER_ROW = (ARROW_ROWS - 1) / 2;
-const ARROW_LEFT = 140;
-const ARROW_WIDTH = 268;
-const ARROW_CENTER_Y = 180;
-const ARROW_HALF_HEIGHT = 130;
-const ARROW_PITCH = 8;
-const ARROW_TOP = ARROW_CENTER_Y - ARROW_PITCH * CENTER_ROW;
-const SLOT_LEFT = ARROW_LEFT + ARROW_WIDTH * 0.16;
-const SLOT_RIGHT = ARROW_LEFT + ARROW_WIDTH * 0.67;
-const SLOT_HALF_HEIGHT = 10;
-// Stream.
-const STREAM_PITCH = 12;
-const LEAD_END_Y = HEIGHT + 6;
-const STREAM_SPEED = (LEAD_END_Y + STREAM_PITCH) / STREAM_END;
-// Arrow rows come from the part of the stream crossing the center late in
-// the morph, so the top is pulled down from above and the bottom up from below.
-const MATCH_TIME = FORM_END - 0.5;
-const CENTER_STREAM_INDEX = Math.round((STREAM_SPEED * MATCH_TIME - ARROW_CENTER_Y) / STREAM_PITCH - 1);
-const STREAM_ROWS = CENTER_STREAM_INDEX + CENTER_ROW + 5;
-const LAUNCH_DISTANCE = 200;
-const CHAR_WIDTH = 4.2; // 7px monospace
-const EDGE_FADE = 0.05;
-const palette = [
-    "blue",
-    "lilac",
-    "cream",
-    "coral",
-    "lime",
-    "gold"
+// Virtual canvas matches the Robotics scene.
+const VIEW_W = 560;
+const VIEW_H = 360;
+const FOCAL = 525;
+const REF_DEPTH = 525;
+const NEAR = 30;
+// The city runs on a 20 second timeline. The opening holds a little longer so all
+// five files can be typed out on glass before they land.
+const CITY_LOOP = 20;
+const OPEN_HOLD_AT = 2.5; // city time when the sheets start to descend
+const OPEN_HOLD = 2; // extra seconds of hovering while the files are typed
+const LOOP = CITY_LOOP + OPEN_HOLD; // seconds
+// Editor window geometry, in world units on the ground plane.
+const CHAR = 3.6;
+const ROW = 8;
+const TITLE = 13;
+const GUTTER = 16;
+const PAD = 8;
+const BAR = 3;
+const ROWS = 10;
+const WIN_H = TITLE + ROWS * ROW + 6;
+const FONT_PX = 10;
+const BLUE = [
+    144,
+    166,
+    237
 ];
-const snippets = [
-    // Python
-    "def forward(self, x):",
-    "for i, batch in enumerate(loader):",
-    "return torch.softmax(logits, -1)",
-    "import numpy as np",
-    "loss.backward()",
-    'if __name__ == "__main__":',
-    "x = np.linalg.solve(A, b)",
-    "yield from walk(node.left)",
-    // C++
-    "std::vector<Node> frontier;",
-    "auto it = cache.find(key);",
-    "template <typename T>",
-    "std::unique_ptr<Model> model;",
-    "for (auto& n : graph[u]) {",
-    "constexpr int N = 1024;",
-    // C
-    "int *buf = malloc(n * sizeof(int));",
-    "while (fgets(line, 256, fp)) {",
-    "#include <stdio.h>",
-    "return EXIT_SUCCESS;",
-    "ptr->next = head;",
-    // JavaScript
-    "const res = await fetch(url);",
-    "export default function App() {",
-    "items.map((x) => x.id)",
-    "useEffect(() => {",
-    "const [state, setState] = useState();",
-    // SQL
-    "SELECT id, name FROM users",
-    "WHERE created_at > NOW()",
-    "JOIN orders o ON o.user_id = u.id",
-    "GROUP BY region;",
-    "ORDER BY score DESC LIMIT 10;"
+const LILAC = [
+    194,
+    180,
+    214
 ];
+const CREAM = [
+    238,
+    230,
+    229
+];
+const CORAL = [
+    255,
+    136,
+    119
+];
+const PERIWINKLE = [
+    146,
+    159,
+    224
+];
+const MUTED = [
+    170,
+    165,
+    178
+];
+const PALETTE = [
+    BLUE,
+    LILAC,
+    CREAM,
+    CORAL,
+    BLUE,
+    LILAC
+];
+const DARK = [
+    30,
+    28,
+    42
+];
+const LIGHT = [
+    132,
+    126,
+    152
+];
+const LIGHT_DIR = norm([
+    -0.55,
+    0.75,
+    -0.4
+]);
+const MONO = 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace';
+// ---------------------------------------------------------------- math
+function clamp(x, lo, hi) {
+    return Math.min(hi, Math.max(lo, x));
+}
+function lerp(a, b, t) {
+    return a + (b - a) * t;
+}
+function smooth01(x) {
+    const t = clamp(x, 0, 1);
+    return t * t * (3 - 2 * t);
+}
+function smoother(x) {
+    const t = clamp(x, 0, 1);
+    return t * t * t * (t * (t * 6 - 15) + 10);
+}
+function ramp(t, a, b) {
+    return smoother((t - a) / (b - a));
+}
+function mod(x, m) {
+    return (x % m + m) % m;
+}
+function mix(a, b, t) {
+    return [
+        lerp(a[0], b[0], t),
+        lerp(a[1], b[1], t),
+        lerp(a[2], b[2], t)
+    ];
+}
+function rgba(c, a = 1) {
+    return `rgba(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])},${a})`;
+}
+function sub(a, b) {
+    return [
+        a[0] - b[0],
+        a[1] - b[1],
+        a[2] - b[2]
+    ];
+}
+function dot(a, b) {
+    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+}
+function cross(a, b) {
+    return [
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0]
+    ];
+}
+function norm(a) {
+    const l = Math.hypot(a[0], a[1], a[2]) || 1;
+    return [
+        a[0] / l,
+        a[1] / l,
+        a[2] / l
+    ];
+}
+function hash(a, b, c) {
+    const s = Math.sin(a * 127.1 + b * 311.7 + c * 74.7) * 43758.5453;
+    return s - Math.floor(s);
+}
 function createRandom(seed) {
     let state = seed >>> 0;
     return ()=>{
@@ -2319,419 +2379,1878 @@ function createRandom(seed) {
         return ((value ^ value >>> 14) >>> 0) / 4294967296;
     };
 }
-const random = createRandom(24);
-function pick(items) {
-    return items[Math.floor(random() * items.length)];
-}
-function clamp01(value) {
-    return Math.max(0, Math.min(1, value));
-}
-function easeInOut(value) {
-    const t = clamp01(value);
-    return t * t * (3 - 2 * t);
-}
-function lerp(start, end, amount) {
-    return start + (end - start) * amount;
-}
-// Left and right edges of the arrow at a given row height.
-function arrowEdges(y) {
-    const a = Math.min(1, Math.abs(y - ARROW_CENTER_Y) / ARROW_HALF_HEIGHT);
-    let left = ARROW_LEFT + ARROW_WIDTH * 0.07 * (1 - a); // concave back
-    let right = ARROW_LEFT + ARROW_WIDTH * (1 - 0.83 * a);
-    if (a > 0.88) left += 14 * ((a - 0.88) / 0.12) ** 2; // rounded back corners
-    if (a < 0.15) right -= 10 * (1 - a / 0.15) ** 2; // rounded tip
+function makeCamera(target, yaw, pitch, dist) {
+    const cp = Math.cos(pitch);
+    const sp = Math.sin(pitch);
+    const sy = Math.sin(yaw);
+    const cy = Math.cos(yaw);
+    const pos = [
+        target[0] + dist * cp * sy,
+        target[1] + dist * sp,
+        target[2] + dist * cp * cy
+    ];
+    const fwd = [
+        -cp * sy,
+        -sp,
+        -cp * cy
+    ];
+    const right = [
+        cy,
+        0,
+        -sy
+    ];
     return {
-        left,
-        right
+        pos,
+        right,
+        up: cross(right, fwd),
+        fwd
     };
 }
-// Code-like tokens spanning 0 to 1, split around the slot if needed.
-function makeTokens(split) {
-    const tokens = [];
-    let f = 0;
-    while(true){
-        const end = Math.min(1, f + 0.1 + random() * 0.28);
-        tokens.push({
-            f0: f,
-            f1: end,
-            side: "full",
-            color: pick(palette),
-            opacity: 0.5 + random() * 0.35
-        });
-        const next = end + 0.035 + random() * 0.045;
-        if (end >= 1 || next > 0.86) {
-            tokens[tokens.length - 1].f1 = 1;
-            break;
-        }
-        f = next;
+function project(cam, p) {
+    const d = sub(p, cam.pos);
+    const z = dot(d, cam.fwd);
+    const zs = Math.max(1, z);
+    return [
+        VIEW_W / 2 + FOCAL * dot(d, cam.right) / zs,
+        VIEW_H / 2 - FOCAL * dot(d, cam.up) / zs,
+        z
+    ];
+}
+const random = createRandom(47);
+const pick = (items)=>items[Math.floor(random() * items.length)];
+const FILE_SPECS = [
+    {
+        key: "sql",
+        name: "ingest.sql",
+        first: 12,
+        rows: [
+            0,
+            "INSERT INTO features (user_id, embedding)",
+            "SELECT id, embed(body) FROM events",
+            "WHERE ts > now() - INTERVAL '1 day';",
+            null,
+            0,
+            2,
+            2,
+            0,
+            2
+        ],
+        start: 4.5,
+        fall: 16.8
+    },
+    {
+        key: "tf",
+        name: "main.tf",
+        first: 41,
+        rows: [
+            0,
+            'resource "cloud_instance" "gpu_node" {',
+            '  machine_type = "gpu-a100-8x"',
+            "  count = var.node_count",
+            2,
+            2,
+            4,
+            4,
+            2,
+            0
+        ],
+        start: 5.4,
+        fall: 16.6
+    },
+    {
+        key: "cu",
+        name: "matmul.cu",
+        first: 27,
+        rows: [
+            "__global__ void matmul(float* A, float* B, float* C) {",
+            "  int row = blockIdx.y * blockDim.y + threadIdx.y;",
+            2,
+            2,
+            4,
+            4,
+            "  C[row * N + col] = sum;",
+            0,
+            null,
+            0
+        ],
+        start: 6.3,
+        fall: 16.4
+    },
+    {
+        key: "py",
+        name: "server.py",
+        first: 58,
+        rows: [
+            0,
+            '@app.post("/predict")',
+            "async def predict(req: Request):",
+            '    return {"y": model(await req.json())}',
+            null,
+            0,
+            4,
+            4,
+            8,
+            4
+        ],
+        start: 7.2,
+        fall: 16.2
+    },
+    {
+        key: "yml",
+        name: "deploy.yml",
+        first: 19,
+        rows: [
+            2,
+            "    runs-on: ubuntu-latest",
+            4,
+            "      - run: docker build -t api .",
+            "      - run: kubectl apply -f k8s/",
+            6,
+            6,
+            4,
+            2,
+            2
+        ],
+        start: 8.1,
+        fall: 16.0
     }
-    if (split < 0) return tokens;
-    return tokens.flatMap((token)=>{
-        if (token.f1 <= split) return [
-            {
-                ...token,
-                side: "left"
+];
+function buildRows(spec, w) {
+    return spec.rows.map((r, i)=>{
+        const v = TITLE + ROW * (i + 0.5) + 2;
+        const color = pick([
+            BLUE,
+            LILAC,
+            CREAM,
+            CORAL,
+            CREAM
+        ]);
+        if (typeof r === "string") {
+            const lead = r.length - r.trimStart().length;
+            return {
+                v,
+                text: r.trimStart(),
+                lead,
+                color,
+                bars: []
+            };
+        }
+        const bars = [];
+        if (typeof r === "number") {
+            let u = GUTTER + PAD + r * CHAR;
+            const count = 3 + Math.floor(random() * 5);
+            for(let b = 0; b < count && u < w - PAD - 10; b += 1){
+                const len = 8 + random() * 26;
+                const u1 = Math.min(w - PAD, u + len);
+                bars.push({
+                    u0: u,
+                    u1,
+                    color: pick(PALETTE),
+                    opacity: 0.5 + random() * 0.35
+                });
+                u = u1 + 4 + random() * 4;
             }
-        ];
-        if (token.f0 >= split) return [
-            {
-                ...token,
-                side: "right"
-            }
-        ];
-        return [
-            {
-                ...token,
-                f1: split,
-                side: "left"
-            },
-            {
-                ...token,
-                f0: split,
-                side: "right"
-            }
-        ];
+        }
+        return {
+            v,
+            lead: 0,
+            color,
+            bars
+        };
     });
 }
-function streamSpan(textWidth) {
-    const indent = Math.floor(random() * 5);
-    const x = 32 + indent * 18;
-    const end = Math.min(WIDTH - 32, x + Math.max(150 + random() * 280, textWidth + 40));
-    return {
-        x,
-        tokenStart: x + textWidth,
-        end
-    };
+function widthOf(spec) {
+    const longest = Math.max(...spec.rows.map((r)=>typeof r === "string" ? r.length : 0));
+    return Math.max(150, longest * CHAR + GUTTER + PAD * 2);
 }
-function makeArrowRow(j) {
-    const y = ARROW_TOP + j * ARROW_PITCH;
-    const { left, right } = arrowEdges(y);
-    const inSlot = Math.abs(y - ARROW_CENTER_Y) <= SLOT_HALF_HEIGHT;
-    const slotSplit = inSlot ? (SLOT_LEFT - left) / (SLOT_LEFT - left + right - SLOT_RIGHT) : -1;
-    // Snippets are only chosen if they fit whole inside the arrow row.
-    const maxTextChars = Math.floor((right - left) * 0.72 / CHAR_WIDTH);
-    const fitting = snippets.filter((s)=>s.length <= maxTextChars);
-    const text = j % 2 === 1 && !inSlot && fitting.length > 0 ? pick(fitting) : undefined;
-    const textWidth = text ? text.length * CHAR_WIDTH + 8 : 0;
-    const span = streamSpan(textWidth);
-    const tokenStart = left + textWidth;
-    return {
-        streamIndex: CENTER_STREAM_INDEX + (CENTER_ROW - j),
-        streamX: span.x,
-        streamTokenStart: span.tokenStart,
-        streamEnd: span.end,
-        arrow: {
-            y,
-            left,
-            tokenStart,
-            right,
-            slotSplit
-        },
-        tokens: right - tokenStart > 14 ? makeTokens(slotSplit) : [],
-        text,
-        textColor: pick(palette),
-        launchDelay: random() * 0.3
+// Back row: storage, data center, GPU hall. Front row: API campus, shipping yard.
+function layoutFiles() {
+    const widths = FILE_SPECS.map(widthOf);
+    const gap = 22;
+    const place = (keys, cz)=>{
+        const ws = keys.map((k)=>widths[FILE_SPECS.findIndex((f)=>f.key === k)]);
+        let x = -(ws.reduce((a, b)=>a + b, 0) + gap * (ws.length - 1)) / 2;
+        return keys.map((k, i)=>{
+            const cx = x + ws[i] / 2;
+            x += ws[i] + gap;
+            return {
+                key: k,
+                cx,
+                cz,
+                w: ws[i]
+            };
+        });
     };
+    const spots = [
+        ...place([
+            "sql",
+            "tf",
+            "cu"
+        ], -62),
+        ...place([
+            "py",
+            "yml"
+        ], 62)
+    ];
+    // The opening desktop: a tighter, straight three-row layout seen up close.
+    const deskGap = 16;
+    const deskRows = [
+        [
+            "sql",
+            "tf"
+        ],
+        [
+            "py",
+            "cu"
+        ],
+        [
+            "yml"
+        ]
+    ];
+    const desk = {};
+    deskRows.forEach((keys, r)=>{
+        const ws = keys.map((k)=>widths[FILE_SPECS.findIndex((f)=>f.key === k)]);
+        let x = -(ws.reduce((a, b)=>a + b, 0) + deskGap * (ws.length - 1)) / 2;
+        keys.forEach((k, i)=>{
+            desk[k] = [
+                x + ws[i] / 2,
+                (r - 1) * (WIN_H + 14)
+            ];
+            x += ws[i] + deskGap;
+        });
+    });
+    return FILE_SPECS.map((spec)=>{
+        const spot = spots.find((s)=>s.key === spec.key);
+        return {
+            ...spec,
+            w: spot.w,
+            cx: spot.cx,
+            cz: spot.cz,
+            deskX: desk[spec.key][0],
+            deskZ: desk[spec.key][1],
+            rowsData: buildRows(spec, spot.w)
+        };
+    });
 }
-// Stream-only rows keep the flow continuous and fade out as the arrow forms.
-function makeFillerRow(k) {
-    const text = k % 2 === 1 ? pick(snippets) : undefined;
-    const textWidth = text ? text.length * CHAR_WIDTH + 8 : 0;
-    const span = streamSpan(textWidth);
-    return {
-        streamIndex: k,
-        streamX: span.x,
-        streamTokenStart: span.tokenStart,
-        streamEnd: span.end,
-        tokens: makeTokens(-1),
-        text,
-        textColor: pick(palette),
-        launchDelay: 0
-    };
-}
-const arrowRows = Array.from({
-    length: ARROW_ROWS
-}, (_, j)=>makeArrowRow(j));
-const usedIndices = new Set(arrowRows.map((row)=>row.streamIndex));
-const fillerRows = Array.from({
-    length: STREAM_ROWS
-}, (_, k)=>k).filter((k)=>!usedIndices.has(k)).map(makeFillerRow);
-const rows = [
-    ...fillerRows,
-    ...arrowRows
+const FILES = layoutFiles();
+// Opening: glass sheets hover at different heights and all five files are typed out,
+// two at a time. Each pair starts shortly before the previous pair finishes.
+const FLOAT_H = {
+    sql: 30,
+    tf: 44,
+    py: 20,
+    cu: 36,
+    yml: 12
+};
+const TYPE_OVERLAP = 0.45;
+const TYPING_ORDER = [
+    "tf",
+    "py",
+    "sql",
+    "yml",
+    "cu"
 ];
-function streamX(row, f) {
-    return lerp(row.streamTokenStart, row.streamEnd, f);
+function typeStartFor(key) {
+    const group = Math.floor(TYPING_ORDER.indexOf(key) / 2);
+    return 0.2 + group * (ROWS * PER_ROW - TYPE_OVERLAP);
 }
-function arrowX(target, f, side) {
-    if (side === "left") {
-        return lerp(target.tokenStart, SLOT_LEFT, f / target.slotSplit);
+const PER_ROW = 0.17;
+const GLASS_HI = [
+    70,
+    66,
+    96
+];
+const GLASS_LO = [
+    34,
+    31,
+    48
+];
+const FILE_BY_KEY = Object.fromEntries(_c1 = FILES.map(_c = (f)=>[
+        f.key,
+        f
+    ]));
+_c2 = FILE_BY_KEY;
+// Lot-local coordinates once a window has settled.
+const lotX = (f, u)=>f.cx - f.w / 2 + u;
+const lotZ = (f, v)=>f.cz - WIN_H / 2 + v;
+const rowV = (i)=>TITLE + ROW * (i + 0.5) + 2;
+const ITEMS = [];
+// Storage: silos rising where the pipeline's rows were.
+{
+    const f = FILE_BY_KEY.sql;
+    const silos = [
+        [
+            0.2,
+            0.36,
+            13,
+            46
+        ],
+        [
+            0.42,
+            0.3,
+            11,
+            58
+        ],
+        [
+            0.65,
+            0.38,
+            14,
+            40
+        ],
+        [
+            0.85,
+            0.33,
+            10,
+            52
+        ],
+        [
+            0.32,
+            0.72,
+            12,
+            34
+        ],
+        [
+            0.56,
+            0.75,
+            10,
+            44
+        ],
+        [
+            0.78,
+            0.74,
+            9,
+            30
+        ]
+    ];
+    silos.forEach(([u, v, r, h], i)=>{
+        ITEMS.push({
+            type: "silo",
+            cx: lotX(f, u * f.w),
+            cz: lotZ(f, v * WIN_H),
+            r,
+            h,
+            start: f.start + i * 0.12,
+            dur: 1.1,
+            fall: f.fall + i * 0.05
+        });
+    });
+}// Data center: each group of code rows extrudes into a long, low rack hall.
+{
+    const f = FILE_BY_KEY.tf;
+    const groups = [
+        [
+            1,
+            3,
+            15
+        ],
+        [
+            4,
+            6,
+            17
+        ],
+        [
+            7,
+            9,
+            14
+        ]
+    ];
+    groups.forEach(([a, b, h], i)=>{
+        ITEMS.push({
+            type: "box",
+            x0: lotX(f, GUTTER + 4),
+            x1: lotX(f, f.w - PAD),
+            z0: lotZ(f, rowV(a) - ROW / 2),
+            z1: lotZ(f, rowV(b) + ROW / 2 - 3),
+            h,
+            deco: "racks",
+            roof: "fans",
+            color: PERIWINKLE,
+            tint: PERIWINKLE,
+            tintAmt: 0.04,
+            start: f.start + i * 0.18,
+            dur: 1.1,
+            fall: f.fall + i * 0.06
+        });
+    });
+}// GPU hall: its own building beside the data center, running hot.
+{
+    const f = FILE_BY_KEY.cu;
+    const groups = [
+        [
+            0,
+            3,
+            22
+        ],
+        [
+            5,
+            9,
+            19
+        ]
+    ];
+    groups.forEach(([a, b, h], i)=>{
+        ITEMS.push({
+            type: "box",
+            x0: lotX(f, GUTTER + 4),
+            x1: lotX(f, f.w - PAD),
+            z0: lotZ(f, rowV(a) - ROW / 2),
+            z1: lotZ(f, rowV(b) + ROW / 2 - 3),
+            h,
+            deco: "vents",
+            roof: "hot",
+            color: CORAL,
+            tint: CORAL,
+            tintAmt: 0.05,
+            start: f.start + i * 0.2,
+            dur: 1.1,
+            fall: f.fall + i * 0.06
+        });
+    });
+}// API campus: the tower is drawn from the file itself; offices sit beside it.
+const TOWER_W = 46;
+const TOWER_H = 150;
+{
+    const f = FILE_BY_KEY.py;
+    const offices = [
+        [
+            8,
+            44,
+            20,
+            70,
+            58
+        ],
+        [
+            f.w - 46,
+            f.w - 8,
+            40,
+            94,
+            46
+        ]
+    ];
+    offices.forEach(([u0, u1, v0, v1, h], i)=>{
+        ITEMS.push({
+            type: "box",
+            x0: lotX(f, u0),
+            x1: lotX(f, u1),
+            z0: lotZ(f, v0),
+            z1: lotZ(f, v1),
+            h,
+            deco: "strips",
+            roof: "none",
+            color: BLUE,
+            tint: BLUE,
+            tintAmt: 0.06,
+            start: f.start + 0.7 + i * 0.2,
+            dur: 1.1,
+            fall: f.fall
+        });
+    });
+}// Shipping yard: every line becomes a row of stacked containers under a gantry crane.
+{
+    const f = FILE_BY_KEY.yml;
+    for(let i = 1; i < ROWS - 1; i += 1){
+        const v = rowV(i);
+        for(let u = GUTTER + 8; u + 12 < f.w - 10; u += 13.5){
+            if (random() < 0.15) continue;
+            const levels = 1 + Math.floor(random() * 3);
+            const color = pick([
+                CORAL,
+                BLUE,
+                LILAC,
+                CREAM,
+                BLUE
+            ]);
+            for(let level = 0; level < levels; level += 1){
+                ITEMS.push({
+                    type: "container",
+                    x0: lotX(f, u),
+                    x1: lotX(f, u + 12),
+                    z0: lotZ(f, v - 2.6),
+                    z1: lotZ(f, v + 2.6),
+                    level,
+                    color,
+                    start: f.start + i * 0.06 + level * 0.22 + u / f.w * 0.12,
+                    dur: 0.6,
+                    fall: f.fall + level * 0.05
+                });
+            }
+        }
     }
-    if (side === "right") {
-        return lerp(SLOT_RIGHT, target.right, (f - target.slotSplit) / (1 - target.slotSplit));
+    ITEMS.push({
+        type: "crane",
+        f,
+        start: f.start + 0.4,
+        dur: 1,
+        fall: f.fall
+    });
+}// Ordinary city fabric around the districts, packed tight so blocks read as one city.
+// Blocks in front of the districts stay low so the camera can see over them;
+// the skyline behind is taller.
+function addFabric(x0, x1, z0, z1, band) {
+    if (random() < 0.12) return;
+    const split = x1 - x0 > 26 && random() < 0.5 ? x0 + 11 + random() * (x1 - x0 - 22) : null;
+    const spans = split ? [
+        [
+            x0,
+            split - 1
+        ],
+        [
+            split + 1,
+            x1
+        ]
+    ] : [
+        [
+            x0,
+            x1
+        ]
+    ];
+    for (const [a, b] of spans){
+        const r = Math.hypot((a + b) / 2 / 380, (z0 + z1) / 2 / 290);
+        ITEMS.push({
+            type: "box",
+            x0: a,
+            x1: b,
+            z0,
+            z1,
+            h: band === "front" ? 6 + random() * 10 : band === "side" ? 8 + random() * 18 : 14 + random() ** 1.4 * 40 + (1 - r) * 12,
+            deco: "dots",
+            roof: "none",
+            color: pick(PALETTE),
+            tint: DARK,
+            tintAmt: 0,
+            start: 8.6 + r * 0.9,
+            dur: 1.2,
+            fall: 15.6 + (1 - r) * 0.4
+        });
     }
-    return lerp(target.tokenStart, target.right, f);
+}
+for(let x = -380; x < 380; x += 40){
+    for(let z = -148; z > -300; z -= 32)addFabric(x, x + 34, z, z + 26, "back");
+    for(let z = 122; z < 290; z += 32)addFabric(x, x + 34, z, z + 26, "front");
+}
+for (const [x0, x1] of [
+    [
+        -376,
+        -342
+    ],
+    [
+        -338,
+        -304
+    ],
+    [
+        304,
+        338
+    ],
+    [
+        342,
+        376
+    ]
+]){
+    for(let z = -110; z < 110; z += 32)addFabric(x0, x1, z, z + 26, "side");
+}
+function route(pts) {
+    const cum = [
+        0
+    ];
+    for(let i = 1; i < pts.length; i += 1){
+        cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+    }
+    return {
+        pts,
+        cum,
+        len: cum[cum.length - 1]
+    };
+}
+function along(r, s) {
+    for(let i = 1; i < r.pts.length; i += 1){
+        if (s <= r.cum[i]) {
+            const u = (s - r.cum[i - 1]) / (r.cum[i] - r.cum[i - 1] || 1);
+            return [
+                lerp(r.pts[i - 1][0], r.pts[i][0], u),
+                lerp(r.pts[i - 1][1], r.pts[i][1], u)
+            ];
+        }
+    }
+    return r.pts[r.pts.length - 1];
+}
+const S = FILE_BY_KEY.sql;
+const D = FILE_BY_KEY.tf;
+const G = FILE_BY_KEY.cu;
+const A = FILE_BY_KEY.py;
+const Y = FILE_BY_KEY.yml;
+const BACK = -12;
+const FRONT = 12;
+const TOWER_BACK = A.cz - TOWER_W / 2 - 1;
+const TOWER_FRONT = A.cz + TOWER_W / 2 + 1;
+const WAVE_SPEED = 60;
+const pulse = (pts, t0, speed, count, color, box = false, spacing = 9)=>({
+        r: route(pts),
+        t0,
+        speed,
+        count,
+        spacing,
+        color,
+        box
+    });
+const arrive = (p)=>p.t0 + p.r.len / p.speed;
+const STORE_PULSE = pulse([
+    [
+        S.cx,
+        BACK
+    ],
+    [
+        S.cx,
+        0
+    ],
+    [
+        D.cx,
+        0
+    ],
+    [
+        D.cx,
+        BACK
+    ]
+], 8.6, 200, 6, CREAM);
+const DC_T = arrive(STORE_PULSE);
+_c3 = DC_T;
+const DC_PULSE = pulse([
+    [
+        D.cx,
+        BACK
+    ],
+    [
+        D.cx,
+        0
+    ],
+    [
+        G.cx,
+        0
+    ],
+    [
+        G.cx,
+        BACK
+    ]
+], DC_T + 0.15, 200, 6, PERIWINKLE);
+const GPU_T = arrive(DC_PULSE);
+_c4 = GPU_T;
+const GPU_PULSE = pulse([
+    [
+        G.cx,
+        BACK
+    ],
+    [
+        G.cx,
+        0
+    ],
+    [
+        A.cx,
+        0
+    ],
+    [
+        A.cx,
+        TOWER_BACK
+    ]
+], GPU_T + 0.15, 200, 7, PERIWINKLE);
+const TOWER_T = arrive(GPU_PULSE);
+_c5 = TOWER_T;
+const BEACON_T = TOWER_T + (TOWER_H + 12) / WAVE_SPEED;
+const OUT_PULSES = [
+    -1,
+    1
+].map(_c6 = (side)=>pulse([
+        [
+            A.cx,
+            TOWER_FRONT
+        ],
+        [
+            A.cx,
+            116
+        ],
+        [
+            side * 380,
+            116
+        ]
+    ], TOWER_T + 0.8, 160, 6, CORAL, false, 11));
+_c7 = OUT_PULSES;
+// A deploy rolls in from the shipping yard to the tower.
+const DEPLOY_PULSE = pulse([
+    [
+        Y.cx,
+        FRONT
+    ],
+    [
+        Y.cx,
+        0
+    ],
+    [
+        A.cx + 30,
+        0
+    ],
+    [
+        A.cx + 30,
+        TOWER_BACK + 4
+    ]
+], 9.6, 70, 1, LILAC, true);
+const DEPLOY_T = arrive(DEPLOY_PULSE);
+_c8 = DEPLOY_T;
+const PULSES = [
+    STORE_PULSE,
+    DC_PULSE,
+    GPU_PULSE,
+    ...OUT_PULSES,
+    DEPLOY_PULSE
+];
+const AMBIENT = [
+    {
+        r: route([
+            [
+                -380,
+                -116
+            ],
+            [
+                380,
+                -116
+            ]
+        ]),
+        speed: 24,
+        color: CREAM,
+        count: 5,
+        phase: 0.4
+    },
+    {
+        r: route([
+            [
+                380,
+                -116
+            ],
+            [
+                -380,
+                -116
+            ]
+        ]),
+        speed: 20,
+        color: LILAC,
+        count: 4,
+        phase: 0.9
+    }
+];
+function bump(t, t0, rise = 0.25, decay = 1.6) {
+    if (t < t0) return 0;
+    return Math.min(1, (t - t0) / rise) * Math.exp(-Math.max(0, t - t0 - rise) / decay);
+}
+const size = (z)=>REF_DEPTH / Math.max(NEAR, z);
+function tracePoly(ctx, pts) {
+    ctx.beginPath();
+    pts.forEach(([x, y], i)=>i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.closePath();
+}
+function bilerp(q, u, v) {
+    const bx = lerp(q[0][0], q[1][0], u);
+    const by = lerp(q[0][1], q[1][1], u);
+    const tx = lerp(q[3][0], q[2][0], u);
+    const ty = lerp(q[3][1], q[2][1], u);
+    return [
+        lerp(bx, tx, v),
+        lerp(by, ty, v)
+    ];
+}
+function drawGlow(ctx, x, y, r, c, a) {
+    if (a <= 0.01 || r <= 0) return;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, rgba(c, a));
+    g.addColorStop(1, rgba(c, 0));
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+}
+// Text laid along a direction on screen, sized to span exactly a to b.
+function drawText(ctx, text, a, b, color, alpha, glowPx = 0) {
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (len < 2 || alpha <= 0.01) return;
+    const measured = ctx.measureText(text).width || 1;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = rgba(color);
+    if (glowPx > 0) {
+        ctx.shadowColor = rgba(color, 0.55);
+        ctx.shadowBlur = glowPx;
+    }
+    ctx.translate(a[0], a[1]);
+    ctx.rotate(Math.atan2(b[1] - a[1], b[0] - a[0]));
+    ctx.scale(len / measured, len / measured);
+    ctx.fillText(text, 0, 0);
+    ctx.restore();
+}
+function wallColor(lit, tint, tintAmt, lift = 0) {
+    return mix(mix(DARK, LIGHT, 0.1 + 0.32 * lit + lift), tint, tintAmt);
+}
+// The tower lights floor by floor once compute arrives, then stays lit while serving.
+function towerWave(h, t) {
+    if (t < TOWER_T) return 0;
+    const waveH = (t - TOWER_T) * WAVE_SPEED - 12;
+    return Math.exp(-((h - waveH) ** 2) / (2 * 14 * 14));
+}
+function towerBase(t) {
+    return 0.3 + 0.3 * ramp(t, TOWER_T + 1.2, BEACON_T + 0.5);
+}
+function boxWalls(env, x0, x1, z0, z1, h0, h1) {
+    const { P, cam } = env;
+    const defs = [
+        [
+            x0,
+            z1,
+            x1,
+            z1,
+            0,
+            1
+        ],
+        [
+            x1,
+            z0,
+            x0,
+            z0,
+            0,
+            -1
+        ],
+        [
+            x1,
+            z1,
+            x1,
+            z0,
+            1,
+            0
+        ],
+        [
+            x0,
+            z0,
+            x0,
+            z1,
+            -1,
+            0
+        ]
+    ];
+    const walls = [];
+    defs.forEach(([ax, az, bx, bz, nx, nz], face)=>{
+        const mx = (ax + bx) / 2;
+        const mz = (az + bz) / 2;
+        if (nx * (cam[0] - mx) + nz * (cam[2] - mz) <= 0) return;
+        const q = [
+            P(ax, h0, az),
+            P(bx, h0, bz),
+            P(bx, h1, bz),
+            P(ax, h1, az)
+        ];
+        if (q.some((p)=>p[2] < NEAR)) return;
+        walls.push({
+            q,
+            depth: P(mx, (h0 + h1) / 2, mz)[2],
+            lit: Math.max(0, nx * LIGHT_DIR[0] + nz * LIGHT_DIR[2]),
+            len: Math.hypot(bx - ax, bz - az),
+            face
+        });
+    });
+    return walls.sort((a, b)=>b.depth - a.depth);
+}
+function decorateWall(env, w, h0, h1, deco, color, seed, alpha, wave = false) {
+    const { ctx, time, t, act } = env;
+    const k = size(w.q[0][2]);
+    const hgt = h1 - h0;
+    if (deco === "dots") {
+        const cols = Math.floor(w.len / 5);
+        const rows = Math.floor((hgt - 2.5) / 5.5);
+        if (cols < 1 || rows < 1) return;
+        ctx.fillStyle = rgba(mix(color, CREAM, 0.35));
+        for(let r = 0; r < rows; r += 1){
+            const v = (2.5 + r * 5.5 + 1.5) / hgt;
+            for(let c = 0; c < cols; c += 1){
+                const lit = hash(seed, w.face * 97 + r * 13 + c, Math.floor(time * 0.25 + hash(seed, r, c) * 8));
+                if (lit > 0.36) continue;
+                const [px, py] = bilerp(w.q, (c + 0.5) / cols, v);
+                ctx.globalAlpha = alpha * 0.7;
+                ctx.fillRect(px - 0.65 * k, py - 0.9 * k, 1.3 * k, 1.8 * k);
+            }
+        }
+    } else if (deco === "strips") {
+        ctx.lineWidth = 1.2 * k;
+        for(let r = 0, hRow = h0 + 4; hRow < h1 - 2.5; r += 1, hRow += 7){
+            const v = (hRow - h0) / hgt;
+            let u = 0.06;
+            let n = 0;
+            while(u < 0.9){
+                const u1 = Math.min(0.94, u + 0.1 + hash(seed, w.face * 31 + r, n) * 0.22);
+                const c = PALETTE[Math.floor(hash(seed, r, n + 7) * PALETTE.length)];
+                const base = towerBase(t);
+                const a = wave ? base + (1 - base) * towerWave(hRow, t) : 0.55;
+                const p0 = bilerp(w.q, u, v);
+                const p1 = bilerp(w.q, u1, v);
+                ctx.globalAlpha = alpha * a;
+                ctx.strokeStyle = rgba(mix(c, CREAM, 0.25));
+                ctx.beginPath();
+                ctx.moveTo(p0[0], p0[1]);
+                ctx.lineTo(p1[0], p1[1]);
+                ctx.stroke();
+                u = u1 + 0.05;
+                n += 1;
+            }
+        }
+    } else if (deco === "racks") {
+        if (hgt < 6) return;
+        const cols = Math.floor(w.len / 4);
+        for (const v of [
+            0.3,
+            0.62
+        ]){
+            for(let c = 0; c < cols; c += 1){
+                const on = hash(seed, c + v * 100, Math.floor(time * (2.5 + 3 * act.dc) + hash(c, seed, v) * 6));
+                if (on > 0.3 + 0.4 * act.dc) continue;
+                const [px, py] = bilerp(w.q, (c + 0.5) / cols, v);
+                ctx.globalAlpha = alpha * clamp(0.4 + 0.6 * act.dc, 0, 1);
+                ctx.fillStyle = rgba(c % 3 === 0 ? CREAM : PERIWINKLE);
+                ctx.fillRect(px - 0.55 * k, py - 0.55 * k, 1.1 * k, 1.1 * k);
+            }
+        }
+    } else if (deco === "vents") {
+        const cols = Math.floor(w.len / 5);
+        ctx.lineWidth = 1 * k;
+        ctx.strokeStyle = rgba(CORAL);
+        for(let c = 0; c < cols; c += 1){
+            const u = (c + 0.5) / cols;
+            const p0 = bilerp(w.q, u, 0.2);
+            const p1 = bilerp(w.q, u, 0.8);
+            ctx.globalAlpha = alpha * clamp((0.2 + 0.8 * act.gpu) * (0.5 + 0.5 * (0.5 + 0.5 * Math.sin(time * 2.2 + c * 0.7 + seed))), 0, 1);
+            ctx.beginPath();
+            ctx.moveTo(p0[0], p0[1]);
+            ctx.lineTo(p1[0], p1[1]);
+            ctx.stroke();
+        }
+    }
+}
+function decorateRoof(env, q, w, d, roof, seed, alpha) {
+    if (roof === "none") return;
+    const { ctx, time, act } = env;
+    const k = size(q[0][2]);
+    const cols = Math.max(1, Math.floor(w / 10));
+    const rows = Math.max(1, Math.floor(d / 9));
+    const hot = roof === "hot";
+    for(let r = 0; r < rows; r += 1){
+        for(let c = 0; c < cols; c += 1){
+            const [px, py] = bilerp(q, (c + 0.5) / cols, (r + 0.5) / rows);
+            const s = 3.4 * k;
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = rgba(mix(DARK, LIGHT, 0.18));
+            ctx.fillRect(px - s / 2, py - s / 2, s, s);
+            ctx.strokeStyle = "rgba(226,220,235,0.22)";
+            ctx.lineWidth = 0.5 * k;
+            ctx.strokeRect(px - s / 2, py - s / 2, s, s);
+            const pulse = 0.5 + 0.5 * Math.sin(time * (hot ? 3 : 1.4) + hash(seed, r, c) * 6);
+            const level = hot ? act.gpu : act.dc;
+            if (hot) {
+                ctx.globalAlpha = alpha * clamp(0.3 + 0.8 * level, 0, 1) * pulse;
+                drawGlow(ctx, px, py, 4 * k, CORAL, 0.5);
+            }
+            ctx.globalAlpha = alpha * clamp((0.3 + 0.7 * level) * (0.5 + 0.5 * pulse), 0, 1);
+            ctx.fillStyle = rgba(hot ? CORAL : PERIWINKLE);
+            ctx.fillRect(px - 0.5 * k, py - 0.5 * k, 1 * k, 1 * k);
+        }
+    }
+}
+function drawBox(env, x0, x1, z0, z1, h0, h1, o) {
+    const { ctx, P } = env;
+    if (h1 - h0 < 0.05) return;
+    for (const w of boxWalls(env, x0, x1, z0, z1, h0, h1)){
+        const c = rgba(wallColor(w.lit, o.tint, o.tintAmt, o.lift ?? 0));
+        ctx.globalAlpha = o.alpha;
+        ctx.fillStyle = c;
+        ctx.strokeStyle = c;
+        ctx.lineWidth = 0.5;
+        tracePoly(ctx, w.q);
+        ctx.fill();
+        ctx.stroke();
+        decorateWall(env, w, h0, h1, o.deco, o.color, o.seed, o.alpha, o.wave);
+    }
+    const roof = [
+        P(x0, h1, z0),
+        P(x1, h1, z0),
+        P(x1, h1, z1),
+        P(x0, h1, z1)
+    ];
+    if (roof.some((p)=>p[2] < NEAR)) return;
+    ctx.globalAlpha = o.alpha;
+    ctx.fillStyle = rgba(mix(mix(DARK, LIGHT, 0.36 + (o.lift ?? 0)), o.roofTint ?? o.tint, o.roofTint ? 0.3 : o.tintAmt));
+    tracePoly(ctx, roof);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(226,220,235,0.2)";
+    ctx.lineWidth = 0.7;
+    ctx.stroke();
+    decorateRoof(env, roof, x1 - x0, z1 - z0, o.roof, o.seed, o.alpha);
+}
+function drawSilo(env, cx, cz, r, h, alpha) {
+    const { ctx, P, cam } = env;
+    const n = 20;
+    const angles = Array.from({
+        length: n
+    }, (_, i)=>i / n * Math.PI * 2);
+    const sides = [];
+    angles.forEach((a0)=>{
+        const a1 = a0 + Math.PI * 2 / n;
+        const am = a0 + Math.PI / n;
+        const nx = Math.cos(am);
+        const nz = Math.sin(am);
+        const mx = cx + nx * r;
+        const mz = cz + nz * r;
+        if (nx * (cam[0] - mx) + nz * (cam[2] - mz) <= 0) return;
+        const ax = cx + Math.cos(a0) * r;
+        const az = cz + Math.sin(a0) * r;
+        const bx = cx + Math.cos(a1) * r;
+        const bz = cz + Math.sin(a1) * r;
+        const q = [
+            P(ax, 0, az),
+            P(bx, 0, bz),
+            P(bx, h, bz),
+            P(ax, h, az)
+        ];
+        if (q.some((p)=>p[2] < NEAR)) return;
+        sides.push({
+            q,
+            depth: P(mx, h / 2, mz)[2],
+            lit: Math.max(0, nx * LIGHT_DIR[0] + nz * LIGHT_DIR[2])
+        });
+    });
+    sides.sort((a, b)=>b.depth - a.depth);
+    ctx.globalAlpha = alpha;
+    ctx.lineWidth = 0.5;
+    for (const s of sides){
+        const c = rgba(wallColor(s.lit, LILAC, 0.08, 0.02));
+        ctx.fillStyle = c;
+        ctx.strokeStyle = c;
+        tracePoly(ctx, s.q);
+        ctx.fill();
+        ctx.stroke();
+    }
+    // bands brighten as a batch of data leaves storage
+    ctx.strokeStyle = rgba(mix([
+        226,
+        220,
+        235
+    ], CREAM, env.act.store), 0.22 + 0.5 * env.act.store);
+    ctx.lineWidth = 0.7;
+    for (const f of [
+        0.33,
+        0.66
+    ]){
+        for (const s of sides){
+            const a = bilerp(s.q, 0, f);
+            const b = bilerp(s.q, 1, f);
+            ctx.beginPath();
+            ctx.moveTo(a[0], a[1]);
+            ctx.lineTo(b[0], b[1]);
+            ctx.stroke();
+        }
+    }
+    const top = angles.map((a)=>P(cx + Math.cos(a) * r, h, cz + Math.sin(a) * r));
+    if (top.some((p)=>p[2] < NEAR)) return;
+    ctx.fillStyle = rgba(mix(mix(DARK, LIGHT, 0.4), LILAC, 0.12));
+    tracePoly(ctx, top);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(226,220,235,0.26)";
+    ctx.stroke();
+    const c = P(cx, h, cz);
+    ctx.fillStyle = rgba(mix(DARK, LIGHT, 0.2));
+    ctx.beginPath();
+    ctx.arc(c[0], c[1], r * 0.25 * size(c[2]), 0, Math.PI * 2);
+    ctx.fill();
+}
+function drawCrane(env, f, rise, alpha) {
+    const { ctx, P, time } = env;
+    const H = 36 * rise;
+    const xa = lotX(f, 10);
+    const xb = lotX(f, f.w - 10);
+    const za = lotZ(f, 8);
+    const zb = lotZ(f, WIN_H - 6);
+    const o = {
+        deco: "none",
+        roof: "none",
+        color: CREAM,
+        tint: LILAC,
+        tintAmt: 0.25,
+        seed: 3,
+        alpha,
+        lift: 0.1
+    };
+    for (const x of [
+        xa,
+        xb
+    ])for (const z of [
+        za,
+        zb
+    ])drawBox(env, x - 1, x + 1, z - 1, z + 1, 0, H, o);
+    drawBox(env, xa - 1, xb + 1, za - 1.2, za + 1.2, H - 2.4, H, o);
+    drawBox(env, xa - 1, xb + 1, zb - 1.2, zb + 1.2, H - 2.4, H, o);
+    if (rise < 0.95) return;
+    // trolley with a hanging container
+    const u = 0.5 + 0.42 * Math.sin(time * 0.5);
+    const x = lerp(xa + 12, xb - 12, u);
+    const zm = (za + zb) / 2;
+    const hook = H - 12 - 4 * (0.5 + 0.5 * Math.sin(time * 0.9));
+    const top = P(x, H - 2.4, zm);
+    const bottom = P(x, hook + 5, zm);
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = "rgba(210,204,220,0.6)";
+    ctx.lineWidth = 0.5 * size(top[2]);
+    ctx.beginPath();
+    ctx.moveTo(top[0], top[1]);
+    ctx.lineTo(bottom[0], bottom[1]);
+    ctx.stroke();
+    drawBox(env, x - 6, x + 6, zm - 2.6, zm + 2.6, hook, hook + 5, {
+        ...o,
+        tint: CORAL,
+        tintAmt: 0.35,
+        lift: 0.05
+    });
+}
+function flatMapper(f, fr) {
+    const c = Math.cos(fr.a);
+    const s = Math.sin(fr.a);
+    return (u, v)=>{
+        const du = u - f.w / 2;
+        const dv = v - WIN_H / 2;
+        return [
+            fr.cx + du * c - dv * s,
+            fr.h,
+            fr.cz + du * s + dv * c
+        ];
+    };
+}
+// The API file stands up on its front edge and becomes the tower's facade.
+function towerMapper(f, p) {
+    const w = lerp(f.w, TOWER_W, p);
+    const L = lerp(WIN_H, TOWER_H, p);
+    const hinge = lerp(f.cz + WIN_H / 2, f.cz + TOWER_W / 2, p);
+    const th = p * Math.PI / 2;
+    return (u, v)=>{
+        const d = (WIN_H - v) / WIN_H * L;
+        return [
+            f.cx + (u / f.w - 0.5) * w,
+            d * Math.sin(th),
+            hinge - d * Math.cos(th)
+        ];
+    };
+}
+function drawWindow(env, f, M, o) {
+    const { ctx, P, time } = env;
+    const Q = (u, v)=>{
+        const [x, h, z] = M(u, v);
+        return P(x, h, z);
+    };
+    const corners = [
+        Q(0, WIN_H),
+        Q(f.w, WIN_H),
+        Q(f.w, 0),
+        Q(0, 0)
+    ];
+    if (corners.some((p)=>p[2] < NEAR)) return;
+    const k = size(corners[0][2]);
+    // glass sheet with a gentle glow; it turns opaque as the API file becomes a facade
+    if (o.panel > 0.01) {
+        const facadeC = mix(DARK, LIGHT, 0.2);
+        const g = ctx.createLinearGradient(corners[3][0], corners[3][1], corners[1][0], corners[1][1]);
+        g.addColorStop(0, rgba(mix(GLASS_HI, facadeC, o.facade), lerp(0.42, 0.94, o.facade)));
+        g.addColorStop(1, rgba(mix(GLASS_LO, facadeC, o.facade), lerp(0.26, 0.94, o.facade)));
+        ctx.save();
+        ctx.globalAlpha = o.panel * o.fade;
+        ctx.fillStyle = g;
+        ctx.shadowColor = rgba(PERIWINKLE, 0.22 * (1 - o.facade));
+        ctx.shadowBlur = 18 * env.scale;
+        tracePoly(ctx, corners);
+        ctx.fill();
+        ctx.restore();
+        // top-edge highlight catching the light
+        const hi0 = Q(1.5, 0.4);
+        const hi1 = Q(f.w - 1.5, 0.4);
+        ctx.globalAlpha = o.panel * o.fade * (1 - o.facade);
+        ctx.strokeStyle = "rgba(255,255,255,0.22)";
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(hi0[0], hi0[1]);
+        ctx.lineTo(hi1[0], hi1[1]);
+        ctx.stroke();
+        const titleA = o.panel * (1 - o.facade) * o.fade;
+        if (titleA > 0.01) {
+            ctx.globalAlpha = titleA;
+            ctx.fillStyle = "rgba(255,255,255,0.05)";
+            tracePoly(ctx, [
+                Q(0, TITLE),
+                Q(f.w, TITLE),
+                Q(f.w, 0),
+                Q(0, 0)
+            ]);
+            ctx.fill();
+            [
+                CORAL,
+                LILAC,
+                PERIWINKLE
+            ].forEach((c, i)=>{
+                const p = Q(7 + i * 6, TITLE / 2);
+                ctx.fillStyle = rgba(c, 0.85);
+                ctx.beginPath();
+                ctx.arc(p[0], p[1], 1.5 * size(p[2]), 0, Math.PI * 2);
+                ctx.fill();
+            });
+            const nameW = f.name.length * CHAR * 0.85;
+            drawText(ctx, f.name, Q(f.w / 2 - nameW / 2, TITLE / 2 + 0.4), Q(f.w / 2 + nameW / 2, TITLE / 2 + 0.4), MUTED, titleA * 0.8);
+        }
+    }
+    if (o.frame > 0.01) {
+        ctx.globalAlpha = o.frame * o.fade;
+        ctx.strokeStyle = `rgba(226,220,235,${0.22 + 0.12 * o.panel * (1 - o.facade)})`;
+        ctx.lineWidth = 0.8;
+        tracePoly(ctx, corners);
+        ctx.stroke();
+    }
+    // rows: gutter numbers, readable code, bars, typed out one row at a time
+    const glowPx = o.glow * 3 * env.scale;
+    let cursor = null;
+    f.rowsData.forEach((row, i)=>{
+        const tail = i >= ROWS - 2 ? i === ROWS - 1 ? 0.3 : 0.6 : 1;
+        const rp = clamp((o.typeT - i * PER_ROW) / PER_ROW, 0, 1);
+        if (rp <= 0) return;
+        let end = GUTTER + PAD + row.lead * CHAR;
+        if (o.text > 0.01) {
+            const num = String(f.first + i);
+            const nw = num.length * CHAR * 0.8;
+            drawText(ctx, num, Q(GUTTER - 3 - nw, row.v), Q(GUTTER - 3, row.v), MUTED, o.text * 0.45 * tail * o.fade);
+            if (row.text) {
+                const u0 = GUTTER + PAD + row.lead * CHAR;
+                const n = Math.ceil(row.text.length * rp);
+                drawText(ctx, row.text.slice(0, n), Q(u0, row.v), Q(u0 + n * CHAR, row.v), row.color, o.text * 0.9 * tail * o.fade, glowPx);
+                end = u0 + n * CHAR;
+            }
+        }
+        if (o.rows > 0.01 && row.bars.length) {
+            if (glowPx > 0) {
+                ctx.save();
+                ctx.shadowBlur = glowPx;
+            }
+            row.bars.forEach((b, j)=>{
+                const grow = clamp(rp * row.bars.length - j, 0, 1);
+                if (grow <= 0) return;
+                const uEnd = lerp(b.u0 + BAR / 2, b.u1 - BAR / 2, grow);
+                end = uEnd + BAR / 2;
+                const a = Q(b.u0 + BAR / 2, row.v);
+                const e = Q(uEnd, row.v);
+                if (glowPx > 0) ctx.shadowColor = rgba(b.color, 0.5);
+                const base = towerBase(env.t);
+                const lit = o.wave ? base + (1 - base) * towerWave(M(0, row.v)[1], env.t) : 1;
+                ctx.globalAlpha = o.rows * b.opacity * tail * lit * o.fade;
+                ctx.strokeStyle = rgba(o.wave ? mix(b.color, CREAM, 0.25) : b.color);
+                ctx.lineWidth = BAR * k * lerp(1, 0.55, o.facade);
+                ctx.beginPath();
+                ctx.moveTo(a[0], a[1]);
+                ctx.lineTo(e[0], e[1]);
+                ctx.stroke();
+            });
+            if (glowPx > 0) ctx.restore();
+        }
+        cursor = {
+            u: end + 1.5,
+            v: row.v
+        };
+    });
+    // blinking cursor: solid while typing, blinking once the file is written
+    const c = cursor;
+    if (c && o.text > 0.01 && o.glow > 0.01 && o.typeT < ROWS * PER_ROW + 1.2) {
+        const typing = o.typeT < ROWS * PER_ROW;
+        const blink = typing ? 1 : mod(time * 1.6, 1) < 0.55 ? 1 : 0;
+        if (blink) {
+            const a = Q(c.u, c.v - 3.2);
+            const b = Q(c.u, c.v + 3.2);
+            ctx.save();
+            ctx.globalAlpha = o.text * o.fade * 0.9 * o.glow;
+            ctx.strokeStyle = rgba(CREAM);
+            ctx.shadowColor = rgba(PERIWINKLE, 0.7);
+            ctx.shadowBlur = 6 * env.scale;
+            ctx.lineWidth = 1.1 * size(a[2]);
+            ctx.beginPath();
+            ctx.moveTo(a[0], a[1]);
+            ctx.lineTo(b[0], b[1]);
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
+    ctx.globalAlpha = 1;
+}
+function drawTower(env, f, p, text, fade, panel, rows) {
+    const { ctx, P, cam, time } = env;
+    const x0 = f.cx - TOWER_W / 2;
+    const x1 = f.cx + TOWER_W / 2;
+    const z0 = f.cz - TOWER_W / 2;
+    const z1 = f.cz + TOWER_W / 2;
+    const bodyA = smooth01((p - 0.6) / 0.4) * fade;
+    const M = towerMapper(f, p);
+    // plane normal decides whether the facade faces the camera
+    const th = p * Math.PI / 2;
+    const n = [
+        0,
+        Math.cos(th),
+        Math.sin(th)
+    ];
+    const mid = M(f.w / 2, WIN_H / 2);
+    const facadeVisible = dot(n, sub(cam, mid)) > 0;
+    const o = {
+        deco: "strips",
+        roof: "none",
+        color: BLUE,
+        tint: BLUE,
+        tintAmt: 0.05,
+        seed: 11,
+        alpha: bodyA,
+        wave: true
+    };
+    const walls = bodyA > 0.01 ? boxWalls(env, x0, x1, z0, z1, 0, TOWER_H).filter((w)=>w.face !== 0) : [];
+    const facade = {
+        depth: P(f.cx, TOWER_H / 2, z1)[2]
+    };
+    const order = [
+        ...walls.map((w)=>({
+                depth: w.depth,
+                w
+            })),
+        ...facadeVisible ? [
+            {
+                depth: facade.depth,
+                w: null
+            }
+        ] : []
+    ];
+    order.sort((a, b)=>b.depth - a.depth);
+    for (const item of order){
+        if (item.w) {
+            const c = rgba(wallColor(item.w.lit, BLUE, 0.05));
+            ctx.globalAlpha = bodyA;
+            ctx.fillStyle = c;
+            ctx.strokeStyle = c;
+            ctx.lineWidth = 0.5;
+            tracePoly(ctx, item.w.q);
+            ctx.fill();
+            ctx.stroke();
+            decorateWall(env, item.w, 0, TOWER_H, "strips", BLUE, 11, bodyA, true);
+        } else {
+            drawWindow(env, f, M, {
+                panel,
+                frame: 1 - p,
+                rows,
+                text,
+                facade: p,
+                wave: p > 0.9,
+                fade,
+                typeT: Infinity,
+                glow: 0
+            });
+        }
+    }
+    if (bodyA <= 0.01) return;
+    const roof = [
+        P(x0, TOWER_H, z0),
+        P(x1, TOWER_H, z0),
+        P(x1, TOWER_H, z1),
+        P(x0, TOWER_H, z1)
+    ];
+    if (roof.some((q)=>q[2] < NEAR)) return;
+    ctx.globalAlpha = bodyA;
+    ctx.fillStyle = rgba(mix(DARK, LIGHT, 0.38));
+    tracePoly(ctx, roof);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(226,220,235,0.2)";
+    ctx.lineWidth = 0.7;
+    ctx.stroke();
+    // crown, spire, beacon
+    const crownA = smooth01((p - 0.85) / 0.15) * fade;
+    drawBox(env, f.cx - 14, f.cx + 14, f.cz - 14, f.cz + 14, TOWER_H, TOWER_H + 20 * crownA, {
+        ...o,
+        alpha: crownA
+    });
+    if (crownA < 0.05) return;
+    const s0 = P(f.cx, TOWER_H + 20, f.cz);
+    const s1 = P(f.cx, TOWER_H + 34, f.cz);
+    if (s0[2] < NEAR || s1[2] < NEAR) return;
+    const k = size(s1[2]);
+    ctx.globalAlpha = crownA;
+    ctx.strokeStyle = "rgba(210,204,220,0.8)";
+    ctx.lineWidth = 0.9 * k;
+    ctx.beginPath();
+    ctx.moveTo(s0[0], s0[1]);
+    ctx.lineTo(s1[0], s1[1]);
+    ctx.stroke();
+    const flash = bump(env.t, BEACON_T, 0.15, 1.1);
+    const breathe = (0.55 + 0.45 * (0.5 + 0.5 * Math.sin(time / 3.4 * Math.PI * 2))) * (1 + 1.2 * flash);
+    const beamTop = P(f.cx, TOWER_H + 80, f.cz);
+    const beam = ctx.createLinearGradient(s1[0], s1[1], beamTop[0], beamTop[1]);
+    beam.addColorStop(0, rgba(PERIWINKLE, 0.5 * breathe));
+    beam.addColorStop(1, rgba(PERIWINKLE, 0));
+    ctx.strokeStyle = beam;
+    ctx.lineWidth = 2 * k;
+    ctx.beginPath();
+    ctx.moveTo(s1[0], s1[1]);
+    ctx.lineTo(beamTop[0], beamTop[1]);
+    ctx.stroke();
+    drawGlow(ctx, s1[0], s1[1], 18 * k * (1 + flash), PERIWINKLE, Math.min(0.8, 0.35 * breathe));
+    ctx.fillStyle = rgba(PERIWINKLE);
+    ctx.beginPath();
+    ctx.arc(s1[0], s1[1], 2 * k, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+}
+function drawGrid(ctx, P, fog, alpha) {
+    const BUCKETS = 6;
+    const buckets = Array.from({
+        length: BUCKETS
+    }, ()=>[]);
+    const push = (x1, z1, x2, z2)=>{
+        const a = fog((x1 + x2) / 2, (z1 + z2) / 2);
+        if (a <= 0.02) return;
+        const pa = P(x1, 0, z1);
+        const pb = P(x2, 0, z2);
+        if (pa[2] < NEAR || pb[2] < NEAR) return;
+        buckets[Math.min(BUCKETS - 1, Math.floor(a * BUCKETS))].push([
+            pa[0],
+            pa[1],
+            pb[0],
+            pb[1]
+        ]);
+    };
+    for(let x = -384; x <= 384; x += 32)for(let z = -288; z < 288; z += 32)push(x, z, x, z + 32);
+    for(let z = -288; z <= 288; z += 32)for(let x = -384; x < 384; x += 32)push(x, z, x + 32, z);
+    ctx.lineWidth = 0.7;
+    ctx.lineCap = "butt";
+    buckets.forEach((segs, b)=>{
+        if (!segs.length) return;
+        ctx.strokeStyle = `rgba(226,220,235,${0.07 * alpha * (b + 0.5) / BUCKETS})`;
+        ctx.beginPath();
+        for (const [ax, ay, bx, by] of segs){
+            ctx.moveTo(ax, ay);
+            ctx.lineTo(bx, by);
+        }
+        ctx.stroke();
+    });
+    ctx.lineCap = "round";
 }
 function SWEVisualization() {
     _s();
-    const [time, setTime] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useId"])().replace(/[^a-zA-Z0-9_-]/g, "");
-    const fadeYId = `swe-fade-y-${id}`;
-    const fadeXId = `swe-fade-x-${id}`;
-    const maskYId = `swe-mask-y-${id}`;
-    const maskXId = `swe-mask-x-${id}`;
+    const canvasRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "SWEVisualization.useEffect": ()=>{
-            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                setTime(FORM_END + 1);
-                return;
-            }
-            let frame = 0;
-            const start = performance.now();
-            const animate = {
-                "SWEVisualization.useEffect.animate": (now)=>{
-                    setTime((now - start) / 1000 % CYCLE);
-                    frame = requestAnimationFrame(animate);
+            const canvas = canvasRef.current;
+            const ctx = canvas?.getContext("2d");
+            if (!canvas || !ctx) return;
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            let scale = 1;
+            const render = {
+                "SWEVisualization.useEffect.render": (loopT, time)=>{
+                    // City time: hold just before the descent while the files are typed.
+                    const t = loopT < OPEN_HOLD_AT ? loopT : Math.max(OPEN_HOLD_AT, loopT - OPEN_HOLD);
+                    // ---- timeline
+                    const view = ramp(t, 2.5, 5) * (1 - ramp(t, 16, 19.2));
+                    const settle = ramp(t, 2.5, 4.5) * (1 - ramp(t, 18.4, 20));
+                    const panel = 1 - ramp(t, 4, 4.8) + ramp(t, 17.2, 18.2);
+                    const frame = lerp(1, 0.4, ramp(t, 4, 5) * (1 - ramp(t, 17.2, 18.2)));
+                    const traffic = view * ramp(t, 8.3, 8.8) * (1 - ramp(t, 15.8, 16.4));
+                    // A slow partial orbit: swing out while tilting down, sweep across the city,
+                    // then return to the starting heading while rising back overhead.
+                    const yaw = -0.3 * ramp(t, 2.5, 5.5) + 0.6 * smooth01((t - 5) / 11) - 0.3 * ramp(t, 16, 19.5) + 0.07 * Math.sin(2 * Math.PI * loopT / LOOP) * (1 - view);
+                    const pitch = lerp(1.18, 0.66, view) + 0.05 * Math.sin(2 * Math.PI * t / CITY_LOOP) * view;
+                    const target = [
+                        0,
+                        34 * view,
+                        0
+                    ];
+                    const cam = makeCamera(target, yaw, pitch, lerp(600, 660, view));
+                    const P = {
+                        "SWEVisualization.useEffect.render.P": (x, h, z)=>project(cam, [
+                                x,
+                                h,
+                                z
+                            ])
+                    }["SWEVisualization.useEffect.render.P"];
+                    const fogFar = lerp(560, 400, view);
+                    const fogNear = fogFar * 0.55;
+                    const fog = {
+                        "SWEVisualization.useEffect.render.fog": (x, z)=>smooth01((fogFar - Math.hypot(x - target[0], z - target[2])) / (fogFar - fogNear))
+                    }["SWEVisualization.useEffect.render.fog"];
+                    const act = {
+                        store: bump(t, STORE_PULSE.t0 - 0.4, 0.3, 0.8),
+                        dc: 0.25 + 0.75 * bump(t, DC_T) + 0.25 * ramp(t, DC_T, DC_T + 0.6),
+                        gpu: 0.25 + 0.75 * bump(t, GPU_T) + 0.25 * ramp(t, GPU_T, GPU_T + 0.6)
+                    };
+                    const env = {
+                        ctx,
+                        P,
+                        cam: cam.pos,
+                        time,
+                        t,
+                        act,
+                        scale
+                    };
+                    ctx.setTransform(scale, 0, 0, scale, 0, 0);
+                    ctx.clearRect(0, 0, VIEW_W, VIEW_H);
+                    ctx.globalAlpha = 1;
+                    ctx.lineJoin = "round";
+                    ctx.lineCap = "round";
+                    ctx.font = `${FONT_PX}px ${MONO}`;
+                    ctx.textBaseline = "middle";
+                    ctx.textAlign = "left";
+                    const riseOf = {
+                        "SWEVisualization.useEffect.render.riseOf": (start, dur, fall)=>ramp(t, start, start + dur) * (1 - ramp(t, fall, fall + 1))
+                    }["SWEVisualization.useEffect.render.riseOf"];
+                    // ---- ground glows under each district
+                    const glowAt = {
+                        "SWEVisualization.useEffect.render.glowAt": (f, c, r, a)=>{
+                            const q = P(f.cx, 0, f.cz);
+                            if (q[2] > NEAR) drawGlow(ctx, q[0], q[1], r * size(q[2]), c, a);
+                        }
+                    }["SWEVisualization.useEffect.render.glowAt"];
+                    glowAt(A, PERIWINKLE, 150, (0.1 + 0.12 * towerBase(t)) * riseOf(A.start, 1.2, A.fall));
+                    glowAt(D, PERIWINKLE, 110, 0.14 * act.dc * riseOf(D.start, 1.2, D.fall));
+                    glowAt(G, CORAL, 100, 0.16 * act.gpu * riseOf(G.start, 1.2, G.fall));
+                    glowAt(S, LILAC, 90, (0.06 + 0.1 * act.store) * riseOf(S.start, 1.2, S.fall));
+                    if (view > 0.01) drawGrid(ctx, P, fog, view);
+                    // a deploy landing: a ring spreads from the tower's base
+                    const deployAge = t - DEPLOY_T;
+                    if (deployAge > 0 && deployAge < 1.4 && traffic > 0.01) {
+                        const ring = Array.from({
+                            length: 48
+                        }, {
+                            "SWEVisualization.useEffect.render.ring": (_, i)=>{
+                                const a = i / 48 * Math.PI * 2;
+                                const r = 30 + deployAge * 42;
+                                return P(A.cx + Math.cos(a) * r, 0.5, A.cz + Math.sin(a) * r);
+                            }
+                        }["SWEVisualization.useEffect.render.ring"]);
+                        if (ring.every({
+                            "SWEVisualization.useEffect.render": (q)=>q[2] > NEAR
+                        }["SWEVisualization.useEffect.render"])) {
+                            ctx.globalAlpha = (1 - deployAge / 1.4) * 0.7 * traffic;
+                            ctx.strokeStyle = rgba(LILAC);
+                            ctx.lineWidth = 1.2;
+                            tracePoly(ctx, ring);
+                            ctx.stroke();
+                            ctx.globalAlpha = 1;
+                        }
+                    }
+                    // ---- files: floating windows that settle into lots
+                    const towerP = ramp(t, A.start, A.start + 1.2) * (1 - ramp(t, A.fall, A.fall + 1.2));
+                    const sheets = FILES.map({
+                        "SWEVisualization.useEffect.render.sheets": (f, i)=>{
+                            const bob = 1.6 * Math.sin(time * 0.9 + i * 1.3);
+                            const fr = {
+                                cx: lerp(f.deskX, f.cx, settle),
+                                cz: lerp(f.deskZ, f.cz, settle),
+                                a: 0,
+                                h: (FLOAT_H[f.key] + bob) * (1 - settle)
+                            };
+                            return {
+                                f,
+                                fr,
+                                depth: P(fr.cx, fr.h, fr.cz)[2]
+                            };
+                        }
+                    }["SWEVisualization.useEffect.render.sheets"]);
+                    sheets.sort({
+                        "SWEVisualization.useEffect.render": (a, b)=>b.depth - a.depth
+                    }["SWEVisualization.useEffect.render"]);
+                    for (const { f, fr } of sheets){
+                        const fade = fog(f.cx, f.cz);
+                        const M = flatMapper(f, fr);
+                        // soft shadow on the ground while hovering
+                        if (fr.h > 0.2) {
+                            const sh = flatMapper(f, {
+                                ...fr,
+                                cx: fr.cx + 4 + fr.h * 0.25,
+                                cz: fr.cz + 5 + fr.h * 0.3,
+                                h: 0
+                            });
+                            const q = [
+                                sh(0, WIN_H),
+                                sh(f.w, WIN_H),
+                                sh(f.w, 0),
+                                sh(0, 0)
+                            ].map({
+                                "SWEVisualization.useEffect.render.q": ([x, h, z])=>P(x, h, z)
+                            }["SWEVisualization.useEffect.render.q"]);
+                            ctx.save();
+                            ctx.globalAlpha = 0.3 * Math.min(1, fr.h / 10) * fade;
+                            ctx.shadowColor = "rgba(4,3,10,0.6)";
+                            ctx.shadowBlur = 12 * scale;
+                            ctx.fillStyle = "rgba(6,5,12,0.5)";
+                            tracePoly(ctx, q);
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                        // Code is typed in at the start and goes into the city; sheets return empty.
+                        const opening = t < 12;
+                        const rowsA = opening ? 1 - ramp(t, f.start - 0.1, f.start + 0.6) : 0;
+                        const textA = opening ? 1 - ramp(t, f.start - 0.4, f.start + 0.3) : 0;
+                        const typeT = loopT - typeStartFor(f.key);
+                        const glow = 1 - settle;
+                        if (f.key === "py" && towerP > 0.001) {
+                            // drawn as the standing facade with the tower
+                            drawWindow(env, f, M, {
+                                panel: 0,
+                                frame,
+                                rows: 0,
+                                text: 0,
+                                facade: 0,
+                                wave: false,
+                                fade,
+                                typeT,
+                                glow: 0
+                            });
+                            continue;
+                        }
+                        drawWindow(env, f, M, {
+                            panel,
+                            frame,
+                            rows: f.key === "py" ? opening ? 1 : 0 : clamp(rowsA, 0, 1),
+                            text: clamp(textA, 0, 1),
+                            facade: 0,
+                            wave: false,
+                            fade,
+                            typeT: opening ? typeT : Infinity,
+                            glow
+                        });
+                    }
+                    // ---- everything with height, painted far to near
+                    const drawables = [];
+                    if (towerP > 0.001) {
+                        const fade = fog(A.cx, A.cz);
+                        const textA = t < 12 ? clamp(1 - ramp(t, A.start - 0.1, A.start + 0.5), 0, 1) : 0;
+                        const plane = Math.max(panel, towerP);
+                        const rows = t < 12 ? 1 : 1 - ramp(t, A.fall + 0.5, A.fall + 1.1);
+                        drawables.push({
+                            depth: P(A.cx, TOWER_H * 0.4 * towerP, A.cz)[2],
+                            draw: {
+                                "SWEVisualization.useEffect.render": ()=>drawTower(env, A, towerP, textA, fade, plane, rows)
+                            }["SWEVisualization.useEffect.render"]
+                        });
+                    }
+                    ITEMS.forEach({
+                        "SWEVisualization.useEffect.render": (it, idx)=>{
+                            const rise = riseOf(it.start, it.dur, it.fall);
+                            if (rise <= 0.005) return;
+                            if (it.type === "silo") {
+                                const a = fog(it.cx, it.cz) * smooth01(rise * 4);
+                                if (a <= 0.02) return;
+                                drawables.push({
+                                    depth: P(it.cx, it.h * rise / 2, it.cz)[2],
+                                    draw: {
+                                        "SWEVisualization.useEffect.render": ()=>drawSilo(env, it.cx, it.cz, it.r * lerp(0.6, 1, rise), it.h * rise, a)
+                                    }["SWEVisualization.useEffect.render"]
+                                });
+                            } else if (it.type === "box") {
+                                const cx = (it.x0 + it.x1) / 2;
+                                const cz = (it.z0 + it.z1) / 2;
+                                const a = fog(cx, cz) * smooth01(rise * 4);
+                                if (a <= 0.02) return;
+                                drawables.push({
+                                    depth: P(cx, it.h * rise / 2, cz)[2],
+                                    draw: {
+                                        "SWEVisualization.useEffect.render": ()=>drawBox(env, it.x0, it.x1, it.z0, it.z1, 0, it.h * rise, {
+                                                deco: rise > 0.6 ? it.deco : "none",
+                                                roof: rise > 0.8 ? it.roof : "none",
+                                                color: it.color,
+                                                tint: it.tint,
+                                                tintAmt: it.tintAmt,
+                                                seed: idx,
+                                                alpha: a
+                                            })
+                                    }["SWEVisualization.useEffect.render"]
+                                });
+                            } else if (it.type === "container") {
+                                const cx = (it.x0 + it.x1) / 2;
+                                const cz = (it.z0 + it.z1) / 2;
+                                const a = fog(cx, cz) * rise;
+                                if (a <= 0.02) return;
+                                const h0 = it.level * 5.4 + (1 - rise) * 18;
+                                drawables.push({
+                                    depth: P(cx, h0 + 2.5, cz)[2],
+                                    draw: {
+                                        "SWEVisualization.useEffect.render": ()=>drawBox(env, it.x0, it.x1, it.z0, it.z1, h0, h0 + 5, {
+                                                deco: "none",
+                                                roof: "none",
+                                                color: it.color,
+                                                tint: it.color,
+                                                tintAmt: 0.32,
+                                                seed: idx,
+                                                alpha: a,
+                                                roofTint: it.color
+                                            })
+                                    }["SWEVisualization.useEffect.render"]
+                                });
+                            } else {
+                                const a = fog(it.f.cx, it.f.cz) * smooth01(rise * 3);
+                                if (a <= 0.02) return;
+                                drawables.push({
+                                    depth: P(it.f.cx, 18 * rise, it.f.cz)[2] - 5,
+                                    draw: {
+                                        "SWEVisualization.useEffect.render": ()=>drawCrane(env, it.f, rise, a)
+                                    }["SWEVisualization.useEffect.render"]
+                                });
+                            }
+                        }
+                    }["SWEVisualization.useEffect.render"]);
+                    if (traffic > 0.01) {
+                        const light = {
+                            "SWEVisualization.useEffect.render.light": (x, z, tail, color, box, a)=>{
+                                const [px, py, pz] = P(x, box ? 2 : 1.2, z);
+                                if (pz < NEAR) return;
+                                drawables.push({
+                                    depth: pz,
+                                    draw: {
+                                        "SWEVisualization.useEffect.render.light": ()=>{
+                                            const k = size(pz);
+                                            ctx.globalAlpha = a;
+                                            if (tail) {
+                                                const q = P(tail[0], 1.2, tail[1]);
+                                                if (q[2] > NEAR) {
+                                                    const g = ctx.createLinearGradient(q[0], q[1], px, py);
+                                                    g.addColorStop(0, rgba(color, 0));
+                                                    g.addColorStop(1, rgba(color, 0.9));
+                                                    ctx.strokeStyle = g;
+                                                    ctx.lineWidth = 1.5 * k;
+                                                    ctx.beginPath();
+                                                    ctx.moveTo(q[0], q[1]);
+                                                    ctx.lineTo(px, py);
+                                                    ctx.stroke();
+                                                }
+                                            }
+                                            drawGlow(ctx, px, py, 3.6 * k, color, 0.35);
+                                            ctx.fillStyle = rgba(color);
+                                            if (box) ctx.fillRect(px - 2.2 * k, py - 1.4 * k, 4.4 * k, 2.8 * k);
+                                            else {
+                                                ctx.beginPath();
+                                                ctx.arc(px, py, 1.2 * k, 0, Math.PI * 2);
+                                                ctx.fill();
+                                            }
+                                            ctx.globalAlpha = 1;
+                                        }
+                                    }["SWEVisualization.useEffect.render.light"]
+                                });
+                            }
+                        }["SWEVisualization.useEffect.render.light"];
+                        for (const pl of PULSES){
+                            for(let i = 0; i < pl.count; i += 1){
+                                const s = (t - pl.t0) * pl.speed - i * pl.spacing;
+                                if (s <= 0 || s >= pl.r.len) continue;
+                                const [x, z] = along(pl.r, s);
+                                const a = fog(x, z) * traffic * Math.min(1, (pl.r.len - s) / 12, s / 6);
+                                if (a <= 0.02) continue;
+                                light(x, z, pl.box ? null : along(pl.r, Math.max(0, s - 14)), pl.color, pl.box, a);
+                            }
+                        }
+                        for (const fl of AMBIENT){
+                            for(let i = 0; i < fl.count; i += 1){
+                                const s = mod(time * fl.speed + (i / fl.count + fl.phase) * fl.r.len, fl.r.len);
+                                const [x, z] = along(fl.r, s);
+                                const a = 0.5 * fog(x, z) * traffic * Math.min(1, s / 16, (fl.r.len - s) / 16);
+                                if (a <= 0.02) continue;
+                                light(x, z, null, fl.color, false, a);
+                            }
+                        }
+                    }
+                    drawables.sort({
+                        "SWEVisualization.useEffect.render": (a, b)=>b.depth - a.depth
+                    }["SWEVisualization.useEffect.render"]).forEach({
+                        "SWEVisualization.useEffect.render": (d)=>d.draw()
+                    }["SWEVisualization.useEffect.render"]);
+                    ctx.globalAlpha = 1;
                 }
-            }["SWEVisualization.useEffect.animate"];
-            frame = requestAnimationFrame(animate);
+            }["SWEVisualization.useEffect.render"];
+            const resize = {
+                "SWEVisualization.useEffect.resize": ()=>{
+                    const rect = canvas.getBoundingClientRect();
+                    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    canvas.width = Math.max(1, Math.round(rect.width * dpr));
+                    canvas.height = Math.max(1, Math.round(rect.height * dpr));
+                    scale = canvas.width / VIEW_W;
+                    if (reduceMotion) render(12 + OPEN_HOLD, 12 + OPEN_HOLD);
+                }
+            }["SWEVisualization.useEffect.resize"];
+            resize();
+            canvas.classList.add("is-ready");
+            const ro = new ResizeObserver(resize);
+            ro.observe(canvas);
+            if (reduceMotion) return ({
+                "SWEVisualization.useEffect": ()=>ro.disconnect()
+            })["SWEVisualization.useEffect"];
+            let frameId = 0;
+            let last = 0;
+            let clock = 0;
+            const loop = {
+                "SWEVisualization.useEffect.loop": (now)=>{
+                    const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
+                    last = now;
+                    clock += dt;
+                    render(clock % LOOP, clock);
+                    frameId = window.requestAnimationFrame(loop);
+                }
+            }["SWEVisualization.useEffect.loop"];
+            const startLoop = {
+                "SWEVisualization.useEffect.startLoop": ()=>{
+                    if (frameId) return;
+                    last = 0;
+                    frameId = window.requestAnimationFrame(loop);
+                }
+            }["SWEVisualization.useEffect.startLoop"];
+            const stopLoop = {
+                "SWEVisualization.useEffect.stopLoop": ()=>{
+                    window.cancelAnimationFrame(frameId);
+                    frameId = 0;
+                }
+            }["SWEVisualization.useEffect.stopLoop"];
+            // Pause while scrolled out of view; the clock resumes where it left off.
+            const io = new IntersectionObserver({
+                "SWEVisualization.useEffect": ([entry])=>entry.isIntersecting ? startLoop() : stopLoop()
+            }["SWEVisualization.useEffect"]);
+            io.observe(canvas);
             return ({
-                "SWEVisualization.useEffect": ()=>cancelAnimationFrame(frame)
+                "SWEVisualization.useEffect": ()=>{
+                    stopLoop();
+                    io.disconnect();
+                    ro.disconnect();
+                }
             })["SWEVisualization.useEffect"];
         }
     }["SWEVisualization.useEffect"], []);
-    const formQ = clamp01((time - STREAM_END) / (FORM_END - STREAM_END));
-    // Slow pull at first, then accelerating into the arrow.
-    const form = formQ * formQ * formQ * (formQ * (formQ * 6 - 15) + 10);
-    const flowTime = Math.min(time, FORM_END);
-    const fillerFade = 1 - easeInOut(formQ / 0.8);
-    const launchQ = clamp01((time - HOLD_END) / (LAUNCH_END - HOLD_END));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
         className: "swe-visualization",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            className: "swe-scene",
-            viewBox: `0 0 ${WIDTH} ${HEIGHT}`,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("canvas", {
+            ref: canvasRef,
+            className: "swe-canvas",
             role: "img",
-            "aria-label": "Code streams downward like film credits, gathers into a send arrow, then launches right and dissolves.",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
-                            id: fadeYId,
-                            x1: "0",
-                            y1: "0",
-                            x2: "0",
-                            y2: "1",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: "0",
-                                    stopColor: "#fff",
-                                    stopOpacity: "0"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 313,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: EDGE_FADE,
-                                    stopColor: "#fff",
-                                    stopOpacity: "1"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 314,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: 1 - EDGE_FADE,
-                                    stopColor: "#fff",
-                                    stopOpacity: "1"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 315,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: "1",
-                                    stopColor: "#fff",
-                                    stopOpacity: "0"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 316,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/SWEVisualization.tsx",
-                            lineNumber: 312,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
-                            id: fadeXId,
-                            x1: "0",
-                            y1: "0",
-                            x2: "1",
-                            y2: "0",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: "0",
-                                    stopColor: "#fff",
-                                    stopOpacity: "1"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 319,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: "0.86",
-                                    stopColor: "#fff",
-                                    stopOpacity: "1"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 320,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
-                                    offset: "1",
-                                    stopColor: "#fff",
-                                    stopOpacity: "0"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                                    lineNumber: 321,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/SWEVisualization.tsx",
-                            lineNumber: 318,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mask", {
-                            id: maskYId,
-                            maskUnits: "userSpaceOnUse",
-                            x: "0",
-                            y: "0",
-                            width: WIDTH,
-                            height: HEIGHT,
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
-                                width: WIDTH,
-                                height: HEIGHT,
-                                fill: `url(#${fadeYId})`
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/SWEVisualization.tsx",
-                                lineNumber: 324,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/SWEVisualization.tsx",
-                            lineNumber: 323,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mask", {
-                            id: maskXId,
-                            maskUnits: "userSpaceOnUse",
-                            x: "0",
-                            y: "0",
-                            width: WIDTH,
-                            height: HEIGHT,
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
-                                width: WIDTH,
-                                height: HEIGHT,
-                                fill: `url(#${fadeXId})`
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/SWEVisualization.tsx",
-                                lineNumber: 327,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/SWEVisualization.tsx",
-                            lineNumber: 326,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                    lineNumber: 311,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                    mask: `url(#${maskXId})`,
-                    "aria-hidden": "true",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                        mask: `url(#${maskYId})`,
-                        children: rows.map((row, index)=>{
-                            const sourceY = STREAM_SPEED * flowTime - STREAM_PITCH * (row.streamIndex + 1);
-                            const target = row.arrow;
-                            let y = sourceY;
-                            let dx = 0;
-                            let opacity = fillerFade;
-                            if (target) {
-                                y = lerp(sourceY, target.y, form);
-                                const p = clamp01((launchQ - row.launchDelay) / 0.7);
-                                dx = LAUNCH_DISTANCE * p * p;
-                                opacity = 1 - easeInOut((p - 0.25) / 0.75);
-                            }
-                            if (opacity <= 0 || y < -12 || y > HEIGHT + 12) return null;
-                            const tokenX = (f, side)=>(target ? lerp(streamX(row, f), arrowX(target, f, side), form) : streamX(row, f)) + dx;
-                            const textX = (target ? lerp(row.streamX, target.left + 1, form) : row.streamX) + dx;
-                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-                                opacity: opacity,
-                                children: [
-                                    row.text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
-                                        className: `swe-code-text swe-color--${row.textColor}`,
-                                        x: textX.toFixed(1),
-                                        y: (y + 2.5).toFixed(1),
-                                        children: row.text
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/SWEVisualization.tsx",
-                                        lineNumber: 362,
-                                        columnNumber: 21
-                                    }, this),
-                                    row.tokens.map((token, tokenIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            className: `swe-token swe-color--${token.color}`,
-                                            d: `M ${tokenX(token.f0, token.side).toFixed(1)} ${y.toFixed(1)} H ${tokenX(token.f1, token.side).toFixed(1)}`,
-                                            opacity: token.opacity
-                                        }, tokenIndex, false, {
-                                            fileName: "[project]/src/components/SWEVisualization.tsx",
-                                            lineNumber: 372,
-                                            columnNumber: 21
-                                        }, this))
-                                ]
-                            }, index, true, {
-                                fileName: "[project]/src/components/SWEVisualization.tsx",
-                                lineNumber: 360,
-                                columnNumber: 17
-                            }, this);
-                        })
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/SWEVisualization.tsx",
-                        lineNumber: 332,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/src/components/SWEVisualization.tsx",
-                    lineNumber: 331,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+            "aria-label": "Five code files, seen from above, settle onto a city grid and each becomes its own district: silos, a data center, a GPU hall, a central tower with offices, and a shipping yard, with light flowing between them as the camera circles."
+        }, void 0, false, {
             fileName: "[project]/src/components/SWEVisualization.tsx",
-            lineNumber: 305,
+            lineNumber: 1503,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/SWEVisualization.tsx",
-        lineNumber: 304,
+        lineNumber: 1502,
         columnNumber: 5
     }, this);
 }
-_s(SWEVisualization, "nHb1iwU8qg7uDDl6a1wGi7Twqvc=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useId"]
-    ];
-});
-_c = SWEVisualization;
-var _c;
-__turbopack_context__.k.register(_c, "SWEVisualization");
+_s(SWEVisualization, "UJgi7ynoup7eqypjnwyX/s32POg=");
+_c9 = SWEVisualization;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9;
+__turbopack_context__.k.register(_c, "FILE_BY_KEY$Object.fromEntries$FILES.map");
+__turbopack_context__.k.register(_c1, "FILE_BY_KEY$Object.fromEntries");
+__turbopack_context__.k.register(_c2, "FILE_BY_KEY");
+__turbopack_context__.k.register(_c3, "DC_T");
+__turbopack_context__.k.register(_c4, "GPU_T");
+__turbopack_context__.k.register(_c5, "TOWER_T");
+__turbopack_context__.k.register(_c6, "OUT_PULSES$[-1, 1].map");
+__turbopack_context__.k.register(_c7, "OUT_PULSES");
+__turbopack_context__.k.register(_c8, "DEPLOY_T");
+__turbopack_context__.k.register(_c9, "SWEVisualization");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

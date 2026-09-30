@@ -15,7 +15,7 @@ const focusContent: Record<Focus, { title: string; description: string }> = {
       "I connect mathematical insight to models that solve practical problems."
   },
   SWE: {
-    title: "Shipping software solutions that deliver.",
+    title: "Reliable software, end to end.",
     description:
       "I build dependable software, from RAG pipelines to internal tools, that teams rely on every day."
   },
@@ -169,7 +169,7 @@ function RoverScene({ progress }: { progress: number }) {
 
 
 export default function Home() {
-  const [focus, setFocus] = useState<Focus>("ML");
+  const [focus, setFocus] = useState<Focus>("SWE");
   const content = focusContent[focus];
 
   useLayoutEffect(() => {
@@ -225,7 +225,7 @@ export default function Home() {
             role="group"
             aria-label="Portfolio focus"
           >
-            {(["ML", "SWE", "Robotics"] as Focus[]).map((item) => (
+            {(["SWE", "Robotics", "ML"] as Focus[]).map((item) => (
               <button
                 key={item}
                 type="button"
