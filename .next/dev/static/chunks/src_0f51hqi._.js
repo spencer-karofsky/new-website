@@ -2239,12 +2239,12 @@ const VIEW_H = 360;
 const FOCAL = 525;
 const REF_DEPTH = 525;
 const NEAR = 30;
-// The city runs on a 20 second timeline. The opening holds a little longer so all
-// five files can be typed out on glass before they land.
+// The city runs on a 20 second timeline. Its first 2.5 seconds are only the opening
+// hover, so that part is compressed: the cube spins up, then its panels break off.
 const CITY_LOOP = 20;
-const OPEN_HOLD_AT = 2.5; // city time when the sheets start to descend
-const OPEN_HOLD = 2; // extra seconds of hovering while the files are typed
-const LOOP = CITY_LOOP + OPEN_HOLD; // seconds
+const OPEN_T = 1.3; // seconds the cube spins up before its panels break off
+const OPEN_SKIP = 2.5 - OPEN_T;
+const LOOP = CITY_LOOP - OPEN_SKIP; // seconds
 // Editor window geometry, in world units on the ground plane.
 const CHAR = 3.6;
 const ROW = 8;
@@ -2633,26 +2633,152 @@ function layoutFiles() {
     });
 }
 const FILES = layoutFiles();
-// Opening: glass sheets hover at different heights and all five files are typed out,
-// two at a time. Each pair starts shortly before the previous pair finishes.
-const FLOAT_H = {
-    sql: 30,
-    tf: 44,
-    py: 20,
-    cu: 36,
-    yml: 12
+// Opening: the five files are the faces of one glass cube (server.py is the lid).
+// The cube spins up, and its panels break off one after another, flying out
+// tangentially along curving paths and settling flat onto their lots. At the end of
+// the loop the whole thing plays in reverse, so the cube reassembles and spins down.
+const CUBE = 110;
+const CUBE_LIFT = 10;
+const SPIN_START = 0.1;
+const SPIN_UP = 1.1;
+const OMEGA = 5; // peak spin, radians per second
+const THETA0 = 0.6; // resting angle, so two sides of the cube show
+const FLY = 0.85;
+const RELEASE = {
+    py: 1.3,
+    yml: 1.36,
+    cu: 1.42,
+    tf: 1.48,
+    sql: 1.54
 };
-const TYPE_OVERLAP = 0.45;
-const TYPING_ORDER = [
-    "tf",
-    "py",
-    "sql",
-    "yml",
-    "cu"
-];
-function typeStartFor(key) {
-    const group = Math.floor(TYPING_ORDER.indexOf(key) / 2);
-    return 0.2 + group * (ROWS * PER_ROW - TYPE_OVERLAP);
+const FACE_NORMAL = {
+    sql: [
+        -1,
+        0
+    ],
+    tf: [
+        0,
+        -1
+    ],
+    cu: [
+        1,
+        0
+    ],
+    yml: [
+        0,
+        1
+    ],
+    py: [
+        0,
+        1
+    ]
+};
+function spinAngle(tau) {
+    const x = clamp((tau - SPIN_START) / SPIN_UP, 0, 1);
+    return THETA0 + OMEGA * SPIN_UP * (x ** 3 - x ** 4 / 2) + OMEGA * Math.max(0, tau - SPIN_START - SPIN_UP);
+}
+function spinRate(tau) {
+    const x = clamp((tau - SPIN_START) / SPIN_UP, 0, 1);
+    return OMEGA * x * x * (3 - 2 * x);
+}
+function rot2(p, a) {
+    const c = Math.cos(a);
+    const s = Math.sin(a);
+    return [
+        p[0] * c + p[1] * s,
+        -p[0] * s + p[1] * c
+    ];
+}
+function attachedPose(f, theta) {
+    const N = rot2(FACE_NORMAL[f.key], theta);
+    const psi = Math.atan2(N[0], N[1]);
+    if (f.key === "py") return {
+        c: [
+            0,
+            CUBE_LIFT + CUBE,
+            0
+        ],
+        psi,
+        phi: 0,
+        w: CUBE,
+        hgt: CUBE
+    };
+    return {
+        c: [
+            N[0] * CUBE / 2,
+            CUBE_LIFT + CUBE / 2,
+            N[1] * CUBE / 2
+        ],
+        psi,
+        phi: Math.PI / 2,
+        w: CUBE,
+        hgt: CUBE
+    };
+}
+function panelPose(f, tau) {
+    const r = RELEASE[f.key];
+    if (tau <= r) return attachedPose(f, spinAngle(tau));
+    const th = spinAngle(r);
+    const a = attachedPose(f, th);
+    const b = attachedPose(f, th + 0.02);
+    // leave along the direction of motion; the lid, at the center, heads for its lot
+    let T = [
+        b.c[0] - a.c[0],
+        b.c[2] - a.c[2]
+    ];
+    if (f.key === "py") T = [
+        f.cx,
+        f.cz
+    ];
+    const tl = Math.hypot(T[0], T[1]) || 1;
+    T = [
+        T[0] / tl,
+        T[1] / tl
+    ];
+    // keep turning the same way, easing out to the lot's orientation
+    const dir = Math.sign(Math.atan2(Math.sin(b.psi - a.psi), Math.cos(b.psi - a.psi))) || 1;
+    const turn = Math.PI * 2;
+    const spinTravel = OMEGA * FLY; // how far it would turn at full spin during the flight
+    let target = dir > 0 ? Math.ceil(a.psi / turn) * turn : Math.floor(a.psi / turn) * turn;
+    if (Math.abs(target - a.psi) < spinTravel / 3) target += dir * turn;
+    const delta = target - a.psi;
+    const k = Math.min(3, spinTravel / Math.abs(delta)); // start at the cube's spin rate
+    const u = clamp((tau - r) / FLY, 0, 1);
+    const e = 1 - (1 - u) * (1 - u); // leaves at speed, lands gently
+    const p0 = [
+        a.c[0],
+        a.c[2]
+    ];
+    // the first control point sets the launch speed to match the spinning face
+    const launch = f.key === "py" ? 6 : OMEGA * (CUBE / 2) * FLY / 6;
+    const p1 = [
+        p0[0] + T[0] * launch,
+        p0[1] + T[1] * launch
+    ];
+    const p3 = [
+        f.cx,
+        f.cz
+    ];
+    const p2 = [
+        lerp(p1[0], p3[0], 0.65),
+        lerp(p1[1], p3[1], 0.65)
+    ];
+    const m = 1 - e;
+    const bx = m * m * m * p0[0] + 3 * m * m * e * p1[0] + 3 * m * e * e * p2[0] + e * e * e * p3[0];
+    const bz = m * m * m * p0[1] + 3 * m * m * e * p1[1] + 3 * m * e * e * p2[1] + e * e * e * p3[1];
+    const lift = f.key === "py" ? 30 : 16;
+    const turnEase = k * (u ** 3 - 2 * u ** 2 + u) + 3 * u ** 2 - 2 * u ** 3;
+    return {
+        c: [
+            bx,
+            lerp(a.c[1], 0, e) + lift * Math.sin(Math.PI * u) ** 2,
+            bz
+        ],
+        psi: a.psi + delta * turnEase,
+        phi: a.phi * (1 - smooth01(u * 1.8)),
+        w: lerp(CUBE, f.w, smoother(u)),
+        hgt: lerp(CUBE, WIN_H, smoother(u))
+    };
 }
 const PER_ROW = 0.17;
 const GLASS_HI = [
@@ -3508,16 +3634,32 @@ function drawCrane(env, f, rise, alpha) {
         lift: 0.05
     });
 }
-function flatMapper(f, fr) {
-    const c = Math.cos(fr.a);
-    const s = Math.sin(fr.a);
+function poseAxes(p) {
+    const U = [
+        Math.cos(p.psi),
+        0,
+        -Math.sin(p.psi)
+    ];
+    const V = [
+        Math.sin(p.psi) * Math.cos(p.phi),
+        -Math.sin(p.phi),
+        Math.cos(p.psi) * Math.cos(p.phi)
+    ];
+    return {
+        U,
+        V,
+        n: cross(V, U)
+    };
+}
+function poseMapper(f, p) {
+    const { U, V } = poseAxes(p);
     return (u, v)=>{
-        const du = u - f.w / 2;
-        const dv = v - WIN_H / 2;
+        const a = (u / f.w - 0.5) * p.w;
+        const b = (v / WIN_H - 0.5) * p.hgt;
         return [
-            fr.cx + du * c - dv * s,
-            fr.h,
-            fr.cz + du * s + dv * c
+            p.c[0] + U[0] * a + V[0] * b,
+            p.c[1] + U[1] * a + V[1] * b,
+            p.c[2] + U[2] * a + V[2] * b
         ];
     };
 }
@@ -3574,7 +3716,7 @@ function drawWindow(env, f, M, o) {
         ctx.moveTo(hi0[0], hi0[1]);
         ctx.lineTo(hi1[0], hi1[1]);
         ctx.stroke();
-        const titleA = o.panel * (1 - o.facade) * o.fade;
+        const titleA = o.panel * (1 - o.facade) * o.fade * (o.chrome ?? 1);
         if (titleA > 0.01) {
             ctx.globalAlpha = titleA;
             ctx.fillStyle = "rgba(255,255,255,0.05)";
@@ -3643,7 +3785,7 @@ function drawWindow(env, f, M, o) {
                 const lit = o.wave ? base + (1 - base) * towerWave(M(0, row.v)[1], env.t) : 1;
                 ctx.globalAlpha = o.rows * b.opacity * tail * lit * o.fade;
                 ctx.strokeStyle = rgba(o.wave ? mix(b.color, CREAM, 0.25) : b.color);
-                ctx.lineWidth = BAR * k * lerp(1, 0.55, o.facade);
+                ctx.lineWidth = BAR * k * lerp(1, 0.55, o.facade) * (o.ink ?? 1);
                 ctx.beginPath();
                 ctx.moveTo(a[0], a[1]);
                 ctx.lineTo(e[0], e[1]);
@@ -3846,24 +3988,23 @@ function SWEVisualization() {
             let scale = 1;
             const render = {
                 "SWEVisualization.useEffect.render": (loopT, time)=>{
-                    // City time: hold just before the descent while the files are typed.
-                    const t = loopT < OPEN_HOLD_AT ? loopT : Math.max(OPEN_HOLD_AT, loopT - OPEN_HOLD);
+                    // City time: the opening hover is compressed into OPEN_T seconds.
+                    const t = loopT < OPEN_T ? loopT * 2.5 / OPEN_T : loopT + OPEN_SKIP;
                     // ---- timeline
                     const view = ramp(t, 2.5, 5) * (1 - ramp(t, 16, 19.2));
-                    const settle = ramp(t, 2.5, 4.5) * (1 - ramp(t, 18.4, 20));
                     const panel = 1 - ramp(t, 4, 4.8) + ramp(t, 17.2, 18.2);
                     const frame = lerp(1, 0.4, ramp(t, 4, 5) * (1 - ramp(t, 17.2, 18.2)));
                     const traffic = view * ramp(t, 8.3, 8.8) * (1 - ramp(t, 15.8, 16.4));
                     // A slow partial orbit: swing out while tilting down, sweep across the city,
                     // then return to the starting heading while rising back overhead.
                     const yaw = -0.3 * ramp(t, 2.5, 5.5) + 0.6 * smooth01((t - 5) / 11) - 0.3 * ramp(t, 16, 19.5) + 0.07 * Math.sin(2 * Math.PI * loopT / LOOP) * (1 - view);
-                    const pitch = lerp(1.18, 0.66, view) + 0.05 * Math.sin(2 * Math.PI * t / CITY_LOOP) * view;
+                    const pitch = lerp(0.85, 0.66, view) + 0.05 * Math.sin(2 * Math.PI * t / CITY_LOOP) * view;
                     const target = [
                         0,
-                        34 * view,
+                        lerp(52, 34, view),
                         0
                     ];
-                    const cam = makeCamera(target, yaw, pitch, lerp(600, 660, view));
+                    const cam = makeCamera(target, yaw, pitch, lerp(470, 660, view));
                     const P = {
                         "SWEVisualization.useEffect.render.P": (x, h, z)=>project(cam, [
                                 x,
@@ -3938,59 +4079,70 @@ function SWEVisualization() {
                     }
                     // ---- files: floating windows that settle into lots
                     const towerP = ramp(t, A.start, A.start + 1.2) * (1 - ramp(t, A.fall, A.fall + 1.2));
+                    // The opening plays forward from the start of the loop and in reverse at the end.
+                    const tau = loopT < LOOP / 2 ? loopT : LOOP - loopT;
+                    const spin = clamp(spinRate(tau) / OMEGA, 0, 1) * (tau < RELEASE.sql + 0.3 ? 1 : 0);
+                    if (spin > 0.01) {
+                        const g = P(0, 0, 0);
+                        drawGlow(ctx, g[0], g[1], 130 * size(g[2]), PERIWINKLE, 0.22 * spin);
+                    }
                     const sheets = FILES.map({
-                        "SWEVisualization.useEffect.render.sheets": (f, i)=>{
-                            const bob = 1.6 * Math.sin(time * 0.9 + i * 1.3);
-                            const fr = {
-                                cx: lerp(f.deskX, f.cx, settle),
-                                cz: lerp(f.deskZ, f.cz, settle),
-                                a: 0,
-                                h: (FLOAT_H[f.key] + bob) * (1 - settle)
-                            };
+                        "SWEVisualization.useEffect.render.sheets": (f)=>{
+                            const pose = panelPose(f, tau);
+                            const M = poseMapper(f, pose);
+                            const { n } = poseAxes(pose);
+                            const facing = dot(n, sub(cam.pos, pose.c)) > 0;
+                            const flight = clamp((tau - RELEASE[f.key]) / FLY, 0, 1);
                             return {
                                 f,
-                                fr,
-                                depth: P(fr.cx, fr.h, fr.cz)[2]
+                                pose,
+                                M,
+                                facing,
+                                flight,
+                                depth: P(pose.c[0], pose.c[1], pose.c[2])[2]
                             };
                         }
                     }["SWEVisualization.useEffect.render.sheets"]);
+                    // soft shadows on the ground beneath the cube and flying panels
+                    for (const { f, M } of sheets){
+                        const corners = [
+                            M(0, WIN_H),
+                            M(f.w, WIN_H),
+                            M(f.w, 0),
+                            M(0, 0)
+                        ];
+                        const avgH = corners.reduce({
+                            "SWEVisualization.useEffect.render": (acc, c)=>acc + c[1]
+                        }["SWEVisualization.useEffect.render"], 0) / 4;
+                        if (avgH <= 0.3) continue;
+                        const q = corners.map({
+                            "SWEVisualization.useEffect.render.q": ([x, h, z])=>P(x + 4 + h * 0.25, 0, z + 5 + h * 0.3)
+                        }["SWEVisualization.useEffect.render.q"]);
+                        if (q.some({
+                            "SWEVisualization.useEffect.render": (c)=>c[2] < NEAR
+                        }["SWEVisualization.useEffect.render"])) continue;
+                        ctx.save();
+                        ctx.globalAlpha = 0.28 * Math.min(1, avgH / 10) * fog(f.cx, f.cz);
+                        ctx.shadowColor = "rgba(4,3,10,0.6)";
+                        ctx.shadowBlur = 12 * scale;
+                        ctx.fillStyle = "rgba(6,5,12,0.5)";
+                        tracePoly(ctx, q);
+                        ctx.fill();
+                        ctx.restore();
+                    }
                     sheets.sort({
                         "SWEVisualization.useEffect.render": (a, b)=>b.depth - a.depth
                     }["SWEVisualization.useEffect.render"]);
-                    for (const { f, fr } of sheets){
+                    for (const { f, pose, M, facing, flight } of sheets){
                         const fade = fog(f.cx, f.cz);
-                        const M = flatMapper(f, fr);
-                        // soft shadow on the ground while hovering
-                        if (fr.h > 0.2) {
-                            const sh = flatMapper(f, {
-                                ...fr,
-                                cx: fr.cx + 4 + fr.h * 0.25,
-                                cz: fr.cz + 5 + fr.h * 0.3,
-                                h: 0
-                            });
-                            const q = [
-                                sh(0, WIN_H),
-                                sh(f.w, WIN_H),
-                                sh(f.w, 0),
-                                sh(0, 0)
-                            ].map({
-                                "SWEVisualization.useEffect.render.q": ([x, h, z])=>P(x, h, z)
-                            }["SWEVisualization.useEffect.render.q"]);
-                            ctx.save();
-                            ctx.globalAlpha = 0.3 * Math.min(1, fr.h / 10) * fade;
-                            ctx.shadowColor = "rgba(4,3,10,0.6)";
-                            ctx.shadowBlur = 12 * scale;
-                            ctx.fillStyle = "rgba(6,5,12,0.5)";
-                            tracePoly(ctx, q);
-                            ctx.fill();
-                            ctx.restore();
-                        }
-                        // Code is typed in at the start and goes into the city; sheets return empty.
+                        // Code is already written; it goes into the city and the panels return empty.
+                        // Only the side of a panel facing the camera shows its code.
                         const opening = t < 12;
-                        const rowsA = opening ? 1 - ramp(t, f.start - 0.1, f.start + 0.6) : 0;
-                        const textA = opening ? 1 - ramp(t, f.start - 0.4, f.start + 0.3) : 0;
-                        const typeT = loopT - typeStartFor(f.key);
-                        const glow = 1 - settle;
+                        const appear = ramp(loopT, 0.05, 0.4) * (facing ? 1 : 0);
+                        const rowsA = opening ? (1 - ramp(t, f.start - 0.1, f.start + 0.6)) * appear : 0;
+                        const textA = opening ? (1 - ramp(t, f.start - 0.4, f.start + 0.3)) * appear : 0;
+                        const typeT = Infinity;
+                        const glow = 1 - flight;
                         if (f.key === "py" && towerP > 0.001) {
                             // drawn as the standing facade with the tower
                             drawWindow(env, f, M, {
@@ -4007,15 +4159,17 @@ function SWEVisualization() {
                             continue;
                         }
                         drawWindow(env, f, M, {
-                            panel,
+                            panel: facing ? panel : panel * 0.7,
                             frame,
-                            rows: f.key === "py" ? opening ? 1 : 0 : clamp(rowsA, 0, 1),
+                            rows: f.key === "py" ? opening ? appear : 0 : clamp(rowsA, 0, 1),
                             text: clamp(textA, 0, 1),
                             facade: 0,
                             wave: false,
                             fade,
-                            typeT: opening ? typeT : Infinity,
-                            glow
+                            typeT,
+                            glow,
+                            chrome: facing ? 1 : 0,
+                            ink: pose.w / f.w
                         });
                     }
                     // ---- everything with height, painted far to near
@@ -4171,7 +4325,7 @@ function SWEVisualization() {
                     canvas.width = Math.max(1, Math.round(rect.width * dpr));
                     canvas.height = Math.max(1, Math.round(rect.height * dpr));
                     scale = canvas.width / VIEW_W;
-                    if (reduceMotion) render(12 + OPEN_HOLD, 12 + OPEN_HOLD);
+                    if (reduceMotion) render(12 - OPEN_SKIP, 12 - OPEN_SKIP);
                 }
             }["SWEVisualization.useEffect.resize"];
             resize();
@@ -4226,15 +4380,15 @@ function SWEVisualization() {
             ref: canvasRef,
             className: "swe-canvas",
             role: "img",
-            "aria-label": "Five code files, seen from above, settle onto a city grid and each becomes its own district: silos, a data center, a GPU hall, a central tower with offices, and a shipping yard, with light flowing between them as the camera circles."
+            "aria-label": "A spinning glass cube of five code files breaks apart onto a city grid and each becomes its own district: silos, a data center, a GPU hall, a central tower with offices, and a shipping yard, with light flowing between them as the camera circles."
         }, void 0, false, {
             fileName: "[project]/src/components/SWEVisualization.tsx",
-            lineNumber: 1503,
+            lineNumber: 1594,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/SWEVisualization.tsx",
-        lineNumber: 1502,
+        lineNumber: 1593,
         columnNumber: 5
     }, this);
 }

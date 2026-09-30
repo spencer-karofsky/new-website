@@ -341,10 +341,6 @@
     }
   }
 
-  .block {
-    display: block;
-  }
-
   .contents {
     display: contents;
   }
@@ -363,10 +359,6 @@
 
   .resize {
     resize: both;
-  }
-
-  .rounded {
-    border-radius: .25rem;
   }
 
   .shadow {
